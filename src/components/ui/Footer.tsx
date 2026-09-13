@@ -9,7 +9,7 @@ export function Footer() {
         </div>
         <div>
           <h4 className="font-semibold text-stone-200 mb-2">Herramientas</h4>
-          <ul className="space-y-2 text-xs"><li><Link href="/recomendador" className="hover:text-amber-400">Asistente de Setup Ideal</Link></li><li><Link href="/comparativas" className="hover:text-amber-400">Matriz de Comparativas</Link></li><li><Link href="/catalogo" className="hover:text-amber-400">Catálogo Técnico</Link></li><li><Link href="/cafes" className="hover:text-amber-400">Catálogo de Granos Curados</Link></li></ul>
+          <ul className="space-y-2 text-xs"><li><Link href="/recomendador" className="hover:text-amber-400">Asistente de Setup Ideal</Link></li><li><Link href="/comparativas" className="hover:text-amber-400">Matriz de Comparativas</Link></li><li><Link href="/catalogo" className="hover:text-amber-400">Catálogo Técnico</Link></li><li><span className="text-stone-500 line-through">Catálogo de Granos Curados</span> <span className="text-[10px] bg-amber-900/30 text-amber-300 px-1.5 py-0.5 rounded">P0-1 oculto — ASIN verificación pendiente</span></li></ul>
         </div>
         <div>
           <h4 className="font-semibold text-stone-200 mb-2">Conocimiento</h4>

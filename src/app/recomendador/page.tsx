@@ -5,7 +5,7 @@ import { UserPreferences, EvaluatedSetup } from "@/types/coffee";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { passesHardFilters, calculateSetupScore } from "@/engine/compatibility";
-import { SetupSignature } from "@/components/ui/SetupSignature";
+import { Top3Results } from "@/components/ui/Top3Results";
 import { track } from "@/lib/analytics";
 
 function OptionCard({ title, desc, badge, onClick }: { title: string; desc: string; badge?: string; onClick: () => void }) {
@@ -29,7 +29,8 @@ const ARCHETYPE_PRESETS: Record<string, UserPreferences> = {
   precisionist: { drinkTypes: ["espresso"], budgetMaxEUR: 950, workflowPreference: "manual_craft", dailyCups: "3-5", milkImportance: "low", maintenanceTolerance: "high", spaceConstraint: false, integratedGrinderPreference: "separated" },
   aesthetic: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 700, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" },
   efficiencist: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 550, workflowPreference: "convenience", dailyCups: "3-5", milkImportance: "high", maintenanceTolerance: "low", spaceConstraint: true, integratedGrinderPreference: "indifferent" },
-  alchemist: { drinkTypes: ["black_coffee"], budgetMaxEUR: 700, workflowPreference: "manual_craft", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" },
+  // P0-5 espresso-only: alchemist black_coffee oculto — catálogo 100% espresso. Usamos espresso + manual para claridad alta sin ruta filtro.
+  alchemist: { drinkTypes: ["espresso"], budgetMaxEUR: 700, workflowPreference: "manual_craft", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" },
 };
 
 function WizardInner() {
@@ -39,7 +40,7 @@ function WizardInner() {
   const [prefs, setPrefs] = useState<Partial<UserPreferences>>({
     drinkTypes: ["espresso"], budgetMaxEUR: 600, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent",
   });
-  const [result, setResult] = useState<EvaluatedSetup | null>(null);
+  const [tops, setTops] = useState<EvaluatedSetup[]>([]);
   const [finalPrefs, setFinalPrefs] = useState<UserPreferences | null>(null);
 
   const handleComplete = (fp: UserPreferences) => {
@@ -51,23 +52,24 @@ function WizardInner() {
       else { for (const g of GRINDERS_SEED) { if (passesHardFilters(m, g, fp)) candidates.push(calculateSetupScore(m, g, fp)); } }
     }
     candidates.sort((a, b) => b.score.totalScore - a.score.totalScore);
-    setResult(candidates[0] ?? null); setFinalPrefs(fp); setStep(9); track("result_viewed", { score: candidates[0]?.score.totalScore, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
+    const top3 = candidates.slice(0, 3);
+    setTops(top3); setFinalPrefs(fp); setStep(9); track("result_viewed", { score: top3[0]?.score.totalScore, count: top3.length, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
   };
 
   useEffect(()=> {
-    if (archetype && ARCHETYPE_PRESETS[archetype] && !result) {
+    if (archetype && ARCHETYPE_PRESETS[archetype] && tops.length === 0) {
       handleComplete(ARCHETYPE_PRESETS[archetype] as UserPreferences);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [archetype]);
 
-  if (step === 9 && result && finalPrefs) {
+  if (step === 9 && tops.length > 0 && finalPrefs) {
     return (
       <main className="min-h-screen bg-stone-950 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs font-mono text-amber-400 mb-2">ARQUETIPO: {archetype?.toUpperCase() || "CUSTOM"} • PRESET APLICADO</p>
-          <SetupSignature evaluated={result} prefs={finalPrefs} />
-          <button onClick={() => { setStep(1); setResult(null); setFinalPrefs(null); }} className="mt-6 w-full py-3 bg-stone-900 border border-stone-800 rounded-xl text-white font-bold hover:bg-stone-800">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs font-mono text-amber-400 mb-2">ARQUETIPO: {archetype?.toUpperCase() || "CUSTOM"} • TOP 3 • MOTOR ESPRESSO-ONLY</p>
+          <Top3Results tops={tops} prefs={finalPrefs} />
+          <button onClick={() => { setStep(1); setTops([]); setFinalPrefs(null); }} className="mt-6 w-full py-3 bg-stone-900 border border-stone-800 rounded-xl text-white font-bold hover:bg-stone-800">
             Rehacer test
           </button>
         </div>
@@ -90,7 +92,7 @@ function WizardInner() {
               <div className="grid gap-3">
                 <OptionCard title="Solo Espresso" desc="Extractos cortos y densos. Prioridad a la estabilidad térmica." badge="Purista" onClick={() => { setPrefs({ ...prefs, drinkTypes: ["espresso"] }); setStep(2); }} />
                 <OptionCard title="Espresso con Leche" desc="Cappuccinos, Lattes o Flat Whites regulares." badge="Equilibrio" onClick={() => { setPrefs({ ...prefs, drinkTypes: ["espresso", "milk_drink"] }); setStep(2); }} />
-                <OptionCard title="Cafés Largos / Filtro" desc="Bebidas de mayor volumen o extracción suave." badge="Alquimista" onClick={() => { setPrefs({ ...prefs, drinkTypes: ["black_coffee"] }); setStep(2); }} />
+                {/* P0-5 espresso-only: Cafés Largos / Filtro oculto — sin máquinas filtro en catálogo. Reactivar solo con V60/AeroPress reales. */}
               </div>
             </div>
           )}

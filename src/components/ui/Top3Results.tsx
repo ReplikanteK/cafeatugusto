@@ -1,0 +1,148 @@
+"use client";
+import { EvaluatedSetup, UserPreferences } from "@/types/coffee";
+import { getArchetype } from "@/engine/archetype";
+import { ScoreBadge } from "./ScoreBadge";
+import { ProductImage } from "./ProductImage";
+import { track } from "@/lib/analytics";
+
+function pillsFor(e: EvaluatedSetup) {
+  const m = e.setup.machine;
+  const g = e.setup.grinder;
+  const pills: string[] = [];
+  if (m.specs.portafilterDiameter) pills.push(`${m.specs.portafilterDiameter}mm`);
+  if (m.specs.pid) pills.push("PID");
+  if (m.specs.boilerType === "dual_boiler") pills.push("Doble caldera");
+  else if (m.specs.boilerType === "heat_exchanger") pills.push("HX");
+  else if (m.specs.boilerType === "single_boiler") pills.push("Caldera simple");
+  else if (m.specs.boilerType === "thermoblock") pills.push("Thermoblock");
+  if (m.specs.steamSystem === "automatic") pills.push("Vapor auto");
+  if (m.specs.waterTankCapacityLiters) pills.push(`${m.specs.waterTankCapacityLiters}L`);
+  if (m.grinderIntegrated) pills.push("Integrado");
+  else if (g) {
+    if (g.specs.grindAdjustment === "stepless") pills.push("Stepless");
+    if (g.specs.burrType === "flat") pills.push(`Flat ${g.specs.burrSizeMM}mm`);
+    if (g.performance.retention >= 4) pills.push("Single Dose");
+    if (g.performance.retention >= 5) pills.push("Retención baja");
+  }
+  return pills.slice(0, 6);
+}
+
+function rankBadge(i: number) {
+  if (i === 0) return { label: "🥇 Mejor Coincidencia", cls: "bg-amber-500 text-white border-amber-600", topCls: "border-amber-500/40 shadow-2xl shadow-amber-900/20" };
+  if (i === 1) return { label: "🥈 Mejor Relación", cls: "bg-stone-700 text-stone-200 border-stone-600", topCls: "border-stone-700" };
+  return { label: "🥉 Alternativa", cls: "bg-stone-800 text-stone-300 border-stone-700", topCls: "border-stone-800" };
+}
+
+export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: UserPreferences }) {
+  const arch = getArchetype(prefs);
+  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
+  if (tops.length === 0) {
+    return (
+      <div className="rounded-2xl border border-amber-500/20 bg-stone-900 p-8 text-center">
+        <p className="font-bold text-white">Sin resultados para tu presupuesto</p>
+        <p className="text-xs text-stone-400 mt-2">Prueba ampliar presupuesto o cambiar preferencia de molinillo integrado/separado.</p>
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-3">
+        <p className="text-xs font-mono tracking-widest text-amber-400">{arch.label.toUpperCase()} • TOP 3</p>
+        <span className="text-xs text-stone-500">Motor espresso-only • {tops.length} setups</span>
+      </div>
+
+      <div className="grid gap-4">
+        {tops.map((e, i) => {
+          const badge = rankBadge(i);
+          const pills = pillsFor(e);
+          const isTop1 = i === 0;
+          return (
+            <div
+              key={e.setup.id}
+              className={`rounded-2xl border bg-gradient-to-b p-5 flex flex-col gap-4 ${isTop1 ? "from-stone-900 via-stone-900 to-amber-950/20 border-amber-500/40 shadow-xl" : "from-stone-900 to-stone-950 border-stone-800"} ${badge.topCls}`}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`text-[11px] font-mono px-2.5 py-1 rounded-full border font-bold ${badge.cls}`}>{badge.label}</span>
+                  {isTop1 && <ScoreBadge score={e.score.totalScore} />}
+                </div>
+                {!isTop1 && <span className="font-mono text-xs font-bold text-stone-400">{e.score.totalScore}/100</span>}
+              </div>
+
+              <div className={`grid gap-4 ${isTop1 ? "md:grid-cols-2" : "md:grid-cols-2"}`}>
+                <div className="rounded-xl bg-stone-950 border border-stone-800 p-3 flex flex-col">
+                  <ProductImage src={e.setup.machine.image} alt={e.setup.machine.model} />
+                  <p className="font-bold text-white mt-2 text-sm">
+                    {e.setup.machine.brand} {e.setup.machine.model}
+                  </p>
+                  <p className="text-xs text-stone-400">
+                    {e.setup.machine.specs.portafilterDiameter ? `${e.setup.machine.specs.portafilterDiameter}mm` : ""} {e.setup.machine.specs.pid ? "· PID" : "· sin PID"} · {e.setup.machine.specs.boilerType}
+                  </p>
+                  <a
+                    href={`https://www.amazon.es/dp/${e.setup.machine.asin}?tag=${tag}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore })}
+                    className={`mt-3 block text-center py-2 rounded-lg text-xs font-bold ${isTop1 ? "bg-amber-600 hover:bg-amber-500 text-white" : "bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700"}`}
+                  >
+                    Ver en Amazon →
+                  </a>
+                </div>
+
+                <div className="rounded-xl bg-stone-950 border border-stone-800 p-3 flex flex-col">
+                  {e.setup.grinder ? (
+                    <>
+                      <ProductImage src={e.setup.grinder.image} alt={e.setup.grinder.model} />
+                      <p className="font-bold text-white mt-2 text-sm">
+                        {e.setup.grinder.brand} {e.setup.grinder.model}
+                      </p>
+                      <p className="text-xs text-stone-400">
+                        {e.setup.grinder.specs.burrType} {e.setup.grinder.specs.burrSizeMM}mm · {e.setup.grinder.specs.grindAdjustment} · retención {e.setup.grinder.performance.retention}/5
+                      </p>
+                      <a
+                        href={`https://www.amazon.es/dp/${e.setup.grinder.asin}?tag=${tag}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore })}
+                        className={`mt-3 block text-center py-2 rounded-lg text-xs font-bold ${isTop1 ? "bg-amber-600 hover:bg-amber-500 text-white" : "bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700"}`}
+                      >
+                        Ver en Amazon →
+                      </a>
+                    </>
+                  ) : (
+                    <p className="text-xs text-stone-500 text-center py-8">Molinillo integrado — ritual compacto</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {pills.map((p) => (
+                  <span key={p} className="text-[11px] font-mono bg-stone-800 text-stone-300 px-2 py-0.5 rounded-full border border-stone-700">
+                    {p}
+                  </span>
+                ))}
+                <span className="text-[11px] font-mono bg-amber-900/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/20">
+                  {e.setup.estimatedTotalEUR}€
+                </span>
+              </div>
+
+              <div className="border-t border-stone-800 pt-3">
+                <p className="text-xs text-stone-300 leading-relaxed">{e.score.rationale}</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {e.score.pros.slice(0, 2).map((pr) => (
+                    <span key={pr} className="text-[11px] text-emerald-300/80">✓ {pr}</span>
+                  ))}
+                  {e.score.cons.slice(0, 1).map((co) => (
+                    <span key={co} className="text-[11px] text-amber-300/70">• {co}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <p className="text-[11px] text-stone-500 text-center">Motor espresso-only • {arch.label} • Precios de referencia — verificar en Amazon</p>
+    </div>
+  );
+}

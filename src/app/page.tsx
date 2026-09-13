@@ -15,7 +15,8 @@ export default function HomePage() {
               <span className="text-stone-100">Tu ritual espresso, llevado a maestría.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-stone-400 leading-relaxed">
-              Sin recomendaciones a ciegas. Evaluamos compatibilidad real de portafiltros, control térmico PID y geometría de muelas para encontrar el setup exacto que encaja contigo.
+              <span className="text-amber-300 font-semibold">El motor de recomendación de setups de espresso real.</span> Sin recomendaciones
+              a ciegas. Evaluamos compatibilidad real de portafiltros, control térmico PID y geometría de muelas para encontrar el setup exacto que encaja contigo.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link href="/recomendador" className="rounded-xl bg-gradient-to-b from-amber-600 to-amber-700 px-8 py-4 text-sm font-black text-white shadow-xl shadow-amber-900/30 hover:from-amber-500 hover:to-amber-600 transition-all">

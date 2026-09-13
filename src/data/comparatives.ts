@@ -27,8 +27,8 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Depósito", a: "1.4 L", b: "1.1 L" },
     ],
     accessories: [
-      { name: "Tamper 54mm presión constante", asin: "B0B5X", note: "Para 54mm — evita canalización" },
-      { name: "WDT 0.35mm titanio", asin: "B0B5Y", note: "Distribución naked" },
+      { name: "Tamper 54mm presión constante", asin: "B0DSLYKM31", note: "Para 54mm — evita canalización" },
+      { name: "WDT 0.35mm titanio", asin: "B0BW9658TW", note: "Distribución naked" },
     ],
   },
   {
@@ -48,8 +48,8 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Vapor", a: "Manual", b: "Manual, espera térmica" },
     ],
     accessories: [
-      { name: "Cesta VST 18g 58mm", asin: "B0C1", note: "Solo Classic 58mm — precisión" },
-      { name: "Portafiltro bottomless nogal 58mm", asin: "B0C2", note: "Diagnóstico canalización" },
+      { name: "Cesta VST 18g 58mm", asin: "B0CGVVSM19", note: "Solo Classic 58mm — precisión" },
+      { name: "Portafiltro bottomless nogal 58mm", asin: "B0CXSNQLZL", note: "Diagnóstico canalización" },
     ],
   },
   {
@@ -69,8 +69,8 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Precio aprox", a: "110€", b: "190€" },
     ],
     accessories: [
-      { name: "Báscula 0.1g con timer", asin: "B0D1", note: "Dose control" },
-      { name: "Soplador single-dose", asin: "B0D2", note: "Retención mínima" },
+      { name: "Báscula 0.1g con timer", asin: "B0F6BLBQPY", note: "Dose control" },
+      { name: "Soplador single-dose", asin: "B0BBR3LRYW", note: "Retención mínima" },
     ],
   },
 ];

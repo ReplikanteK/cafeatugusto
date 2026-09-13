@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { passesHardFilters, calculateSetupScore, UserPreferences } from "../compatibility";
-import { CoffeeMachine, Grinder } from "@/types/coffee";
+import { passesHardFilters, calculateSetupScore } from "../compatibility";
+import { CoffeeMachine, Grinder, UserPreferences } from "@/types/coffee";
 const sampleMachine: CoffeeMachine = {
   id:"m_sage_bambino", slug:"sage-bambino", brand:"Sage", model:"Bambino", asin:"B0813S2G2N", type:"manual_espresso", priceBand:"entry", priceApproxEUR:330, espressoCapable:true, grinderIntegrated:false, image:"/images/machines/sage-bambino.jpg", specs:{ portafilterDiameter:54, pid:true, boilerType:"thermoblock", steamSystem:"manual", waterTankCapacityLiters:1.4, startupTimeSeconds:3 }, ratings:{ easeOfUse:4, cleaningEase:4, learningCurve:2, footprint:"small" }, usageProfile:{ milkUse:"medium", idealDailyCups:{min:1,max:4}, bestFor:["Rapidez"], notIdealFor:["58mm"] }, metadata:{ verifiedAt:"2026-09-01T00:00:00Z", sources:["Sage Specs"] },
 };

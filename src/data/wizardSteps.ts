@@ -7,7 +7,8 @@ export const WIZARD_STEPS = [
     options: [
       { id:"espresso", title:"Solo Espresso", description:"Tiro corto, crema densa. Priorizamos estabilidad térmica y PID.", badge:"Purista" },
       { id:"milk_drink", title:"Espresso + leche (cappuccino/latte)", description:"Necesitas vaporización eficiente. Thermoblock rápido o caldera dedicada.", badge:"Equilibrio" },
-      { id:"black_coffee", title:"Café largo / americano", description:"Volumen largo manteniendo intensidad. Superautomática cómoda.", badge:"Versátil" },
+      // P0-5 espresso-only: black_coffee oculto — catálogo sin máquinas filtro. Reactivar solo con máquinas V60/AeroPress reales.
+      // { id:"black_coffee", title:"Café largo / americano", description:"Volumen largo manteniendo intensidad. Superautomática cómoda.", badge:"Versátil" },
     ] as WizardOption<string>[]
   },
   {
