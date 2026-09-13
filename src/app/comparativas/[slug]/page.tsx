@@ -1,0 +1,47 @@
+import { COMPARATIVES } from "@/data/comparatives";
+import Link from "next/link";
+export function generateStaticParams() { return COMPARATIVES.map(c=> ({ slug: c.slug })); }
+export default async function ComparativePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const c = COMPARATIVES.find(x=> x.slug===slug);
+  if (!c) return <main className="max-w-3xl mx-auto px-6 py-12 text-stone-400">Comparativa no encontrada. <Link href="/comparativas" className="text-amber-500 underline">Volver</Link></main>;
+  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
+  return (
+    <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+      <p className="text-xs font-mono text-amber-400 tracking-widest">COMPARATIVA • RIGOR 60% + RITUAL 40%</p>
+      <h1 className="text-3xl font-black text-white mt-2">{c.title}</h1>
+      <p className="text-sm text-stone-400 mt-2">{c.subtitle}</p>
+      <div className="mt-6 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-4">
+        <p className="text-sm font-bold text-amber-300">Veredicto: {c.verdict}</p>
+        <p className="text-xs text-stone-400 mt-1">{c.verdictArchetype}</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
+        {[c.a,c.b].map(p=> (
+          <div key={p.asin} className="rounded-xl bg-stone-900 border border-stone-800 overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={p.image} alt={p.name} className="w-full aspect-[4/3] object-cover bg-stone-800" />
+            <div className="p-4"><p className="font-bold text-white">{p.name}</p><a href={`https://www.amazon.es/dp/${p.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado)</p></div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-8 rounded-xl border border-stone-800 overflow-hidden">
+        <table className="w-full text-sm">
+          <thead><tr className="bg-stone-900 text-stone-400"><th className="p-3 text-left">Spec</th><th className="p-3 text-left">{c.a.name}</th><th className="p-3 text-left">{c.b.name}</th></tr></thead>
+          <tbody>{c.specs.map(s=> <tr key={s.label} className="border-t border-stone-800"><td className="p-3 font-bold text-stone-300">{s.label}</td><td className="p-3 text-stone-400">{s.a}</td><td className="p-3 text-stone-400">{s.b}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <div className="mt-8 rounded-2xl bg-stone-900 border border-stone-800 p-5">
+        <h3 className="font-black text-white">Accesorios esenciales — Ritual</h3>
+        <p className="text-xs text-stone-400 mt-1">Cross-selling afiliado — tamper, WDT, VST según diámetro.</p>
+        <div className="grid md:grid-cols-2 gap-3 mt-3">
+          {c.accessories.map(a=> (
+            <a key={a.asin} href={`https://www.amazon.es/dp/${a.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-stone-950 border border-stone-800 p-3 hover:border-amber-500/30">
+              <p className="font-bold text-sm text-white">{a.name}</p><p className="text-xs text-stone-500">{a.note}</p><p className="text-xs text-amber-400 mt-1">Ver en Amazon →</p>
+            </a>
+          ))}
+        </div>
+      </div>
+      <p className="text-xs text-stone-500 mt-6"><Link href="/comparativas" className="text-amber-500 underline">← Volver a comparativas</Link> • <Link href="/recomendador" className="text-amber-500 underline">Recomendador →</Link></p>
+    </main>
+  );
+}
