@@ -9,6 +9,7 @@ export function Header() {
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-300">
           <Link href="/recomendador" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>⚡</span> Recomendador</Link>
+          <Link href="/catalogo" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>🗂️</span> Catálogo</Link>
           <Link href="/comparativas" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>⚔️</span> Comparativas</Link>
           <Link href="/cafes" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>🫘</span> Café en Grano</Link>
           <Link href="/guias" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>📖</span> Guías</Link>
