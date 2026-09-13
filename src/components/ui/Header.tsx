@@ -12,7 +12,6 @@ export function Header() {
           <Link href="/catalogo" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>🗂️</span> Catálogo</Link>
           <Link href="/comparativas" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>⚔️</span> Comparativas</Link>
           <Link href="/cafes" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>🫘</span> Café en Grano</Link>
-          <Link href="/metodologia" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>📖</span> Metodología</Link>
         </nav>
         <Link href="/recomendador" className="rounded-lg bg-amber-600 px-4 py-2 text-xs font-semibold text-white shadow-md hover:bg-amber-500 transition-all">Iniciar Recomendador</Link>
       </div>
