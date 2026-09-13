@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
+import { ProductImage } from "@/components/ui/ProductImage";
 
 type Cat = "all" | "machines" | "grinders";
 type Diam = "all" | "51" | "54" | "57" | "58";
@@ -44,21 +45,15 @@ export default function CatalogoPage() {
   }), [cat, diam, pidOnly, noIntegrated, maxPrice, query]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const paginated = useMemo(()=> {
-    const start=(page-1)*PAGE_SIZE;
-    return filtered.slice(start, start+PAGE_SIZE);
-  }, [filtered, page]);
-
-  // reset page on filter change
+  const paginated = useMemo(()=> { const start=(page-1)*PAGE_SIZE; return filtered.slice(start, start+PAGE_SIZE); }, [filtered, page]);
   const onFilterChange = (fn:()=>void)=> { fn(); setPage(1); };
-
   const toggle = (id:string)=> setSelected(s=> s.includes(id) ? s.filter(x=>x!==id) : s.length>=3 ? s : [...s, id]);
   const selItems = allItems.filter(i=> selected.includes(i.id));
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <h1 className="text-3xl font-black">Catálogo — Behind the Curtain</h1>
-      <p className="text-sm text-stone-400 mt-1">Ficha técnica auditable. Filtra como en BGG — mira la arquitectura real.</p>
+      <p className="text-sm text-stone-400 mt-1">Ficha técnica auditable. Obsidian/ámbar uniforme — rigor a la vista.</p>
 
       <div className="mt-6 flex flex-col gap-3 border-y border-stone-800 py-4">
         <div className="flex flex-wrap gap-3 items-center">
@@ -92,8 +87,7 @@ export default function CatalogoPage() {
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
             {paginated.map(i=> (
               <div key={i.id} className="rounded-xl bg-stone-900 border border-stone-800 overflow-hidden flex flex-col">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={i.image} alt={i.name} className="w-full aspect-[4/3] object-cover bg-stone-800" onError={e=>{ (e.target as HTMLImageElement).style.display='none'}} />
+                <ProductImage src={i.image} alt={i.name} />
                 <div className="p-3 flex-1 flex flex-col">
                   <p className="text-xs font-mono text-stone-500">{i.brand}</p>
                   <p className="font-bold text-sm text-white">{i.name}</p>
@@ -133,10 +127,7 @@ export default function CatalogoPage() {
       {selected.length>0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-stone-900 border-t border-amber-500/30 p-3 flex items-center gap-3 justify-center z-40">
           <div className="flex -space-x-2">
-            {selItems.map(s=> (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={s.id} src={s.image} alt={s.name} className="w-10 h-10 rounded-full border-2 border-stone-900 object-cover bg-stone-800" />
-            ))}
+            {selItems.map(s=> <ProductImage key={s.id} src={s.image} alt={s.name} className="w-10 h-10 rounded-full border-2 border-stone-900" />)}
           </div>
           <span className="text-xs font-bold">{selected.length}/3 seleccionados</span>
           <button onClick={()=>setShowModal(true)} className="px-4 py-2 bg-amber-600 rounded-lg text-xs font-black">Comparar cara a cara →</button>

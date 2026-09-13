@@ -2,8 +2,8 @@ import { EvaluatedSetup, UserPreferences } from "@/types/coffee";
 import { getArchetype } from "@/engine/archetype";
 import { BEANS_SEED } from "@/data/beans";
 import { ScoreBadge } from "./ScoreBadge";
+import { ProductImage } from "./ProductImage";
 function accessoriesFor(diam?: number) {
-  const tag = "cafeatugusto-21"; // placeholder ASINs — sustituir por reales tras validación
   if (diam === 54) return [
     { name: "Tamper dinamométrico 53.3mm", asin: "B0B5X", note: "30 lbs constantes — evita channeling", badge: "54mm Verificada" },
     { name: "Embudo + WDT 0.35mm titanio", asin: "B0B5Y", note: "Descompacta sin apelmazar", badge: "54mm" },
@@ -39,16 +39,14 @@ export function SetupSignature({ evaluated, prefs }: { evaluated: EvaluatedSetup
         </div>
         <div className="mt-4 grid md:grid-cols-2 gap-4">
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={evaluated.setup.machine.image} alt={evaluated.setup.machine.model} className="w-full aspect-[4/3] object-cover rounded-lg" />
+            <ProductImage src={evaluated.setup.machine.image} alt={evaluated.setup.machine.model} />
             <p className="font-bold text-white mt-2">{evaluated.setup.machine.brand} {evaluated.setup.machine.model}</p>
             <a href={`https://www.amazon.es/dp/${evaluated.setup.machine.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
           </div>
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
             {evaluated.setup.grinder ? (
               <>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={evaluated.setup.grinder.image} alt={evaluated.setup.grinder.model} className="w-full aspect-[4/3] object-cover rounded-lg" />
+                <ProductImage src={evaluated.setup.grinder.image} alt={evaluated.setup.grinder.model} />
                 <p className="font-bold text-white mt-2">{evaluated.setup.grinder.brand} {evaluated.setup.grinder.model}</p>
                 <a href={`https://www.amazon.es/dp/${evaluated.setup.grinder.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
               </>
