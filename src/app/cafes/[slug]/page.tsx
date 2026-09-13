@@ -1,6 +1,7 @@
 import { BEANS_SEED } from "@/data/beans";
 import { MACHINES_SEED } from "@/data/machines";
 import Link from "next/link";
+import { ProductImage } from "@/components/ui/ProductImage";
 export function generateStaticParams() { return BEANS_SEED.map(b=> ({ slug: b.slug })); }
 export default async function BeanPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -14,10 +15,7 @@ export default async function BeanPage({ params }: { params: Promise<{ slug: str
       <h1 className="text-3xl font-black text-white mt-2">{bean.roaster} — {bean.name}</h1>
       <p className="text-sm text-stone-400">{bean.origin} • {bean.tastingNotes.join(" • ")} • {bean.weightGrams}g • {bean.priceApproxEUR}€</p>
       <div className="mt-6 rounded-2xl bg-stone-900 border border-stone-800 p-6 flex flex-col md:flex-row gap-6">
-        <div className="flex-1">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={bean.image} alt={bean.name} className="w-full aspect-[4/3] object-cover rounded-xl bg-stone-800" />
-        </div>
+        <div className="flex-1"><ProductImage src={bean.image} alt={bean.name} /></div>
         <div className="flex-1 space-y-4">
           <h2 className="font-black text-amber-400">The Ritual Recipe</h2>
           <div className="grid grid-cols-2 gap-3 text-sm">
@@ -39,17 +37,17 @@ export default async function BeanPage({ params }: { params: Promise<{ slug: str
         <div className="grid md:grid-cols-2 gap-3 mt-3">
           {paired.map(m=> (
             <div key={m.id} className="rounded-lg bg-stone-900 border border-stone-800 p-3 flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={m.image} alt={m.model} className="w-16 h-16 object-cover rounded" />
+              <ProductImage src={m.image} alt={m.model} className="w-16 h-16 rounded" />
               <div><p className="font-bold text-sm text-white">{m.brand} {m.model}</p><p className="text-xs text-stone-400">{m.specs.pid ? "PID" : "No PID"} • {m.specs.portafilterDiameter}mm</p></div>
             </div>
           ))}
         </div>
       </div>
       <div className="mt-6 flex gap-3">
-        {bean.amazonAsin ? <a href={`https://www.amazon.es/dp/${bean.amazonAsin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-amber-600 rounded-xl text-center font-black text-sm">Comprar en Amazon →</a> : null}
-        {bean.directLink ? <a href={bean.directLink} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-stone-800 rounded-xl text-center font-bold text-sm">Tostaduría →</a> : <Link href="/cafes" className="flex-1 py-3 bg-stone-800 rounded-xl text-center font-bold text-sm">Ver todos los cafés</Link>}
+        <a href={`https://www.amazon.es/dp/${bean.amazonAsin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-amber-600 rounded-xl text-center font-black text-sm">Comprar en Amazon →</a>
+        <a href={bean.directLink} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-stone-800 border border-stone-700 rounded-xl text-center font-bold text-sm hover:border-amber-500/30">Tostaduría →</a>
       </div>
+      <p className="text-[11px] text-stone-500 text-center mt-2">Ambos con tag {tag} cuando aplica — afiliado + directo para recurrencia.</p>
       <p className="text-xs text-stone-500 mt-6"><Link href="/cafes" className="text-amber-500 underline">← Volver a cafés</Link></p>
     </main>
   );
