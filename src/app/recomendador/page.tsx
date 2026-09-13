@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { UserPreferences, EvaluatedSetup } from "@/types/coffee";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { passesHardFilters, calculateSetupScore } from "@/engine/compatibility";
 import { SetupSignature } from "@/components/ui/SetupSignature";
 import { track } from "@/lib/analytics";
+
 function OptionCard({ title, desc, badge, onClick }: { title: string; desc: string; badge?: string; onClick: () => void }) {
   return (
     <button onClick={onClick} className="p-4 border border-stone-800 rounded-xl text-left hover:border-amber-500/40 bg-stone-900/50 flex flex-col gap-1 transition-all w-full">
@@ -17,44 +19,55 @@ function OptionCard({ title, desc, badge, onClick }: { title: string; desc: stri
     </button>
   );
 }
-export default function WizardPage() {
+
+// Presets mapean arquetipo de identidad -> UserPreferences para salto directo a resultados
+// Precisionist: PID + 58mm (manual_craft boost en engine), high maintenance, separated
+// Aesthetic: balanced, madera/acero, indifferent
+// Efficiencist: convenience, ThermoJet 3s, high milk, low maintenance, compact (indifferent para permitir Bambino)
+// Alchemist: black_coffee, alta claridad, manual craft
+const ARCHETYPE_PRESETS: Record<string, UserPreferences> = {
+  precisionist: { drinkTypes: ["espresso"], budgetMaxEUR: 950, workflowPreference: "manual_craft", dailyCups: "3-5", milkImportance: "low", maintenanceTolerance: "high", spaceConstraint: false, integratedGrinderPreference: "separated" },
+  aesthetic: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 700, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" },
+  efficiencist: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 550, workflowPreference: "convenience", dailyCups: "3-5", milkImportance: "high", maintenanceTolerance: "low", spaceConstraint: true, integratedGrinderPreference: "indifferent" },
+  alchemist: { drinkTypes: ["black_coffee"], budgetMaxEUR: 700, workflowPreference: "manual_craft", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" },
+};
+
+function WizardInner() {
+  const searchParams = useSearchParams();
+  const archetype = searchParams.get("archetype");
   const [step, setStep] = useState(1);
   const [prefs, setPrefs] = useState<Partial<UserPreferences>>({
-    drinkTypes: ["espresso"],
-    budgetMaxEUR: 600,
-    workflowPreference: "balanced",
-    dailyCups: "3-5",
-    milkImportance: "medium",
-    maintenanceTolerance: "medium",
-    spaceConstraint: false,
-    integratedGrinderPreference: "indifferent",
+    drinkTypes: ["espresso"], budgetMaxEUR: 600, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent",
   });
   const [result, setResult] = useState<EvaluatedSetup | null>(null);
   const [finalPrefs, setFinalPrefs] = useState<UserPreferences | null>(null);
+
   const handleComplete = (fp: UserPreferences) => {
     track("quiz_completed", fp as unknown as Record<string, unknown>);
+    if (archetype && ARCHETYPE_PRESETS[archetype]) track("archetype_preset", { archetype } as unknown as Record<string, unknown>);
     const candidates: EvaluatedSetup[] = [];
     for (const m of MACHINES_SEED) {
-      if (m.grinderIntegrated) {
-        if (passesHardFilters(m, undefined, fp)) candidates.push(calculateSetupScore(m, undefined, fp));
-      } else {
-        for (const g of GRINDERS_SEED) {
-          if (passesHardFilters(m, g, fp)) candidates.push(calculateSetupScore(m, g, fp));
-        }
-      }
+      if (m.grinderIntegrated) { if (passesHardFilters(m, undefined, fp)) candidates.push(calculateSetupScore(m, undefined, fp)); }
+      else { for (const g of GRINDERS_SEED) { if (passesHardFilters(m, g, fp)) candidates.push(calculateSetupScore(m, g, fp)); } }
     }
     candidates.sort((a, b) => b.score.totalScore - a.score.totalScore);
-    setResult(candidates[0] ?? null);
-    setFinalPrefs(fp);
-    setStep(9);
-    track("result_viewed", { score: candidates[0]?.score.totalScore });
+    setResult(candidates[0] ?? null); setFinalPrefs(fp); setStep(9); track("result_viewed", { score: candidates[0]?.score.totalScore, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
   };
+
+  useEffect(()=> {
+    if (archetype && ARCHETYPE_PRESETS[archetype] && !result) {
+      handleComplete(ARCHETYPE_PRESETS[archetype] as UserPreferences);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [archetype]);
+
   if (step === 9 && result && finalPrefs) {
     return (
       <main className="min-h-screen bg-stone-950 py-12 px-4">
         <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-mono text-amber-400 mb-2">ARQUETIPO: {archetype?.toUpperCase() || "CUSTOM"} • PRESET APLICADO</p>
           <SetupSignature evaluated={result} prefs={finalPrefs} />
-          <button onClick={() => { setStep(1); setResult(null); }} className="mt-6 w-full py-3 bg-stone-900 border border-stone-800 rounded-xl text-white font-bold hover:bg-stone-800">
+          <button onClick={() => { setStep(1); setResult(null); setFinalPrefs(null); }} className="mt-6 w-full py-3 bg-stone-900 border border-stone-800 rounded-xl text-white font-bold hover:bg-stone-800">
             Rehacer test
           </button>
         </div>
@@ -160,5 +173,13 @@ export default function WizardPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function WizardPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-stone-950 py-12 px-4"><div className="max-w-3xl mx-auto text-center text-stone-400">Cargando recomendador…</div></main>}>
+      <WizardInner />
+    </Suspense>
   );
 }

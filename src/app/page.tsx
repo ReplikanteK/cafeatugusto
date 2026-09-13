@@ -29,24 +29,44 @@ export default function HomePage() {
         </section>
         <section className="py-12 px-4 sm:px-6 mx-auto max-w-7xl">
           <p className="text-center text-xs font-mono tracking-widest text-stone-500 mb-6 uppercase">
-            Arquetipos de Barista Doméstico
+            Arquetipos de Barista Doméstico — atajo sin fricción
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="rounded-2xl bg-stone-900 border border-amber-500/20 p-5">
+            <div className="rounded-2xl bg-stone-900 border border-amber-500/20 p-5 hover:border-amber-500/40 transition-all">
               <p className="text-sm font-black text-amber-400">The Precisionist</p>
-              <p className="text-xs text-stone-400 mt-2">Búsqueda del control absoluto: PID, 58mm y perfilado de flujo.</p>
+              <p className="text-xs text-stone-400 mt-2">PID 58mm perfilado de flujo.</p>
+              <div className="mt-3 flex gap-2 text-xs">
+                <Link href="/recomendador?archetype=precisionist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
+                <span className="text-stone-600">·</span>
+                <Link href="/catalogo?archetype=precisionist" className="text-stone-500 hover:text-amber-400 underline">Catálogo 58mm PID</Link>
+              </div>
             </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5">
+            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
               <p className="text-sm font-bold text-stone-200">The Aesthetic Craft</p>
-              <p className="text-xs text-stone-400 mt-2">Acabados en madera, acero cepillado y un ritual pausado.</p>
+              <p className="text-xs text-stone-400 mt-2">Madera nogal, acero cepillado.</p>
+              <div className="mt-3 flex gap-2 text-xs">
+                <Link href="/recomendador?archetype=aesthetic" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
+                <span className="text-stone-600">·</span>
+                <Link href="/catalogo?archetype=aesthetic" className="text-stone-500 hover:text-amber-400 underline">Catálogo craft</Link>
+              </div>
             </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5">
+            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
               <p className="text-sm font-bold text-stone-200">The Efficiencist</p>
-              <p className="text-xs text-stone-400 mt-2">Calentamiento en segundos y consistencia sin complicaciones.</p>
+              <p className="text-xs text-stone-400 mt-2">ThermoJet 3s, consistencia.</p>
+              <div className="mt-3 flex gap-2 text-xs">
+                <Link href="/recomendador?archetype=efficiencist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
+                <span className="text-stone-600">·</span>
+                <Link href="/catalogo?archetype=efficiencist" className="text-stone-500 hover:text-amber-400 underline">Catálogo rápido</Link>
+              </div>
             </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5">
+            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
               <p className="text-sm font-bold text-stone-200">The Alchemist</p>
-              <p className="text-xs text-stone-400 mt-2">Molienda de alta claridad para cafés de especialidad de tueste ligero.</p>
+              <p className="text-xs text-stone-400 mt-2">Alta claridad, tueste ligero.</p>
+              <div className="mt-3 flex gap-2 text-xs">
+                <Link href="/recomendador?archetype=alchemist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
+                <span className="text-stone-600">·</span>
+                <Link href="/catalogo?archetype=alchemist" className="text-stone-500 hover:text-amber-400 underline">Catálogo clarity</Link>
+              </div>
             </div>
           </div>
         </section>

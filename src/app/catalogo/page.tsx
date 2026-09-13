@@ -1,5 +1,6 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { ProductImage } from "@/components/ui/ProductImage";
@@ -20,16 +21,41 @@ const allItems: Item[] = [
 
 const PAGE_SIZE = 12;
 
-export default function CatalogoPage() {
-  const [cat, setCat] = useState<Cat>("all");
-  const [diam, setDiam] = useState<Diam>("all");
-  const [pidOnly, setPidOnly] = useState(false);
-  const [noIntegrated, setNoIntegrated] = useState(false);
-  const [maxPrice, setMaxPrice] = useState(2000);
+// Preset de catálogo por arquetipo — atajo sin fricción desde home
+const CATALOG_ARCHETYPE_PRESETS: Record<string, { cat: Cat; diam: Diam; pidOnly: boolean; noIntegrated: boolean; maxPrice: number; label: string }> = {
+  precisionist: { cat: "machines", diam: "58", pidOnly: true, noIntegrated: true, maxPrice: 1500, label: "Precisionist · 58mm PID · separado" },
+  aesthetic:    { cat: "machines", diam: "58", pidOnly: false, noIntegrated: false, maxPrice: 1200, label: "Aesthetic Craft · 58mm · acero / madera" },
+  efficiencist: { cat: "machines", diam: "54", pidOnly: false, noIntegrated: false, maxPrice: 650, label: "Efficiencist · ThermoJet 54mm · 3s" },
+  alchemist:    { cat: "grinders", diam: "all", pidOnly: false, noIntegrated: false, maxPrice: 1000, label: "Alchemist · molinillos alta claridad" },
+};
+
+function CatalogoInner() {
+  const searchParams = useSearchParams();
+  const archetypeParam = searchParams.get("archetype");
+  const preset = archetypeParam ? CATALOG_ARCHETYPE_PRESETS[archetypeParam] : null;
+
+  const [cat, setCat] = useState<Cat>(preset?.cat ?? "all");
+  const [diam, setDiam] = useState<Diam>(preset?.diam ?? "all");
+  const [pidOnly, setPidOnly] = useState(preset?.pidOnly ?? false);
+  const [noIntegrated, setNoIntegrated] = useState(preset?.noIntegrated ?? false);
+  const [maxPrice, setMaxPrice] = useState(preset?.maxPrice ?? 2000);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
+
+  // Si cambia archetype en URL (navegación home → catalogo), aplicar preset
+  useEffect(()=> {
+    if (preset) {
+      setCat(preset.cat);
+      setDiam(preset.diam);
+      setPidOnly(preset.pidOnly);
+      setNoIntegrated(preset.noIntegrated);
+      setMaxPrice(preset.maxPrice);
+      setPage(1);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [archetypeParam]);
 
   const filtered = useMemo(()=> allItems.filter(i=>{
     if (cat==="machines" && i.type!=="machine") return false;
@@ -41,11 +67,28 @@ export default function CatalogoPage() {
       if (pidOnly && !i.pid) return false;
       if (noIntegrated && i.integrated) return false;
     }
+    // Alchemist special: prioriza flat burr para claridad (orden, no filtro duro)
     return true;
   }), [cat, diam, pidOnly, noIntegrated, maxPrice, query]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const paginated = useMemo(()=> { const start=(page-1)*PAGE_SIZE; return filtered.slice(start, start+PAGE_SIZE); }, [filtered, page]);
+  // Para alchemist, ordenar flat burr primero para alta claridad
+  const sortedFiltered = useMemo(()=> {
+    if (archetypeParam==="alchemist" && cat==="grinders") {
+      return [...filtered].sort((a,b)=> {
+        if (a.type==="grinder" && b.type==="grinder") {
+          const aFlat = a.burr==="flat" ? 0 : 1;
+          const bFlat = b.burr==="flat" ? 0 : 1;
+          if (aFlat!==bFlat) return aFlat-bFlat;
+          return (b.burrSize??0)-(a.burrSize??0);
+        }
+        return 0;
+      });
+    }
+    return filtered;
+  }, [filtered, archetypeParam, cat]);
+
+  const totalPages = Math.max(1, Math.ceil(sortedFiltered.length / PAGE_SIZE));
+  const paginated = useMemo(()=> { const start=(page-1)*PAGE_SIZE; return sortedFiltered.slice(start, start+PAGE_SIZE); }, [sortedFiltered, page]);
   const onFilterChange = (fn:()=>void)=> { fn(); setPage(1); };
   const toggle = (id:string)=> setSelected(s=> s.includes(id) ? s.filter(x=>x!==id) : s.length>=3 ? s : [...s, id]);
   const selItems = allItems.filter(i=> selected.includes(i.id));
@@ -54,6 +97,13 @@ export default function CatalogoPage() {
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <h1 className="text-3xl font-black">Catálogo — Behind the Curtain</h1>
       <p className="text-sm text-stone-400 mt-1">Ficha técnica auditable. Obsidian/ámbar uniforme — rigor a la vista.</p>
+      {preset && (
+        <div className="mt-4 rounded-xl bg-amber-900/20 border border-amber-500/30 px-4 py-3 flex flex-wrap items-center gap-3">
+          <span className="text-xs font-mono text-amber-400">ARQUETIPO: {archetypeParam?.toUpperCase()} · {preset.label}</span>
+          <span className="text-xs text-stone-400">· Filtro presintonizado aplicado</span>
+          <button onClick={()=>{ setCat("all"); setDiam("all"); setPidOnly(false); setNoIntegrated(false); setMaxPrice(2000); setPage(1); }} className="ml-auto text-xs underline text-amber-400 hover:text-amber-300">Quitar filtro arquetipo</button>
+        </div>
+      )}
 
       <div className="mt-6 flex flex-col gap-3 border-y border-stone-800 py-4">
         <div className="flex flex-wrap gap-3 items-center">
@@ -72,12 +122,12 @@ export default function CatalogoPage() {
           <div className="flex items-center gap-2 text-xs"><span>≤{maxPrice}€</span><input type="range" min={100} max={2000} step={50} value={maxPrice} onChange={e=>onFilterChange(()=>setMaxPrice(Number(e.target.value)))} className="accent-amber-600" /></div>
         </div>
         <div className="flex justify-between items-center text-xs text-stone-500">
-          <span>Mostrando {paginated.length} de {filtered.length} productos{filtered.length!==allItems.length ? ` (filtrado de ${allItems.length})` : ""} — página {page}/{totalPages}</span>
-          {filtered.length===0 && <span className="text-amber-400">No encontramos productos con ese filtro — prueba “Lelit” o “K6”.</span>}
+          <span>Mostrando {paginated.length} de {sortedFiltered.length} productos{sortedFiltered.length!==allItems.length ? ` (filtrado de ${allItems.length})` : ""} — página {page}/{totalPages}</span>
+          {sortedFiltered.length===0 && <span className="text-amber-400">No encontramos productos con ese filtro — prueba “Lelit” o “K6”.</span>}
         </div>
       </div>
 
-      {filtered.length===0 ? (
+      {sortedFiltered.length===0 ? (
         <div className="mt-12 text-center py-12 rounded-xl bg-stone-900 border border-stone-800">
           <p className="text-stone-400 text-sm">No encontramos productos con ese filtro.</p>
           <button onClick={()=>{setQuery(""); setCat("all"); setDiam("all"); setPidOnly(false); setNoIntegrated(false); setMaxPrice(2000); setPage(1);}} className="mt-3 px-4 py-2 bg-stone-800 rounded-lg text-xs font-bold">Limpiar filtros</button>
@@ -167,5 +217,13 @@ export default function CatalogoPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function CatalogoPage() {
+  return (
+    <Suspense fallback={<main className="max-w-7xl mx-auto px-4 sm:px-6 py-8"><p className="text-sm text-stone-400">Cargando catálogo…</p></main>}>
+      <CatalogoInner />
+    </Suspense>
   );
 }
