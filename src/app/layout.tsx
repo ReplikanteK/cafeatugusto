@@ -8,6 +8,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app";
 export const metadata: Metadata = {
+  verification: { google: "6yfZaTPJGnEE54GkhDnsWBf_qB5-2ov3Mdeuqs2G5ec" },
   metadataBase: new URL(SITE_URL),
   title: { default: "Café A Tu Gusto — Tu setup ideal", template: "%s | Café A Tu Gusto" },
   description:
