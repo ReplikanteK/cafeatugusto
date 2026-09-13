@@ -99,6 +99,13 @@ export interface CoffeeBean {
   readonly amazonAsin?: string;
   readonly directLink?: string;
   readonly image: string;
+  readonly recipe: {
+    readonly ratio: string;
+    readonly timeSec: string;
+    readonly grind: string;
+    readonly tempC: number;
+    readonly yield: string;
+  };
   readonly metadata: {
     readonly verifiedAt: string;
     readonly sources: readonly string[];
