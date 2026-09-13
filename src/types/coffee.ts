@@ -80,6 +80,38 @@ export interface Grinder {
   };
 }
 
+export type RoastProfile = "light" | "medium_light" | "medium" | "medium_dark" | "dark";
+export type ProcessMethod = "washed" | "natural" | "honey" | "experimental";
+export type BrewingMatch = "espresso" | "filter" | "omni";
+
+export interface CoffeeBean {
+  readonly id: string;
+  readonly slug: string;
+  readonly roaster: string;
+  readonly name: string;
+  readonly origin: string;
+  readonly roastProfile: RoastProfile;
+  readonly process: ProcessMethod;
+  readonly tastingNotes: readonly string[];
+  readonly recommendedBrewing: readonly BrewingMatch[];
+  readonly priceApproxEUR: number;
+  readonly weightGrams: number;
+  readonly amazonAsin?: string;
+  readonly directLink?: string;
+  readonly image: string;
+  readonly metadata: {
+    readonly verifiedAt: string;
+    readonly sources: readonly string[];
+  };
+}
+
+export interface WizardOption<T> {
+  readonly id: T;
+  readonly title: string;
+  readonly description: string;
+  readonly badge?: string;
+}
+
 export interface CoffeeSetup {
   readonly id: string;
   readonly machine: CoffeeMachine;
