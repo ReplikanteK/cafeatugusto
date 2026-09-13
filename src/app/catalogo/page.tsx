@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { track } from "@/lib/analytics";
 
 type Cat = "all" | "machines" | "grinders";
 type Diam = "all" | "51" | "54" | "57" | "58";
@@ -162,6 +163,15 @@ function CatalogoInner() {
                     <input type="checkbox" checked={selected.includes(i.id)} onChange={()=>toggle(i.id)} className="accent-amber-600" />
                     Comparar
                   </label>
+                  <a
+                    href={`https://www.amazon.es/dp/${i.asin}?tag=${process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21"}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
+                    className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-400 transition-colors"
+                  >
+                    Ver en Amazon →
+                  </a>
                 </div>
               </div>
             ))}
