@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 // Verificación Power Tenant-level: tras completar wizard, abrir DevTools → Network filtrar "googletagmanager.com" o "google-analytics.com"
 // y comprobar petición g/collect con event quiz_completed. En GA4 → Informes → Tiempo real también debe aparecer.
 // Sin esta var, window.gtag no existe y track() solo hace console.warn (bug anterior).
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-DWNL7Z9ZCQ";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
