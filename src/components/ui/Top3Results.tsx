@@ -126,6 +126,11 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                 </span>
               </div>
 
+              <div className="space-y-2 border-t border-stone-800/50 pt-3">
+                {e.setup.machine.description && <p className="text-[13px] leading-relaxed text-stone-300 italic">{e.setup.machine.description}</p>}
+                {e.setup.grinder?.description && <p className="text-[13px] leading-relaxed text-stone-400 italic">{e.setup.grinder.description}</p>}
+              </div>
+
               <div className="border-t border-stone-800 pt-3">
                 <p className="text-xs text-stone-300 leading-relaxed">{e.score.rationale}</p>
                 <div className="flex flex-wrap gap-2 mt-2">

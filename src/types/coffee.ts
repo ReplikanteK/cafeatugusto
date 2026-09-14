@@ -20,6 +20,7 @@ export interface CoffeeMachine {
   readonly espressoCapable: boolean;
   readonly grinderIntegrated: boolean;
   readonly image: string;
+  readonly description?: string;
   readonly specs: {
     readonly portafilterDiameter?: PortafilterDiameter;
     readonly pid: boolean;
@@ -59,6 +60,7 @@ export interface Grinder {
   readonly priceBand: PriceBand;
   readonly priceApproxEUR: number;
   readonly image: string;
+  readonly description?: string;
   readonly specs: {
     readonly burrType: BurrType;
     readonly burrSizeMM: number;
