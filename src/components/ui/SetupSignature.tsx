@@ -6,6 +6,7 @@ import { getArchetype } from "@/engine/archetype";
 import { ScoreBadge } from "./ScoreBadge";
 import { ProductImage } from "./ProductImage";
 import { track } from "@/lib/analytics";
+import { amazonUrl } from "@/lib/amazon";
 // function accessoriesFor(diam?: number) { // P0-1 oculto — ASINs B0B5X/B0C1X etc. 5ch inválidos
 //   if (diam === 54) return [
 //     { name: "Tamper dinamométrico 53.3mm", asin: "B0B5X", note: "30 lbs constantes — evita channeling", badge: "54mm Verificada" },
@@ -27,7 +28,7 @@ export function SetupSignature({ evaluated, prefs }: { evaluated: EvaluatedSetup
   const arch = getArchetype(prefs);
   // P0-1 RETIRADA: beans/accesorios ocultos — ver arriba
   // const beans = BEANS_SEED.filter(b=> b.recommendedBrewing.includes(prefs.drinkTypes.includes("espresso") ? "espresso" : "filter")).slice(0,2);
-  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
+  // tag centralizado en lib/amazon
   // const diam = evaluated.setup.machine.specs.portafilterDiameter;
   // const accs = accessoriesFor(diam);
   return (
@@ -45,14 +46,14 @@ export function SetupSignature({ evaluated, prefs }: { evaluated: EvaluatedSetup
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
             <ProductImage src={evaluated.setup.machine.image} alt={evaluated.setup.machine.model} />
             <p className="font-bold text-white mt-2">{evaluated.setup.machine.brand} {evaluated.setup.machine.model}</p>
-            <a href={`https://www.amazon.es/dp/${evaluated.setup.machine.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.machine.asin, role: "machine", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
+            <a href={amazonUrl(evaluated.setup.machine.asin, `${evaluated.setup.machine.brand} ${evaluated.setup.machine.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.machine.asin, role: "machine", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
           </div>
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
             {evaluated.setup.grinder ? (
               <>
                 <ProductImage src={evaluated.setup.grinder.image} alt={evaluated.setup.grinder.model} />
                 <p className="font-bold text-white mt-2">{evaluated.setup.grinder.brand} {evaluated.setup.grinder.model}</p>
-                <a href={`https://www.amazon.es/dp/${evaluated.setup.grinder.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.grinder!.asin, role: "grinder", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
+                <a href={amazonUrl(evaluated.setup.grinder.asin, `${evaluated.setup.grinder.brand} ${evaluated.setup.grinder.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.grinder!.asin, role: "grinder", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
               </>
             ) : <p className="text-xs text-stone-500 text-center py-8">Molinillo integrado — ritual compacto</p>}
           </div>

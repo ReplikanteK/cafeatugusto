@@ -1,11 +1,11 @@
 import { COMPARATIVES } from "@/data/comparatives";
 import Link from "next/link";
+import { amazonUrl } from "@/lib/amazon";
 export function generateStaticParams() { return COMPARATIVES.map(c=> ({ slug: c.slug })); }
 export default async function ComparativePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = COMPARATIVES.find(x=> x.slug===slug);
   if (!c) return <main className="max-w-3xl mx-auto px-6 py-12 text-stone-400">Comparativa no encontrada. <Link href="/comparativas" className="text-amber-500 underline">Volver</Link></main>;
-  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
       <p className="text-xs font-mono text-amber-400 tracking-widest">COMPARATIVA • RIGOR 60% + RITUAL 40%</p>
@@ -20,7 +20,7 @@ export default async function ComparativePage({ params }: { params: Promise<{ sl
           <div key={p.asin} className="rounded-xl bg-stone-900 border border-stone-800 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.image} alt={p.name} className="w-full aspect-[4/3] object-cover bg-stone-800" />
-            <div className="p-4"><p className="font-bold text-white">{p.name}</p><a href={`https://www.amazon.es/dp/${p.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado)</p></div>
+            <div className="p-4"><p className="font-bold text-white">{p.name}</p><a href={amazonUrl(p.asin, p.name)} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado)</p></div>
           </div>
         ))}
       </div>
@@ -35,7 +35,7 @@ export default async function ComparativePage({ params }: { params: Promise<{ sl
         <p className="text-xs text-stone-400 mt-1">Cross-selling afiliado — tamper, WDT, VST según diámetro.</p>
         <div className="grid md:grid-cols-2 gap-3 mt-3">
           {c.accessories.map(a=> (
-            <a key={a.asin} href={`https://www.amazon.es/dp/${a.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-stone-950 border border-stone-800 p-3 hover:border-amber-500/30">
+            <a key={a.asin} href={amazonUrl(a.asin, a.name)} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-stone-950 border border-stone-800 p-3 hover:border-amber-500/30">
               <p className="font-bold text-sm text-white">{a.name}</p><p className="text-xs text-stone-500">{a.note}</p><p className="text-xs text-amber-400 mt-1">Ver en Amazon →</p>
             </a>
           ))}

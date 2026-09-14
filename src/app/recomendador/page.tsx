@@ -10,12 +10,15 @@ import { track } from "@/lib/analytics";
 
 function OptionCard({ title, desc, badge, onClick }: { title: string; desc: string; badge?: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="p-4 border border-stone-800 rounded-xl text-left hover:border-amber-500/40 bg-stone-900/50 flex flex-col gap-1 transition-all w-full">
+    <button
+      onClick={onClick}
+      className="group p-3.5 sm:p-4 border border-stone-800 rounded-xl text-left hover:border-amber-500/40 hover:bg-stone-800/50 bg-stone-900/50 flex flex-col gap-1 transition-all w-full min-h-[64px] sm:min-h-[68px] active:scale-[0.99] active:border-amber-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 touch-manipulation"
+    >
       <div className="flex justify-between items-start gap-2">
-        <span className="font-bold text-white">{title}</span>
-        {badge && <span className="text-[10px] font-mono bg-amber-900/40 text-amber-300 px-2 py-0.5 rounded-full">{badge}</span>}
+        <span className="font-bold text-white text-[15px] sm:text-base leading-tight">{title}</span>
+        {badge && <span className="text-[10px] font-mono bg-amber-900/40 text-amber-300 px-2 py-0.5 rounded-full shrink-0 max-w-[38%] text-center leading-tight truncate">{badge}</span>}
       </div>
-      <span className="text-xs text-stone-400 leading-relaxed">{desc}</span>
+      <span className="text-[13px] sm:text-xs text-stone-400 leading-snug sm:leading-relaxed line-clamp-2">{desc}</span>
     </button>
   );
 }
@@ -77,13 +80,13 @@ function WizardInner() {
     );
   }
   return (
-    <main className="min-h-screen bg-stone-950 text-stone-100 py-12 px-4">
+    <main className="min-h-screen bg-stone-950 text-stone-100 py-6 sm:py-12 px-3 sm:px-4">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-stone-900 border border-stone-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
-          <div className="flex justify-between items-center mb-8 border-b border-stone-800 pb-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-amber-500">Paso {step} de 8</span>
-            <div className="w-1/3 bg-stone-800 h-1.5 rounded-full overflow-hidden">
-              <div className="bg-amber-500 h-full transition-all" style={{ width: `${(step / 8) * 100}%` }} />
+        <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-8 shadow-2xl">
+          <div className="flex justify-between items-center mb-5 sm:mb-8 border-b border-stone-800 pb-3 sm:pb-4 sticky top-0 bg-stone-900/95 backdrop-blur supports-[backdrop-filter]:bg-stone-900/80 z-10 -mx-4 sm:mx-0 px-4 sm:px-0 -mt-4 sm:mt-0 pt-4 sm:pt-0">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-amber-500">Paso {step} de 8</span>
+            <div className="w-24 sm:w-1/3 bg-stone-800 h-1.5 rounded-full overflow-hidden shrink-0">
+              <div className="bg-amber-500 h-full transition-all duration-300 ease-out" style={{ width: `${(step / 8) * 100}%` }} />
             </div>
           </div>
           {step === 1 && (
@@ -98,10 +101,11 @@ function WizardInner() {
           )}
           {step === 2 && (
             <div className="space-y-4">
-              <h2 className="text-2xl font-black">Presupuesto Máximo Ajustado</h2>
-              <div className="text-4xl font-mono text-amber-400 text-center py-4">{prefs.budgetMaxEUR} €</div>
-              <input type="range" min={250} max={1500} step={50} value={prefs.budgetMaxEUR} onChange={e => setPrefs({ ...prefs, budgetMaxEUR: Number(e.target.value) })} className="w-full accent-amber-500" />
-              <button onClick={() => setStep(3)} className="w-full py-3 bg-amber-600 hover:bg-amber-500 rounded-xl font-black mt-4">Continuar</button>
+              <h2 className="text-xl sm:text-2xl font-black leading-tight">Presupuesto Máximo Ajustado</h2>
+              <div className="text-3xl sm:text-4xl font-mono text-amber-400 text-center py-3 sm:py-4">{prefs.budgetMaxEUR} €</div>
+              <input type="range" min={250} max={1500} step={50} value={prefs.budgetMaxEUR} onChange={e => setPrefs({ ...prefs, budgetMaxEUR: Number(e.target.value) })} className="w-full accent-amber-500 h-2 touch-manipulation" />
+              <div className="flex justify-between text-[11px] font-mono text-stone-500 px-1"><span>250€</span><span>1500€</span></div>
+              <button onClick={() => setStep(3)} className="w-full py-3.5 sm:py-3 bg-amber-600 hover:bg-amber-500 active:bg-amber-700 rounded-xl font-black mt-2 text-base sm:text-sm touch-manipulation">Continuar</button>
             </div>
           )}
           {step === 3 && (

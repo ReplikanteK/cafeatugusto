@@ -1,8 +1,8 @@
 import { EvaluatedSetup } from "@/types/coffee";
 import { ScoreBadge } from "./ScoreBadge";
+import { amazonUrl } from "@/lib/amazon";
 export function SetupDisplay({ evaluated }: { readonly evaluated: EvaluatedSetup }) {
   const { setup, score } = evaluated;
-  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
   return (
     <div className="space-y-8 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-neutral-800 pb-6">
@@ -28,7 +28,7 @@ export function SetupDisplay({ evaluated }: { readonly evaluated: EvaluatedSetup
               <li>• PID: {setup.machine.specs.pid ? "Sí" : "No"}</li>
             </ul>
             <div className="mt-auto pt-4 border-t border-neutral-900">
-              <a href={`https://www.amazon.es/dp/${setup.machine.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs rounded-lg text-center transition-colors">Ver precio en Amazon →</a>
+              <a href={amazonUrl(setup.machine.asin, `${setup.machine.brand} ${setup.machine.model}`)} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs rounded-lg text-center transition-colors">Ver precio en Amazon →</a>
               <p className="text-[10px] text-neutral-500 text-center mt-1">(enlace de afiliado)</p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export function SetupDisplay({ evaluated }: { readonly evaluated: EvaluatedSetup
                 <li>• Hopper: {setup.grinder.specs.hopperCapacityGrams}g</li>
               </ul>
               <div className="mt-auto pt-4 border-t border-neutral-900">
-                <a href={`https://www.amazon.es/dp/${setup.grinder.asin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs rounded-lg text-center transition-colors">Ver precio en Amazon →</a>
+                <a href={amazonUrl(setup.grinder.asin, `${setup.grinder.brand} ${setup.grinder.model}`)} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs rounded-lg text-center transition-colors">Ver precio en Amazon →</a>
                 <p className="text-[10px] text-neutral-500 text-center mt-1">(enlace de afiliado)</p>
               </div>
             </div>

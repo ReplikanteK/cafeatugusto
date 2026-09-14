@@ -4,6 +4,7 @@ import { getArchetype } from "@/engine/archetype";
 import { ScoreBadge } from "./ScoreBadge";
 import { ProductImage } from "./ProductImage";
 import { track } from "@/lib/analytics";
+import { amazonUrl } from "@/lib/amazon";
 
 function pillsFor(e: EvaluatedSetup) {
   const m = e.setup.machine;
@@ -35,7 +36,6 @@ function rankBadge(i: number) {
 
 export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: UserPreferences }) {
   const arch = getArchetype(prefs);
-  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
   if (tops.length === 0) {
     return (
       <div className="rounded-2xl border border-amber-500/20 bg-stone-900 p-8 text-center">
@@ -45,13 +45,13 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
     );
   }
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <p className="text-xs font-mono tracking-widest text-amber-400">{arch.label.toUpperCase()} • TOP 3</p>
-        <span className="text-xs text-stone-500">Motor espresso-only • {tops.length} setups</span>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+        <p className="text-[11px] sm:text-xs font-mono tracking-widest text-amber-400">{arch.label.toUpperCase()} • TOP 3</p>
+        <span className="text-[11px] sm:text-xs text-stone-500">Motor espresso-only • {tops.length} setups</span>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-3 sm:gap-4">
         {tops.map((e, i) => {
           const badge = rankBadge(i);
           const pills = pillsFor(e);
@@ -59,7 +59,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
           return (
             <div
               key={e.setup.id}
-              className={`rounded-2xl border bg-gradient-to-b p-5 flex flex-col gap-4 ${isTop1 ? "from-stone-900 via-stone-900 to-amber-950/20 border-amber-500/40 shadow-xl" : "from-stone-900 to-stone-950 border-stone-800"} ${badge.topCls}`}
+              className={`rounded-2xl border bg-gradient-to-b p-3.5 sm:p-5 flex flex-col gap-3 sm:gap-4 ${isTop1 ? "from-stone-900 via-stone-900 to-amber-950/20 border-amber-500/40 shadow-xl" : "from-stone-900 to-stone-950 border-stone-800"} ${badge.topCls}`}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2 flex-wrap">
@@ -69,9 +69,9 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                 {!isTop1 && <span className="font-mono text-xs font-bold text-stone-400">{e.score.totalScore}/100</span>}
               </div>
 
-              <div className={`grid gap-4 ${isTop1 ? "md:grid-cols-2" : "md:grid-cols-2"}`}>
-                <div className="rounded-xl bg-stone-950 border border-stone-800 p-3 flex flex-col">
-                  <ProductImage src={e.setup.machine.image} alt={e.setup.machine.model} />
+              <div className={`grid gap-3 sm:gap-4 ${isTop1 ? "grid-cols-2" : "grid-cols-2"}`}>
+                <div className="rounded-xl bg-stone-950 border border-stone-800 p-2.5 sm:p-3 flex flex-col">
+                  <ProductImage src={e.setup.machine.image} alt={e.setup.machine.model} className="aspect-[16/10] sm:aspect-[4/3]" />
                   <p className="font-bold text-white mt-2 text-sm">
                     {e.setup.machine.brand} {e.setup.machine.model}
                   </p>
@@ -79,20 +79,20 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                     {e.setup.machine.specs.portafilterDiameter ? `${e.setup.machine.specs.portafilterDiameter}mm` : ""} {e.setup.machine.specs.pid ? "· PID" : "· sin PID"} · {e.setup.machine.specs.boilerType}
                   </p>
                   <a
-                    href={`https://www.amazon.es/dp/${e.setup.machine.asin}?tag=${tag}`}
+                    href={amazonUrl(e.setup.machine.asin, `${e.setup.machine.brand} ${e.setup.machine.model}`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore })}
-                    className={`mt-3 block text-center py-2 rounded-lg text-xs font-bold ${isTop1 ? "bg-amber-600 hover:bg-amber-500 text-white" : "bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700"}`}
+                    className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                   >
                     Ver en Amazon →
                   </a>
                 </div>
 
-                <div className="rounded-xl bg-stone-950 border border-stone-800 p-3 flex flex-col">
+                <div className="rounded-xl bg-stone-950 border border-stone-800 p-2.5 sm:p-3 flex flex-col">
                   {e.setup.grinder ? (
                     <>
-                      <ProductImage src={e.setup.grinder.image} alt={e.setup.grinder.model} />
+                      <ProductImage src={e.setup.grinder.image} alt={e.setup.grinder.model} className="aspect-[16/10] sm:aspect-[4/3]" />
                       <p className="font-bold text-white mt-2 text-sm">
                         {e.setup.grinder.brand} {e.setup.grinder.model}
                       </p>
@@ -100,11 +100,11 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                         {e.setup.grinder.specs.burrType} {e.setup.grinder.specs.burrSizeMM}mm · {e.setup.grinder.specs.grindAdjustment} · retención {e.setup.grinder.performance.retention}/5
                       </p>
                       <a
-                        href={`https://www.amazon.es/dp/${e.setup.grinder.asin}?tag=${tag}`}
+                        href={amazonUrl(e.setup.grinder.asin, `${e.setup.grinder.brand} ${e.setup.grinder.model}`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore })}
-                        className={`mt-3 block text-center py-2 rounded-lg text-xs font-bold ${isTop1 ? "bg-amber-600 hover:bg-amber-500 text-white" : "bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700"}`}
+                        className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                       >
                         Ver en Amazon →
                       </a>
@@ -115,13 +115,13 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {pills.map((p) => (
-                  <span key={p} className="text-[11px] font-mono bg-stone-800 text-stone-300 px-2 py-0.5 rounded-full border border-stone-700">
+                  <span key={p} className="text-[10px] sm:text-[11px] font-mono bg-stone-800 text-stone-300 px-1.5 sm:px-2 py-0.5 rounded-full border border-stone-700 whitespace-nowrap">
                     {p}
                   </span>
                 ))}
-                <span className="text-[11px] font-mono bg-amber-900/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/20">
+                <span className="text-[10px] sm:text-[11px] font-mono bg-amber-900/20 text-amber-300 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-500/20 whitespace-nowrap">
                   {e.setup.estimatedTotalEUR}€
                 </span>
               </div>

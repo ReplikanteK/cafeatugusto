@@ -2,12 +2,12 @@ import { BEANS_SEED } from "@/data/beans";
 import { MACHINES_SEED } from "@/data/machines";
 import Link from "next/link";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { amazonUrl } from "@/lib/amazon";
 export function generateStaticParams() { return BEANS_SEED.map(b=> ({ slug: b.slug })); }
 export default async function BeanPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const bean = BEANS_SEED.find(b=> b.slug===slug);
   if (!bean) return <main className="max-w-3xl mx-auto px-6 py-12 text-stone-400">Grano no encontrado. <Link href="/cafes" className="text-amber-500 underline">Volver</Link></main>;
-  const tag = process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21";
   const paired = bean.recommendedBrewing.includes("espresso") ? MACHINES_SEED.filter(m=> m.specs.pid).slice(0,2) : MACHINES_SEED.filter(m=> m.type==="superautomatic").slice(0,2);
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
@@ -44,10 +44,10 @@ export default async function BeanPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
       <div className="mt-6 flex gap-3">
-        <a href={`https://www.amazon.es/dp/${bean.amazonAsin}?tag=${tag}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-amber-600 rounded-xl text-center font-black text-sm">Comprar en Amazon →</a>
+        <a href={amazonUrl(bean.amazonAsin!, `${bean.roaster} ${bean.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-amber-600 rounded-xl text-center font-black text-sm">Comprar en Amazon →</a>
         <a href={bean.directLink} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-stone-800 border border-stone-700 rounded-xl text-center font-bold text-sm hover:border-amber-500/30">Tostaduría →</a>
       </div>
-      <p className="text-[11px] text-stone-500 text-center mt-2">Ambos con tag {tag} cuando aplica — afiliado + directo para recurrencia.</p>
+      <p className="text-[11px] text-stone-500 text-center mt-2">Afiliado amazon.es + directo tostaduría.</p>
       <p className="text-xs text-stone-500 mt-6"><Link href="/cafes" className="text-amber-500 underline">← Volver a cafés</Link></p>
     </main>
   );

@@ -5,6 +5,7 @@ import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { track } from "@/lib/analytics";
+import { amazonUrl } from "@/lib/amazon";
 
 type Cat = "all" | "machines" | "grinders";
 type Diam = "all" | "51" | "54" | "57" | "58";
@@ -164,7 +165,7 @@ function CatalogoInner() {
                     Comparar
                   </label>
                   <a
-                    href={`https://www.amazon.es/dp/${i.asin}?tag=${process.env.NEXT_PUBLIC_AMAZON_TAG || "cafeatugusto-21"}`}
+                    href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
@@ -221,7 +222,7 @@ function CatalogoInner() {
               </tbody>
             </table>
             <div className="mt-4 flex gap-2">
-              {selItems.map(s=> <a key={s.id} href={`https://www.amazon.es/dp/${s.asin}?tag=cafeatugusto-21`} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a>)}
+              {selItems.map(s=> <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a>)}
             </div>
           </div>
         </div>
