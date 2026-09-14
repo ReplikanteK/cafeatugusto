@@ -112,4 +112,20 @@ describe("P1-Engine pesos + A-fix contrato 0-100", () => {
     const diff = sLow.score.totalScore - sHigh.score.totalScore;
     expect(diff).toBeGreaterThan(5); // antes con 5% era ~3, ahora con 13% debe ser >5
   });
+  it("F: breakdown debe exponer 7 dims auditables 0-100 (presupuesto, workflow, daily, espacio, mantenimiento, leche, molinillo)", () => {
+    const prefs: UserPreferences = { drinkTypes: ["espresso"], budgetMaxEUR: 800, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" };
+    const s = calculateSetupScore(base, g, prefs);
+    const b = s.score.breakdown;
+    expect(b.budgetMatch).toBeGreaterThanOrEqual(0); expect(b.budgetMatch).toBeLessThanOrEqual(100);
+    expect(b.experienceMatch).toBeGreaterThanOrEqual(0); expect(b.experienceMatch).toBeLessThanOrEqual(100);
+    expect(b.dailyMatch).toBeGreaterThanOrEqual(0); expect(b.dailyMatch).toBeLessThanOrEqual(100);
+    expect(b.spaceMatch).toBeGreaterThanOrEqual(0); expect(b.spaceMatch).toBeLessThanOrEqual(100);
+    expect(b.maintenanceMatch).toBeGreaterThanOrEqual(0); expect(b.maintenanceMatch).toBeLessThanOrEqual(100);
+    expect(b.milkMatch).toBeGreaterThanOrEqual(0); expect(b.milkMatch).toBeLessThanOrEqual(100);
+    expect(b.grinderMatch).toBeGreaterThanOrEqual(0); expect(b.grinderMatch).toBeLessThanOrEqual(100);
+    // trazabilidad: daily 6+ vs 1-2 debe cambiar dailyMatch, grinder integrado vs separado debe cambiar grinderMatch
+    const lowDaily = calculateSetupScore({ ...base, usageProfile: { milkUse: "medium", idealDailyCups: { min: 1, max: 2 }, bestFor: [], notIdealFor: [] } } as CoffeeMachine, g, { ...prefs, dailyCups: "6+" });
+    const highDaily = calculateSetupScore({ ...base, usageProfile: { milkUse: "medium", idealDailyCups: { min: 5, max: 8 }, bestFor: [], notIdealFor: [] } } as CoffeeMachine, g, { ...prefs, dailyCups: "6+" });
+    expect(highDaily.score.breakdown.dailyMatch).toBeGreaterThan(lowDaily.score.breakdown.dailyMatch);
+  });
 });

@@ -133,9 +133,11 @@ export interface CompatibilityScore {
     readonly hardRequirementsPassed: boolean;
     readonly budgetMatch: number;
     readonly experienceMatch: number;
+    readonly dailyMatch: number;
     readonly spaceMatch: number;
     readonly maintenanceMatch: number;
     readonly milkMatch: number;
+    readonly grinderMatch: number;
   };
   readonly pros: readonly string[];
   readonly cons: readonly string[];

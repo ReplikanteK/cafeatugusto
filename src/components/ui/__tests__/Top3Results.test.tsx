@@ -49,7 +49,7 @@ const mkEval = (id: string, score: number, machine = mockM1, grinder = mockG1): 
   setup: { id, machine: { ...machine, slug: id }, grinder, isIntegrated: false, estimatedTotalEUR: 550 },
   score: {
     totalScore: score,
-    breakdown: { hardRequirementsPassed: true, budgetMatch: 100, experienceMatch: 100, spaceMatch: 100, maintenanceMatch: 90, milkMatch: 90 },
+    breakdown: { hardRequirementsPassed: true, budgetMatch: 100, experienceMatch: 100, dailyMatch: 100, spaceMatch: 100, maintenanceMatch: 90, milkMatch: 90, grinderMatch: 95 },
     pros: ["PID ayuda", "58mm"],
     cons: ["Sin"],
     rationale: `Setup ${id} rationale`,

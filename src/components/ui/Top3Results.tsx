@@ -136,6 +136,29 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                     <span key={co} className="text-[11px] text-amber-300/70">• {co}</span>
                   ))}
                 </div>
+                <div className="mt-3 rounded-xl bg-stone-950 border border-stone-800 p-3" data-testid="breakdown">
+                  <p className="text-[10px] font-mono tracking-widest text-stone-500 mb-2">DESGLOSE 7 DIMS — TRAZABLE 0–100</p>
+                  <div className="grid grid-cols-1 gap-1.5">
+                    {([
+                      ["Presupuesto", e.score.breakdown.budgetMatch],
+                      ["Workflow", e.score.breakdown.experienceMatch],
+                      ["Uso diario", e.score.breakdown.dailyMatch],
+                      ["Espacio", e.score.breakdown.spaceMatch],
+                      ["Mantenimiento", e.score.breakdown.maintenanceMatch],
+                      ["Leche", e.score.breakdown.milkMatch],
+                      ["Molinillo", e.score.breakdown.grinderMatch],
+                    ] as const).map(([label, val]) => (
+                      <div key={label} className="flex items-center gap-2">
+                        <span className="text-[11px] text-stone-400 w-24 shrink-0">{label}</span>
+                        <div className="flex-1 h-1.5 bg-stone-800 rounded-full overflow-hidden">
+                          <div className="h-full bg-amber-500" style={{ width: `${Math.max(0, Math.min(100, val))}%` }} />
+                        </div>
+                        <span className="text-[11px] font-mono text-stone-300 w-8 text-right">{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[10px] text-stone-500 mt-2">Pregunta → campo → función → peso → test — ver metodologia</p>
+                </div>
               </div>
             </div>
           );
