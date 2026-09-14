@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
+import { CookieBanner } from "@/components/ui/CookieBanner";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app";
@@ -31,10 +32,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: SITE_URL },
 };
-// P0-2 GA4: define NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXX en .env.local
-// Verificación Power Tenant-level: tras completar wizard, abrir DevTools → Network filtrar "googletagmanager.com" o "google-analytics.com"
-// y comprobar petición g/collect con event quiz_completed. En GA4 → Informes → Tiempo real también debe aparecer.
-// Sin esta var, window.gtag no existe y track() solo hace console.warn (bug anterior).
+// E-P0.5 Consent Mode v2: default denied → update granted → config/page_view
+// Secuencia: default denied (antes de gtag) → usuario acepta en CookieBanner → consent update granted → gtag config
+// Verificación: sin consent → no page_view; con consent → page_view + quiz_started/completed/result_viewed/amazon_click en GA4 Realtime
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-DWNL7Z9ZCQ";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -42,14 +42,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {GA_ID ? (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-            <Script id="ga4-init" strategy="afterInteractive">
+            <Script id="consent-default" strategy="beforeInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 window.gtag = gtag;
+                gtag('consent', 'default', {
+                  analytics_storage: 'denied',
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied'
+                });
                 gtag('js', new Date());
-                gtag('config', '${GA_ID}', { send_page_view: true });
+              `}
+            </Script>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4-init-deferred" strategy="afterInteractive">
+              {`
+                // No gtag config aquí — CookieBanner hará update+config tras consent granted
+                // Si ya hay consent previo en localStorage, CookieBanner re-aplicará update+config en mount
+                var c = null; try { c = localStorage.getItem('consent_analytics'); } catch(e) {}
+                if (c === 'granted') {
+                  gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+                  gtag('config', '${GA_ID}', { send_page_view: true });
+                }
               `}
             </Script>
           </>
@@ -59,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
+        <CookieBanner />
         {!GA_ID && process.env.NODE_ENV === "development" && (
           <div style={{ display: "none" }} data-testid="ga-missing-warning">
             GA not configured — set NEXT_PUBLIC_GA_MEASUREMENT_ID

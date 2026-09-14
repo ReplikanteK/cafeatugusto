@@ -40,12 +40,19 @@ function WizardInner() {
   const searchParams = useSearchParams();
   const archetype = searchParams.get("archetype");
   const [step, setStep] = useState(1);
+  const [hasStarted, setHasStarted] = useState(false);
   const [prefs, setPrefs] = useState<Partial<UserPreferences>>({
     drinkTypes: ["espresso"], budgetMaxEUR: 600, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent",
   });
   const [tops, setTops] = useState<EvaluatedSetup[]>([]);
   const [finalPrefs, setFinalPrefs] = useState<UserPreferences | null>(null);
 
+  const trackStarted = () => {
+    if (!hasStarted) {
+      track("quiz_started", { step, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
+      setHasStarted(true);
+    }
+  };
   const handleComplete = (fp: UserPreferences) => {
     track("quiz_completed", fp as unknown as Record<string, unknown>);
     if (archetype && ARCHETYPE_PRESETS[archetype]) track("archetype_preset", { archetype } as unknown as Record<string, unknown>);
@@ -93,8 +100,8 @@ function WizardInner() {
             <div className="space-y-4">
               <h2 className="text-2xl font-black">¿Cómo disfrutas el café habitualmente?</h2>
               <div className="grid gap-3">
-                <OptionCard title="Solo Espresso" desc="Extractos cortos y densos. Prioridad a la estabilidad térmica." badge="Purista" onClick={() => { setPrefs({ ...prefs, drinkTypes: ["espresso"] }); setStep(2); }} />
-                <OptionCard title="Espresso con Leche" desc="Cappuccinos, Lattes o Flat Whites regulares." badge="Equilibrio" onClick={() => { setPrefs({ ...prefs, drinkTypes: ["espresso", "milk_drink"] }); setStep(2); }} />
+                <OptionCard title="Solo Espresso" desc="Extractos cortos y densos. Prioridad a la estabilidad térmica." badge="Purista" onClick={() => { trackStarted(); setPrefs({ ...prefs, drinkTypes: ["espresso"] }); setStep(2); }} />
+                <OptionCard title="Espresso con Leche" desc="Cappuccinos, Lattes o Flat Whites regulares." badge="Equilibrio" onClick={() => { trackStarted(); setPrefs({ ...prefs, drinkTypes: ["espresso", "milk_drink"] }); setStep(2); }} />
                 {/* P0-5 espresso-only: Cafés Largos / Filtro oculto — sin máquinas filtro en catálogo. Reactivar solo con V60/AeroPress reales. */}
               </div>
             </div>
