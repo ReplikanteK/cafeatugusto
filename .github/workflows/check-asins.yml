@@ -1,0 +1,29 @@
+name: Validate Amazon ASINs (local format check)
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # 04:00 UTC diario
+  workflow_dispatch:
+
+jobs:
+  check-asins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate ASIN format + block CTA inválido
+        run: npm run check:asins
+        # Validador local: falla CI si ASIN inválido → protege CTAs Amazon (no verifica stock real)
+        # Verificación comercial real: webfetch manual https://www.amazon.es/dp/{ASIN}?tag=cafeatugusto-21
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: asin-availability
+          path: reports/asin-availability.json
+          retention-days: 30

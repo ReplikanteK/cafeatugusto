@@ -3,6 +3,8 @@ import { MACHINES_SEED } from "@/data/machines";
 import Link from "next/link";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { amazonUrl } from "@/lib/amazon";
+import type { Metadata } from "next";
+export const metadata: Metadata = { robots: { index: false, follow: true } };
 export function generateStaticParams() { return BEANS_SEED.map(b=> ({ slug: b.slug })); }
 export default async function BeanPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

@@ -1,0 +1,269 @@
+{
+  "timestamp": "2026-09-14T15:35:51.050Z",
+  "mode": "mock",
+  "total": 35,
+  "valid": 35,
+  "invalid": 0,
+  "InStock": [
+    "B06X3Z9MF3",
+    "B09713NW8H",
+    "B086H1W384",
+    "B07G1CW1LG",
+    "B077YZXR1W",
+    "B001EOMZ5E",
+    "B00BS7RFSO",
+    "B086Q2M7FK",
+    "B01D4O62JG",
+    "B0C2ZPPX9K",
+    "B07B2WJHBH",
+    "B0B8JV43LL",
+    "B0BB4XHYNW",
+    "B07B2R52S4",
+    "B0FLFH142P",
+    "B0GK8VQW77",
+    "B0CDCDR385",
+    "B0BHHTT2LK",
+    "B09X2Y1T5B",
+    "B0FJ8Q6KQZ",
+    "B0CJ353WBL",
+    "B0DPRWGP6L",
+    "B0CBNGZBGS",
+    "B07XSK2PKN",
+    "B01G82WVZ0",
+    "B0DSLYKM31",
+    "B0BH8MRB2Z",
+    "B0CGVVSM19",
+    "B09N2C9FP5",
+    "B0D9NX6VNG",
+    "B0DB1J2S6V",
+    "B0GXFD87XD",
+    "B0D92111HV",
+    "B08NBHR7HT",
+    "B0D1PF6Z57"
+  ],
+  "OutOfStock": [],
+  "InvalidASIN": [],
+  "PriceChanged": [],
+  "details": {
+    "B06X3Z9MF3": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_dedica_ec685",
+        "comparatives:sage-bambino-vs-delonghi-dedica:b"
+      ]
+    },
+    "B09713NW8H": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_bambino_std",
+        "comparatives:sage-bambino-vs-delonghi-dedica:a"
+      ]
+    },
+    "B086H1W384": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_gaggia_classic_evo",
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:b"
+      ]
+    },
+    "B07G1CW1LG": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_bambino_plus"
+      ]
+    },
+    "B077YZXR1W": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_barista_express",
+        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:a"
+      ]
+    },
+    "B001EOMZ5E": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_magnifica_s"
+      ]
+    },
+    "B00BS7RFSO": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_lelit_anna_pid",
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:a"
+      ]
+    },
+    "B086Q2M7FK": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_rancilio_silvia"
+      ]
+    },
+    "B01D4O62JG": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_lelit_victoria"
+      ]
+    },
+    "B0C2ZPPX9K": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_profitec_go"
+      ]
+    },
+    "B07B2WJHBH": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_sage_dual_boiler"
+      ]
+    },
+    "B0B8JV43LL": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_delonghi_specialista",
+        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:b"
+      ]
+    },
+    "B0BB4XHYNW": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_lelit_marax"
+      ]
+    },
+    "B07B2R52S4": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_sage_oracle_touch"
+      ]
+    },
+    "B0FLFH142P": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_gaggia_magnifica_combo"
+      ]
+    },
+    "B0GK8VQW77": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_kingrinder_k6",
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:a"
+      ]
+    },
+    "B0CDCDR385": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_baratza_encore_esp",
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:b",
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:b"
+      ]
+    },
+    "B0BHHTT2LK": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_1zpresso_jxpro"
+      ]
+    },
+    "B09X2Y1T5B": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_comandante_c40"
+      ]
+    },
+    "B0FJ8Q6KQZ": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_eureka_mignon_manuale",
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:a"
+      ]
+    },
+    "B0CJ353WBL": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_fellow_opus"
+      ]
+    },
+    "B0DPRWGP6L": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_df64_gen2"
+      ]
+    },
+    "B0CBNGZBGS": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_eureka_mignon_zero"
+      ]
+    },
+    "B07XSK2PKN": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_eureka_mignon_specialita"
+      ]
+    },
+    "B01G82WVZ0": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_baratza_sette270"
+      ]
+    },
+    "B0DSLYKM31": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-bambino-vs-delonghi-dedica:acc:Tamper 54mm presión constante"
+      ]
+    },
+    "B0BH8MRB2Z": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-bambino-vs-delonghi-dedica:acc:WDT 0.35mm 10 agujas"
+      ]
+    },
+    "B0CGVVSM19": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:acc:Cesta VST 18g 58mm"
+      ]
+    },
+    "B09N2C9FP5": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:acc:Portafiltro bottomless 58mm E61"
+      ]
+    },
+    "B0D9NX6VNG": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:acc:Báscula 0.1g con timer"
+      ]
+    },
+    "B0DB1J2S6V": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:acc:Soplador single-dose"
+      ]
+    },
+    "B0GXFD87XD": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:acc:Anillo dosificador magnético 54mm"
+      ]
+    },
+    "B0D92111HV": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:acc:Tamper regulable 51mm"
+      ]
+    },
+    "B08NBHR7HT": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:acc:Cepillo limpieza muelas"
+      ]
+    },
+    "B0D1PF6Z57": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:acc:Tolva single-dose 45g"
+      ]
+    }
+  }
+}

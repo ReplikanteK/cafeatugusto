@@ -11,7 +11,6 @@ export function Header() {
           <Link href="/recomendador" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>⚡</span> Recomendador</Link>
           <Link href="/catalogo" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>🗂️</span> Catálogo</Link>
           <Link href="/comparativas" className="hover:text-amber-400 transition-colors flex items-center gap-1"><span>⚔️</span> Comparativas</Link>
-          {/* P0-1 RETIRADA TEMPORAL: /cafes oculto — ASIN granos placeholders B0C1MARCELLA etc. (6/6 inválidos) pendientes verificación 1×1 en Amazon antes de reactivar. Ver PR fix/p0-motor-analytics-asin */}
         </nav>
       </div>
     </header>

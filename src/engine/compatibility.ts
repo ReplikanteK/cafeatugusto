@@ -84,13 +84,13 @@ function getExperienceScore(machine: CoffeeMachine, grinder: Grinder | undefined
   if (machine.ratings.learningCurve >= 4) pros.push("Curva exigente ideal para control manual.");
   if (machine.ratings.learningCurve <= 2) cons.push("Demasiado sencilla si buscas control manual profundo.");
   if (machine.specs.pid) {
-    s += 15;
+    s += 7;
     pros.push("Incluye control PID para estabilidad térmica.");
   } else {
     cons.push("Sin PID: mayor variabilidad térmica en manual.");
   }
   if (machine.specs.portafilterDiameter === 58) {
-    s += 25; // P1: 58mm sube de +15 a +25 para manual_craft (E61/Gaggia/Profitec superan Bambino 54)
+    s += 12; // A-fix: 58mm +12 (antes +25) para contrato 0-100 — cap 100 preserva gap 100(88+12) vs 95(88+7)
     pros.push("Portafiltro de 58 mm estándar comercial.");
   } else if (machine.specs.portafilterDiameter === 54) {
     // neutro, no bonus ni penalización fuerte
@@ -99,25 +99,25 @@ function getExperienceScore(machine: CoffeeMachine, grinder: Grinder | undefined
   }
   if (grinder) {
     if (grinder.specs.grindAdjustment === "stepless") {
-      s += 10;
+      s += 6;
       pros.push("Molinillo stepless para ajuste micrométrico manual.");
     }
     if (grinder.specs.burrType === "flat" && grinder.specs.burrSizeMM >= 55) {
-      s += 5;
+      s += 3;
       pros.push("Muelas planas grandes para claridad en tueste ligero.");
     }
     if (grinder.performance.retention >= 4) {
-      s += 5;
+      s += 3;
       pros.push("Baja retención, ideal para single-dosing manual.");
     }
     if (grinder.performance.doseControl >= 4) {
-      s += 5;
+      s += 3;
     }
   } else if (!machine.grinderIntegrated) {
     cons.push("Sin molinillo dedicado: limita control manual.");
   }
-  // P1: no cap a 100 para manual — permite que 58mm+E61 supere 54mm aunque ambos toquen techo (113 vs 104)
-  return Math.round(Math.max(0, Math.min(130, s)));
+  // A-fix: contrato absoluto 0-100 — sin excepciones (antes 130 permitía 113 vs 104 por encima de 100)
+  return Math.round(Math.max(0, Math.min(100, s)));
 }
 
 function getDailyScore(machine: CoffeeMachine, prefs: UserPreferences, pros: string[], cons: string[]): number {
@@ -268,6 +268,7 @@ export function calculateSetupScore(
       grinderScore * wGrinder
   );
 
+  const cappedFinal = Math.round(Math.max(0, Math.min(100, finalScore)));
   return {
     setup: {
       id: `${machine.slug}_${grinder?.slug ?? "integrated"}`,
@@ -277,7 +278,7 @@ export function calculateSetupScore(
       estimatedTotalEUR: totalCost,
     },
     score: {
-      totalScore: Math.round(Math.max(0, Math.min(105, finalScore))),
+      totalScore: cappedFinal,
       breakdown: {
         hardRequirementsPassed: true,
         budgetMatch: Math.round(budgetScore),
@@ -288,7 +289,7 @@ export function calculateSetupScore(
       },
       pros,
       cons,
-      rationale: `Setup configurado para tu perfil de ${prefs.workflowPreference} con un encaje global del ${finalScore}%.`,
+      rationale: `Setup configurado para tu perfil de ${prefs.workflowPreference} con un encaje global del ${cappedFinal}%.`,
     },
   };
 }

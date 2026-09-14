@@ -1,11 +1,11 @@
 import { BEANS_SEED } from "@/data/beans";
 import Link from "next/link";
 import { ProductImage } from "@/components/ui/ProductImage";
+import type { Metadata } from "next";
+export const metadata: Metadata = { robots: { index: false, follow: true } };
 export default function CafesPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-      {/* P0-1 RETIRADA TEMPORAL: /cafes existe pero no enlazado desde Header/Footer. ASINs granos 6/6 inválidos (B0C1MARCELLA etc.) — ocultar hasta verificación 1×1 en Amazon. No reactivar sin PR explícito. */}
-      <div className="mb-6 rounded-xl border border-amber-500/30 bg-amber-950/30 p-4 text-xs text-amber-200">⚠️ P0-1 Catálogo de granos temporalmente oculto del nav — validación ASIN pendiente (6/6 placeholders). Esta página permanece accesible solo para auditoría interna, no indexada.</div>
       <h1 className="text-3xl font-black">Café en Grano — Guía de Selección</h1>
       <p className="text-sm text-stone-400 mt-2">
         Selección de orígenes probados con sus recetas de extracción recomendadas (ratio, temperatura y tiempo diana).

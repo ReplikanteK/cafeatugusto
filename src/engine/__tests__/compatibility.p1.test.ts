@@ -33,8 +33,21 @@ const g: Grinder = {
   metadata: { verifiedAt: "2026-09-01T00:00:00Z", sources: ["Test"] },
 };
 
-describe("P1-Engine pesos", () => {
-  it("58mm +25 debe superar 54mm+PID +15 para manual_craft", () => {
+describe("P1-Engine pesos + A-fix contrato 0-100", () => {
+  it("A: contrato 0-100 absoluto — bruto >100 → expuesto ≤100 y rationale capado", () => {
+    const beast: CoffeeMachine = { ...base, specs: { ...base.specs, portafilterDiameter: 58, pid: true }, ratings: { ...base.ratings, learningCurve: 5 } };
+    const gPro: Grinder = { ...g, specs: { ...g.specs, grindAdjustment: "stepless", burrType: "flat", burrSizeMM: 58 }, performance: { doseControl: 5, retention: 5, noise: 5, easeOfUse: 5, footprint: "small" } };
+    const prefs: UserPreferences = { drinkTypes: ["espresso"], budgetMaxEUR: 2000, workflowPreference: "manual_craft", dailyCups: "3-5", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" };
+    const s = calculateSetupScore(beast, gPro, prefs);
+    expect(s.score.totalScore).toBeLessThanOrEqual(100);
+    expect(s.score.breakdown.experienceMatch).toBeLessThanOrEqual(100);
+    expect(s.score.breakdown.experienceMatch).toBe(100);
+    expect(s.score.rationale).toMatch(/100%|9\d%/);
+    expect(s.score.rationale).not.toContain("113%");
+    expect(s.score.rationale).not.toContain("130%");
+    expect(s.score.rationale).not.toMatch(/10[1-9]%|1[1-9]\d%/);
+  });
+  it("58mm +12 debe superar 54mm+PID +7 para manual_craft bajo techo 100", () => {
     const m58noPid: CoffeeMachine = { ...base, specs: { ...base.specs, portafilterDiameter: 58, pid: false } };
     const m54pid: CoffeeMachine = { ...base, specs: { ...base.specs, portafilterDiameter: 54, pid: true } };
     const prefs: UserPreferences = {
