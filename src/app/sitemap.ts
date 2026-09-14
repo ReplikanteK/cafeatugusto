@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { COMPARATIVES } from "@/data/comparatives";
+import { GUIDES_SEED } from "@/data/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app";
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/recomendador`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/catalogo`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/comparativas`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/guias`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/metodologia`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/afiliados`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
@@ -18,5 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
-  return [...staticRoutes, ...compRoutes];
+  const guideRoutes: MetadataRoute.Sitemap = Object.keys(GUIDES_SEED).map((slug) => ({
+    url: `${base}/guias/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+  return [...staticRoutes, ...compRoutes, ...guideRoutes];
 }
