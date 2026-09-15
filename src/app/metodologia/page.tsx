@@ -11,7 +11,10 @@ export default function Metodologia() {
             <b className="text-white">Filtros Críticos de Compatibilidad:</b> Eliminación estricta por presupuesto máximo, restricciones de espacio físico o requisitos indispensables (molinillo integrado vs molinillo exento).
           </li>
           <li>
-            <b className="text-white">Scoring Ponderado (0–100):</b> Ponderación algorítmica dividida en: Presupuesto (40%), Curva de Aprendizaje y Workflow (25%), Espacio en encimera (15%), Facilidad de Limpieza (10%) y Capacidad de Emulsión de Leche (10%).
+            <b className="text-white">Scoring Ponderado 7 dims (0–100):</b> Presupuesto 35% · Workflow 20% · Espacio 15% · Mantenimiento 10% · Leche 10% · Uso diario 5% · Molinillo 5%.<br />
+            <span className="text-xs text-stone-400">
+              Variante alta demanda (6+ cafés/día): Presupuesto 32% · Workflow 18% · Espacio 12% · Mantenimiento 10% · Leche 10% · Uso diario 13% · Molinillo 5%. En uso intensivo el rendimiento diario pasa de 5% a 13% porque la capacidad se vuelve criterio primario — el peso se toma de workflow (−2) y espacio (−3), documentado en <code>src/engine/compatibility.ts:253</code>.
+            </span>
           </li>
           <li>
             <b className="text-white">Verificación de Datos:</b> Las especificaciones técnicas son auditadas manualmente a partir de las fichas de los fabricantes. No utilizamos contenido generado por IA para la asignación de puntuaciones de hardware.

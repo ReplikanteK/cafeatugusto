@@ -161,7 +161,7 @@ function WizardInner() {
             <div className="space-y-4">
               <h2 className="text-2xl font-black">Restricciones de Espacio</h2>
               <div className="grid gap-3">
-                <OptionCard title="Espacio Compacto" desc="Encimera ajustada (ancho < 20cm)." onClick={() => { setPrefs({ ...prefs, spaceConstraint: true }); setStep(8); }} />
+                <OptionCard title="Espacio Compacto" desc="Tengo poco espacio en la encimera." onClick={() => { setPrefs({ ...prefs, spaceConstraint: true }); setStep(8); }} />
                 <OptionCard title="Sin Restricción" desc="Espacio amplio para máquina y molinillo independiente." onClick={() => { setPrefs({ ...prefs, spaceConstraint: false }); setStep(8); }} />
               </div>
             </div>

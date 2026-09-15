@@ -128,4 +128,26 @@ describe("P1-Engine pesos + A-fix contrato 0-100", () => {
     const highDaily = calculateSetupScore({ ...base, usageProfile: { milkUse: "medium", idealDailyCups: { min: 5, max: 8 }, bestFor: [], notIdealFor: [] } } as CoffeeMachine, g, { ...prefs, dailyCups: "6+" });
     expect(highDaily.score.breakdown.dailyMatch).toBeGreaterThan(lowDaily.score.breakdown.dailyMatch);
   });
+
+  it("convenience: easeOfUse 5 debe superar easeOfUse 2 con misma learningCurve (rojo #1)", () => {
+    const easy: CoffeeMachine = { ...base, ratings: { ...base.ratings, learningCurve: 2, easeOfUse: 5 } };
+    const hard: CoffeeMachine = { ...base, ratings: { ...base.ratings, learningCurve: 2, easeOfUse: 2 } };
+    const prefs: UserPreferences = { drinkTypes: ["espresso"], budgetMaxEUR: 800, workflowPreference: "convenience", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" };
+    const sEasy = calculateSetupScore(easy, g, prefs);
+    const sHard = calculateSetupScore(hard, g, prefs);
+    expect(sEasy.score.breakdown.experienceMatch).toBeGreaterThan(sHard.score.breakdown.experienceMatch);
+    expect(sEasy.score.totalScore).toBeGreaterThan(sHard.score.totalScore);
+  });
+
+  it("6+ semántico: máquina 5-8 debe superar 1-4 para usuario 6+ (rojo #2)", () => {
+    const caps8: CoffeeMachine = { ...base, specs: { ...base.specs, waterTankCapacityLiters: 2.5 }, usageProfile: { milkUse: "medium", idealDailyCups: { min: 5, max: 8 }, bestFor: [], notIdealFor: [] } };
+    const caps4: CoffeeMachine = { ...base, specs: { ...base.specs, waterTankCapacityLiters: 2.5 }, usageProfile: { milkUse: "medium", idealDailyCups: { min: 1, max: 4 }, bestFor: [], notIdealFor: [] } };
+    const prefs: UserPreferences = { drinkTypes: ["espresso"], budgetMaxEUR: 800, workflowPreference: "balanced", dailyCups: "6+", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" };
+    const s8 = calculateSetupScore(caps8, g, prefs);
+    const s4 = calculateSetupScore(caps4, g, prefs);
+    // 5-8 cubre 6+ → 100, 1-4 no cubre 6 → 40 o 30 penalizado
+    expect(s8.score.breakdown.dailyMatch).toBeGreaterThan(s4.score.breakdown.dailyMatch);
+    expect(s8.score.totalScore).toBeGreaterThan(s4.score.totalScore);
+    expect(s8.score.breakdown.dailyMatch).toBe(100);
+  });
 });

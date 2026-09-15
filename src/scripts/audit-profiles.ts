@@ -130,15 +130,13 @@ function audit() {
     const top2 = candidates[1];
     const top3 = candidates[2];
 
-    // Cálculo auxiliar para desglose
+    // Desglose 7 dims — breakdown ya incluye dailyMatch y grinderMatch (desde F 7-dims), no recalcular
     const fmt = (c: ReturnType<typeof calculateSetupScore> | undefined) => {
       if (!c) return "— sin candidatos (hard filter bloquea todo)";
       const b = c.score.breakdown;
-      // daily y grinder no están en breakdown, los recalculamos aproximados vía total vs suma
-      const dailyApprox = Math.round(c.score.totalScore - (b.budgetMatch * 0.35 + b.experienceMatch * 0.2 + b.spaceMatch * 0.15 + b.maintenanceMatch * 0.1 + b.milkMatch * 0.1 + 0 * 0.05) / 0.05) as any;
       return `${c.setup.machine.brand} ${c.setup.machine.model} ${c.setup.machine.specs.portafilterDiameter ? `(${c.setup.machine.specs.portafilterDiameter}mm${c.setup.machine.specs.pid ? "+PID" : ""})` : ""} + ${
         c.setup.grinder ? `${c.setup.grinder.brand} ${c.setup.grinder.model} (${c.setup.grinder.specs.grindAdjustment}, ${c.setup.grinder.specs.burrType} ${c.setup.grinder.specs.burrSizeMM}mm)` : "integrado"
-      } | ${c.setup.estimatedTotalEUR}€ | Score ${c.score.totalScore} | exp ${b.experienceMatch} milk ${b.milkMatch} maint ${b.maintenanceMatch} budget ${b.budgetMatch} space ${b.spaceMatch}`;
+      } | ${c.setup.estimatedTotalEUR}€ | Score ${c.score.totalScore} | exp ${b.experienceMatch} daily ${b.dailyMatch} milk ${b.milkMatch} maint ${b.maintenanceMatch} budget ${b.budgetMatch} space ${b.spaceMatch} grinder ${b.grinderMatch}`;
     };
 
     console.log(`\n=== ${p.id}: ${p.name} ===`);
@@ -160,7 +158,7 @@ function audit() {
       let juicio = "";
       if (p.id === "P1" && top1.setup.machine.ratings.learningCurve <= 2 && top1.score.breakdown.experienceMatch >= 80) juicio = "✅ Sensato — curva baja para novato";
       else if (p.id === "P2" && topIsManualFriendly) juicio = "✅ Sensato — PID+58 para aspirante manual";
-      else if (p.id === "P3" && top1.setup.machine.specs.boilerType === "dual_boiler" || top1.setup.machine.specs.boilerType === "heat_exchanger") juicio = "✅ Sensato — doble/HX para leche alta";
+      else if (p.id === "P3" && (top1.setup.machine.specs.boilerType === "dual_boiler" || top1.setup.machine.specs.boilerType === "heat_exchanger")) juicio = "✅ Sensato — doble/HX para leche alta";
       else if (p.id === "P4" && top1.setup.grinder?.specs.grindAdjustment === "stepless") juicio = "✅ Sensato — stepless para purista";
       else if (p.id === "P6" && top1.setup.machine.ratings.footprint === "small" && (top1.setup.grinder ? top1.setup.grinder.performance.footprint === "small" : true)) juicio = "✅ Sensato — huella pequeña";
       else if (p.id === "P7" && top1.setup.estimatedTotalEUR <= p.prefs.budgetMaxEUR * 1.1 && top1.setup.grinder?.specs.espressoCapable) juicio = "✅ Sensato — combo equilibrado, grinder espresso OK";

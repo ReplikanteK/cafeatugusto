@@ -37,10 +37,17 @@ export function passesHardFilters(
 function getExperienceScore(machine: CoffeeMachine, grinder: Grinder | undefined, prefs: UserPreferences, pros: string[], cons: string[]): number {
   let s = 0;
   if (prefs.workflowPreference === "convenience") {
-    // convenience quiere baja curva y alta facilidad
+    // convenience quiere baja curva y alta facilidad — easeOfUse sí puntúa (fix rojo #1)
     s = (6 - machine.ratings.learningCurve) * 20; // 1->100, 5->20
-    if (machine.ratings.easeOfUse >= 4) pros.push("Operación rápida y sencilla sin curva técnica.");
-    if (machine.ratings.easeOfUse <= 2) cons.push("Requiere práctica para uso cómodo.");
+    if (machine.ratings.easeOfUse >= 4) {
+      s = Math.min(100, s + 12);
+      pros.push("Operación rápida y sencilla sin curva técnica.");
+    } else if (machine.ratings.easeOfUse === 3) {
+      s = Math.min(100, s + 4);
+    } else if (machine.ratings.easeOfUse <= 2) {
+      s = Math.max(0, s - 8);
+      cons.push("Requiere práctica para uso cómodo.");
+    }
     if (machine.ratings.learningCurve > 3) cons.push("Curva de aprendizaje moderada para tus preferencias.");
     // startup rápido premia convenience
     if (machine.specs.startupTimeSeconds <= 30) {
@@ -121,12 +128,14 @@ function getExperienceScore(machine: CoffeeMachine, grinder: Grinder | undefined
 }
 
 function getDailyScore(machine: CoffeeMachine, prefs: UserPreferences, pros: string[], cons: string[]): number {
-  const needMap: Record<string, number> = { "1-2": 2, "3-5": 5, "6+": 10 };
+  // 6+ categoría abierta → need=6, no 10 (fix rojo #2). 70% =4.2 para borde.
+  const needMap: Record<string, number> = { "1-2": 2, "3-5": 5, "6+": 6 };
   const need = needMap[prefs.dailyCups] ?? 5;
   const max = machine.usageProfile.idealDailyCups.max;
   const min = machine.usageProfile.idealDailyCups.min;
   let score: number;
-  if (max >= need && min <= need) {
+  // alta demanda: categoría abierta → basta max>=6 (o min<=6<=max) para 100
+  if (prefs.dailyCups === "6+" ? max >= 6 : (max >= need && min <= need)) {
     pros.push(`Adecuada para ${prefs.dailyCups} cafés/día (rango ${min}-${max}).`);
     score = 100;
   } else if (max >= need * 0.7) {
@@ -250,6 +259,8 @@ export function calculateSetupScore(
 
   // P1 ponderación: daily 5% base, sube a 13% en alta demanda 6+ (P3,P5) para desplazar termobloque pequeño
   // + hard penalty depósito <1.8L ya aplicado en getDailyScore
+  // For 6+ daily cups, shift 5-7 pp from workflow/space toward daily capacity because throughput
+  // becomes a primary fit criterion. Protect with test: daily weight 13% vs 5%.
   const isHighDaily = prefs.dailyCups === "6+";
   const wBudget = isHighDaily ? 0.32 : 0.35;
   const wExp = isHighDaily ? 0.18 : 0.20;
