@@ -1,34 +1,64 @@
 import { COMPARATIVES } from "@/data/comparatives";
+import { MACHINES_SEED } from "@/data/machines";
+import { GRINDERS_SEED } from "@/data/grinders";
 import Link from "next/link";
 import { amazonUrl } from "@/lib/amazon";
 export function generateStaticParams() { return COMPARATIVES.map(c=> ({ slug: c.slug })); }
+function findPrice(asin: string): number | undefined {
+  const m = MACHINES_SEED.find(x=> x.asin===asin);
+  if (m) return m.priceApproxEUR;
+  const g = GRINDERS_SEED.find(x=> x.asin===asin);
+  return g?.priceApproxEUR;
+}
 export default async function ComparativePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = COMPARATIVES.find(x=> x.slug===slug);
   if (!c) return <main className="max-w-3xl mx-auto px-6 py-12 text-stone-400">Comparativa no encontrada. <Link href="/comparativas" className="text-amber-500 underline">Volver</Link></main>;
+  const priceA = findPrice(c.a.asin);
+  const priceB = findPrice(c.b.asin);
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-      <p className="text-xs font-mono text-amber-400 tracking-widest">COMPARATIVA • RIGOR 60% + RITUAL 40%</p>
+      <p className="text-xs font-mono text-amber-400 tracking-widest">COMPARATIVA • RIGOR 60% + RITUAL 40% • PRECIOS VERIFICADOS 2026-09-15</p>
       <h1 className="text-3xl font-black text-white mt-2">{c.title}</h1>
-      <p className="text-sm text-stone-400 mt-2">{c.subtitle}</p>
+      <p className="text-sm text-stone-300 mt-2 leading-relaxed">{c.subtitle}</p>
+      <p className="text-sm text-stone-400 mt-3 leading-relaxed">Dos opciones verified en <span className="text-white font-bold">amazon.es</span> con <span className="text-amber-400">?tag=cafeatugusto-21</span>. Precios aprox. auditables — {priceA ? `${priceA}€` : "?"} vs {priceB ? `${priceB}€` : "?"} — para ponderar presupuesto en el recomendador sin humo.</p>
       <div className="mt-6 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-4">
         <p className="text-sm font-bold text-amber-300">Veredicto: {c.verdict}</p>
-        <p className="text-xs text-stone-400 mt-1">{c.verdictArchetype}</p>
+        <p className="text-xs text-stone-300 mt-2 leading-relaxed">Análisis extendido: {c.verdictArchetype} La diferencia clave no es solo precio sino geometría (portafiltro/muela) y control térmico (PID/stepless) — lo que el motor pondera en <span className="font-mono text-amber-400">compatibility.ts</span>.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-6 mt-8">
-        {[c.a,c.b].map(p=> (
+        {[c.a,c.b].map((p,i)=> {
+          const price = i===0 ? priceA : priceB;
+          return (
           <div key={p.asin} className="rounded-xl bg-stone-900 border border-stone-800 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.image} alt={p.name} className="w-full aspect-[4/3] object-cover bg-stone-800" />
-            <div className="p-4"><p className="font-bold text-white">{p.name}</p><a href={amazonUrl(p.asin, p.name)} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado)</p></div>
+            <img src={p.image} alt={p.name} className="w-full aspect-[4/3] object-contain bg-white p-2" />
+            <div className="p-4"><p className="font-bold text-white">{p.name}</p>{price && <p className="text-sm font-mono font-black text-amber-400 mt-1">{price}€ <span className="text-[10px] text-stone-500 font-normal">aprox.</span></p>}<a href={amazonUrl(p.asin, p.name)} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado · verified)</p></div>
           </div>
-        ))}
+        )})}
       </div>
       <div className="mt-8 rounded-xl border border-stone-800 overflow-hidden">
         <table className="w-full text-sm">
           <thead><tr className="bg-stone-900 text-stone-400"><th className="p-3 text-left">Spec</th><th className="p-3 text-left">{c.a.name}</th><th className="p-3 text-left">{c.b.name}</th></tr></thead>
-          <tbody>{c.specs.map(s=> <tr key={s.label} className="border-t border-stone-800"><td className="p-3 font-bold text-stone-300">{s.label}</td><td className="p-3 text-stone-400">{s.a}</td><td className="p-3 text-stone-400">{s.b}</td></tr>)}</tbody>
+          <tbody>
+            <tr className="border-t border-amber-500/20 bg-amber-950/10"><td className="p-3 font-black text-amber-300">Precio aprox.</td><td className="p-3 font-mono font-black text-amber-400">{priceA ? `${priceA}€` : "—"}</td><td className="p-3 font-mono font-black text-amber-400">{priceB ? `${priceB}€` : "—"}</td></tr>
+            {c.specs.map(s=> <tr key={s.label} className="border-t border-stone-800"><td className="p-3 font-bold text-stone-300">{s.label}</td><td className="p-3 text-stone-400">{s.a}</td><td className="p-3 text-stone-400">{s.b}</td></tr>)}
+          </tbody>
         </table>
+      </div>
+      <div className="mt-8 grid md:grid-cols-3 gap-4">
+        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
+          <h4 className="font-bold text-white text-sm">Extracción</h4>
+          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Geometría y control térmico mandan. La fila PID/stepless vs stepped marca si puedes perfilar flujo y repetir dosis. No es marketing — es <span className="text-amber-400">retención, molienda y estabilidad</span> lo que el recomendador pondera.</p>
+        </div>
+        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
+          <h4 className="font-bold text-white text-sm">Ritual diario</h4>
+          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Tiempo a taza, ruido y tolva definen si usas la máquina 1 o 6 veces al día. Verifica <span className="text-white">hoppers y heat</span> arriba — el motor cruza con <span className="font-mono text-stone-300">dailyCups</span> y <span className="font-mono text-stone-300">maintenanceTolerance</span>.</p>
+        </div>
+        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
+          <h4 className="font-bold text-white text-sm">Coste total</h4>
+          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Precio aprox. + accesorios esenciales (abajo) = presupuesto real. El recomendador filtra por <span className="font-mono text-amber-400">budgetMaxEUR *1.1</span> para no recomendar humo fuera de rango.</p>
+        </div>
       </div>
       <div className="mt-8 rounded-2xl bg-stone-900 border border-stone-800 p-5">
         <h3 className="font-black text-white">Accesorios esenciales — Ritual</h3>

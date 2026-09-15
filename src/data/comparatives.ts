@@ -13,9 +13,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-dedica-vs-krups-virtuoso",
     title: "De'Longhi Dedica EC685 vs Krups Virtuoso XP444",
-    subtitle: "Entrada compacta — 51mm presurizado 15cm vs 51mm ThermoJet pannarello. Misma huella, extracción tolerante.",
-    verdict: "Dedica si priorizas 15cm y ecosistema 51mm barato; Virtuoso si quieres ThermoJet intuitivo y lanza pannarello más amable día uno.",
-    verdictArchetype: "The Efficiencist con 190€ → Virtuoso (40s, pannarello). The Aesthetic compact → Dedica (15cm).",
+    subtitle: "Entrada compacta 51mm para cocina pequeña y 1-3 tazas diarias. Ambas presurizado tolerante, pero Dedica gana en huella 15cm y ecosistema barato 51mm, mientras Virtuoso aporta ThermoJet auto y pannarello más amable para capuchino sin técnica.",
+    verdict: "Elige Dedica EC685 si cada centímetro cuenta y quieres accesorios 51mm baratos para iniciarte sin presión por el dial. Elige Virtuoso XP444 si prefieres encendido intuitivo, vapor más estable y curva de aprendizaje 1 — el extra 20€ se paga en consistencia día uno.",
+    verdictArchetype: "The Efficiencist con 190€ y prisa → Virtuoso (40s, pannarello). The Small Space → Dedica (15cm, 210€).",
     a: { name: "De'Longhi Dedica EC685", asin: "B06X3ZWVZ7", image: "/images/machines/delonghi-dedica-ec685.jpg" },
     b: { name: "Krups Virtuoso XP444", asin: "B0C85NMRXP", image: "/images/machines/krups-virtuoso-xp444.jpg" },
     specs: [
@@ -34,9 +34,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "lelit-victoria-vs-lelit-anita",
     title: "Lelit Victoria PL91T vs Lelit Anita PL042EM",
-    subtitle: "Lelit single boiler — PID LCC 58mm vs muela integrada 57mm. Control térmico vs grano a taza sin molinillo.",
-    verdict: "Victoria si buscas PID LCC y 58mm pro para pulir extracción; Anita si quieres inox 31.5cm con cónica 38mm integrada sin comprar molinillo.",
-    verdictArchetype: "The Precisionist → Victoria (PID 58mm). The Efficiencist integrado → Anita (38mm).",
+    subtitle: "Single boiler Lelit para control térmico fino vs conveniencia grano-a-taza. Victoria LCC PID 58mm y vaporizador pro para quien quiere perfilar; Anita PL042EM integra cónica 38mm en 31.5cm de inox para diario sin molinillo externo.",
+    verdict: "Victoria si tu prioridad es repetir shot con PID LCC, 58mm estándar y 2.7L estable — pagas curva 4 pero ganas extracción quirúrgica. Anita si valoras encimera y flujo sin fricción: mueles y extraes sin comprar ni calibrar molinillo aparte.",
+    verdictArchetype: "The Precisionist → Victoria (PID 58mm). The Integrated → Anita (38mm, 31.5cm).",
     a: { name: "Lelit Victoria PL91T", asin: "B01D4O62JG", image: "/images/machines/lelit-victoria-pl91t.jpg" },
     b: { name: "Lelit Anita PL042EM", asin: "B004QXG132", image: "/images/machines/lelit-anita-pl042em.jpg" },
     specs: [
@@ -55,9 +55,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "graef-cm702-vs-graef-cm800",
     title: "Graef CM702 vs Graef CM800",
-    subtitle: "Graef cónica — 24 niveles 250g vs 40 niveles 350g. Misma familia, escalado de precisión y tolva.",
-    verdict: "CM702 si entras a espresso con 24 pasos y 132€; CM800 si quieres 40 niveles + 350g + rueda 5 palas para moler frío sin retención.",
-    verdictArchetype: "The Efficiencist → CM702 (24). The Precisionist → CM800 (40 + 350g).",
+    subtitle: "Familia Graef cónica para espresso diario: CM702 24 niveles 250g a 132€ como puerta de entrada seria, CM800 40 niveles 350g a 159€ con rueda 5 palas aluminio y 800-900rpm para moler frío sin calentar y con menos retención.",
+    verdict: "Quédate en CM702 si entras con presupuesto ajustado y 24 pasos ya te dan filtro+espresso correcto. Salta a CM800 si mueles a diario y notas retención o calor: 40 niveles, tolva 350g y molienda 800rpm preservan aroma y sostienen flujo.",
+    verdictArchetype: "The Entry 132€ → CM702 (24). The Daily 159€ → CM800 (40 + 350g frío).",
     a: { name: "Graef CM702", asin: "B00EO26GGC", image: "/images/grinders/graef-cm702.jpg" },
     b: { name: "Graef CM800", asin: "B00CS2DAEG", image: "/images/grinders/graef-cm800.jpg" },
     specs: [
@@ -76,9 +76,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "krups-gvx242-vs-melitta-molino",
     title: "Krups GVX242 vs Melitta Molino 1019-01",
-    subtitle: "Entry flat 17 niveles — 200g vs 200g. Misma receta 17 pasos, placa vs cónica y selector tazas.",
-    verdict: "GVX242 si quieres flat 50mm con auto-stop 2-12 tazas; Molino si priorizas selector 2-14 y footprint menor con mismo 1-17 fino a grueso.",
-    verdictArchetype: "The Efficiencist → GVX242 (auto-stop). The Compact → Molino (5 easeOfUse).",
+    subtitle: "Flat 17 niveles cara a cara para quien empieza con 200g y quiere espresso sin saltar a 100€. Ambos 17 pasos 100W, pero GVX242 añade flat 50mm y auto-stop 2-12 tazas, Melitta prioriza footprint y selector 2-14 con 5/5 easeOfUse.",
+    verdict: "GVX242 si valoras doseControl y flat 50mm para repetir sin báscula; Molino si buscas encimera mínima, 2-14 tazas y el uso más simple para pareja/oficina. Misma molienda, workflow distinto.",
+    verdictArchetype: "The Dose-Control → GVX242 (auto-stop). The Compact → Molino (ease 5).",
     a: { name: "Krups GVX242", asin: "B000IWHXH8", image: "/images/grinders/krups-gvx242.jpg" },
     b: { name: "Melitta Molino 1019-01", asin: "B00R7HKAWC", image: "/images/grinders/melitta-molino-1019-01.jpg" },
     specs: [
@@ -97,9 +97,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "lelit-fred-vs-gaggia-md15",
     title: "Lelit Fred PL043MMI vs Gaggia MD15",
-    subtitle: "Espresso dedicado — cónica 38mm stepless vs cónica 15 niveles con timer. Micrométrico vs escalado con display.",
-    verdict: "Fred si tu foco es stepless 38mm inox pulido 250g para dial fino; MD15 si quieres 15 pasos con timer digital y tolva 300g lista para portafiltro.",
-    verdictArchetype: "The Precisionist stepless → Fred. The Balanced timer → MD15.",
+    subtitle: "Dedicados espresso con filosofías opuestas: Fred 38mm stepless micrométrico 250g para dial fino prosumer, MD15 15 niveles con timer digital y tolva 300g para quien quiere pulsar y moler directo a portafiltro sin báscula.",
+    verdict: "Fred si tu ritual es perfilar 0.1s y buscas inox pulido 38mm para espresso puro; MD15 si prefieres flujo guiado, display y 300g para rotar grano sin vaciar. Stepless es precisión, 15 stepped es repetibilidad.",
+    verdictArchetype: "The Stepless → Fred (38mm). The Timer → MD15 (15 + 300g).",
     a: { name: "Lelit Fred PL043MMI", asin: "B00K5YLI2U", image: "/images/grinders/lelit-fred-pl043mmi.jpg" },
     b: { name: "Gaggia MD15", asin: "B08SBH2TC6", image: "/images/grinders/gaggia-md15.jpg" },
     specs: [
