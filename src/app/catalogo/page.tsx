@@ -144,7 +144,7 @@ function CatalogoInner() {
                 <div className="p-3 flex-1 flex flex-col">
                   <p className="text-xs font-mono text-stone-500">{i.brand}</p>
                   <p className="font-bold text-sm text-white">{i.name}</p>
-                  <p className="text-xs text-amber-400 font-mono">{i.price}€ {i.availability==="verified" ? <span className="ml-1 text-[10px] bg-emerald-900/30 text-emerald-300 border border-emerald-700/30 px-1.5 py-0.5 rounded-full">✓ Verificado {i.lastChecked}</span> : i.availability==="unknown" ? <span className="ml-1 text-[10px] bg-amber-900/20 text-amber-300 border border-amber-700/30 px-1.5 py-0.5 rounded-full">◷ Pendiente</span> : <span className="ml-1 text-[10px] bg-red-900/20 text-red-300 border border-red-700/30 px-1.5 py-0.5 rounded-full">✕ No disponible</span>}</p>
+                  <p className="text-xs text-amber-400 font-mono">{i.price}€</p>
                   {i.description && <p className="text-[13px] leading-relaxed text-stone-300 line-clamp-2 mt-1">{i.description}</p>}
                   {i.type==="machine" ? (
                     <div className="grid grid-cols-2 gap-1 mt-2 text-[10px]">
