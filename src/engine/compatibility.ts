@@ -91,13 +91,13 @@ function getExperienceScore(machine: CoffeeMachine, grinder: Grinder | undefined
   if (machine.ratings.learningCurve >= 4) pros.push("Curva exigente ideal para control manual.");
   if (machine.ratings.learningCurve <= 2) cons.push("Demasiado sencilla si buscas control manual profundo.");
   if (machine.specs.pid) {
-    s += 7;
+    s += 12; // Recalibrado P2: evidencia externa Tom's Guide/forocafe — para manual_craft PID > 58mm (antes 7 vs 12, ahora 12 vs 7)
     pros.push("Incluye control PID para estabilidad térmica.");
   } else {
     cons.push("Sin PID: mayor variabilidad térmica en manual.");
   }
   if (machine.specs.portafilterDiameter === 58) {
-    s += 12; // A-fix: 58mm +12 (antes +25) para contrato 0-100 — cap 100 preserva gap 100(88+12) vs 95(88+7)
+    s += 7; // 58mm +7 (antes +12) — ahora subordinado a PID para manual_craft
     pros.push("Portafiltro de 58 mm estándar comercial.");
   } else if (machine.specs.portafilterDiameter === 54) {
     // neutro, no bonus ni penalización fuerte

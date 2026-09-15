@@ -66,7 +66,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                   <span className={`text-[11px] font-mono px-2.5 py-1 rounded-full border font-bold ${badge.cls}`}>{badge.label}</span>
                   {isTop1 && <ScoreBadge score={e.score.totalScore} />}
                 </div>
-                {!isTop1 && <span className="font-mono text-xs font-bold text-stone-400">{e.score.totalScore}/100</span>}
+                {!isTop1 && <span className="font-mono text-xs font-bold text-stone-400">{e.score.totalScore >= 90 ? "Muy alto" : e.score.totalScore >= 75 ? "Alto" : "Medio"} · {e.score.totalScore}/100</span>}
               </div>
 
               <div className={`grid gap-3 sm:gap-4 ${isTop1 ? "grid-cols-2" : "grid-cols-2"}`}>

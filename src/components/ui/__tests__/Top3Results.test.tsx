@@ -64,9 +64,9 @@ describe("Top3Results — jerarquía visual", () => {
     expect(html).toContain("Mejor Coincidencia");
     expect(html).toContain("Mejor Relación");
     expect(html).toContain("Alternativa");
-    // Score visible (ScoreBadge renders 99 / 100 con comentario React)
-    expect(html).toMatch(/99.*\/ 100/);
-    expect(html).toMatch(/95.*\/100/);
+    // Score visible con encaje cualitativo (ScoreBadge: Encaje muy alto — 99/100)
+    expect(html).toMatch(/Encaje muy alto.*99.*\/100/);
+    expect(html).toMatch(/Muy alto.*95.*\/100/);
     // Pills técnicas
     expect(html).toContain("58mm");
     expect(html).toContain("PID");

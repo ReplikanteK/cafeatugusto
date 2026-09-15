@@ -47,7 +47,7 @@ describe("P1-Engine pesos + A-fix contrato 0-100", () => {
     expect(s.score.rationale).not.toContain("130%");
     expect(s.score.rationale).not.toMatch(/10[1-9]%|1[1-9]\d%/);
   });
-  it("58mm +12 debe superar 54mm+PID +7 para manual_craft bajo techo 100", () => {
+  it("PID +12 debe superar 58mm +7 para manual_craft tras recalibrado P2 (evidencia Tom's/forocafe)", () => {
     const m58noPid: CoffeeMachine = { ...base, specs: { ...base.specs, portafilterDiameter: 58, pid: false } };
     const m54pid: CoffeeMachine = { ...base, specs: { ...base.specs, portafilterDiameter: 54, pid: true } };
     const prefs: UserPreferences = {
@@ -62,9 +62,9 @@ describe("P1-Engine pesos + A-fix contrato 0-100", () => {
     };
     const s58 = calculateSetupScore(m58noPid, g, prefs);
     const s54 = calculateSetupScore(m54pid, g, prefs);
-    expect(s58.score.breakdown.experienceMatch).toBeGreaterThan(s54.score.breakdown.experienceMatch);
-    // Gaggia 58 sin PID debe ganar a Bambino 54 con PID para aspirante manual
-    expect(s58.score.totalScore).toBeGreaterThan(s54.score.totalScore);
+    expect(s54.score.breakdown.experienceMatch).toBeGreaterThan(s58.score.breakdown.experienceMatch);
+    // Tras recalibrado P2: PID estable > 58mm para manual_craft
+    expect(s54.score.totalScore).toBeGreaterThan(s58.score.totalScore);
   });
 
   it("daily 6+ con depósito <1.8L debe penalizar vs >1.8L", () => {
