@@ -29,11 +29,10 @@ function OptionCard({ title, desc, badge, onClick }: { title: string; desc: stri
 // Efficiencist: convenience, ThermoJet 3s, high milk, low maintenance, compact (indifferent para permitir Bambino)
 // Alchemist: black_coffee, alta claridad, manual craft
 const ARCHETYPE_PRESETS: Record<string, UserPreferences> = {
-  precisionist: { drinkTypes: ["espresso"], budgetMaxEUR: 950, workflowPreference: "manual_craft", dailyCups: "3-5", milkImportance: "low", maintenanceTolerance: "high", spaceConstraint: false, integratedGrinderPreference: "separated" },
+  precisionist: { drinkTypes: ["espresso"], budgetMaxEUR: 950, workflowPreference: "manual_craft", dailyCups: "3-5", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" },
   aesthetic: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 700, workflowPreference: "balanced", dailyCups: "3-5", milkImportance: "medium", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "indifferent" },
   efficiencist: { drinkTypes: ["espresso","milk_drink"], budgetMaxEUR: 550, workflowPreference: "convenience", dailyCups: "3-5", milkImportance: "high", maintenanceTolerance: "low", spaceConstraint: true, integratedGrinderPreference: "indifferent" },
-  // P0-5 espresso-only: alchemist black_coffee oculto — catálogo 100% espresso. Usamos espresso + manual para claridad alta sin ruta filtro.
-  alchemist: { drinkTypes: ["espresso"], budgetMaxEUR: 700, workflowPreference: "manual_craft", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "medium", spaceConstraint: false, integratedGrinderPreference: "separated" },
+  alchemist: { drinkTypes: ["espresso"], budgetMaxEUR: 700, workflowPreference: "manual_craft", dailyCups: "1-2", milkImportance: "low", maintenanceTolerance: "high", spaceConstraint: false, integratedGrinderPreference: "separated" },
 };
 
 function WizardInner() {
