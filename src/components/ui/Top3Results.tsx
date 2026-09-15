@@ -147,10 +147,10 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                     {([
                       ["Presupuesto", e.score.breakdown.budgetMatch],
                       ["Workflow", e.score.breakdown.experienceMatch],
-                      ["Uso diario", e.score.breakdown.dailyMatch],
                       ["Espacio", e.score.breakdown.spaceMatch],
                       ["Mantenimiento", e.score.breakdown.maintenanceMatch],
                       ["Leche", e.score.breakdown.milkMatch],
+                      ["Uso diario", e.score.breakdown.dailyMatch],
                       ["Molinillo", e.score.breakdown.grinderMatch],
                     ] as const).map(([label, val]) => (
                       <div key={label} className="flex items-center gap-2">
