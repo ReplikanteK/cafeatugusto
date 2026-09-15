@@ -44,20 +44,7 @@ export default async function ComparativePage({ params }: { params: Promise<{ sl
           </tbody>
         </table>
       </div>
-      <div className="mt-8 grid md:grid-cols-3 gap-4">
-        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
-          <h4 className="font-bold text-white text-sm">Extracción</h4>
-          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Geometría y control térmico mandan. La fila PID/stepless vs stepped marca si puedes perfilar flujo y repetir dosis. No es marketing — es <span className="text-amber-400">retención, molienda y estabilidad</span> lo que el recomendador pondera.</p>
-        </div>
-        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
-          <h4 className="font-bold text-white text-sm">Ritual diario</h4>
-          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Tiempo a taza, ruido y tolva definen si usas la máquina 1 o 6 veces al día. Verifica <span className="text-white">hoppers y heat</span> arriba — el motor cruza con <span className="font-mono text-stone-300">dailyCups</span> y <span className="font-mono text-stone-300">maintenanceTolerance</span>.</p>
-        </div>
-        <div className="rounded-xl bg-stone-900 border border-stone-800 p-4">
-          <h4 className="font-bold text-white text-sm">Coste total</h4>
-          <p className="text-xs text-stone-400 mt-2 leading-relaxed">Precio aprox. + accesorios esenciales (abajo) = presupuesto real. El recomendador filtra por <span className="font-mono text-amber-400">budgetMaxEUR *1.1</span> para no recomendar humo fuera de rango.</p>
-        </div>
-      </div>
+
       <div className="mt-8 rounded-2xl bg-stone-900 border border-stone-800 p-5">
         <h3 className="font-black text-white">Accesorios esenciales — Ritual</h3>
         <p className="text-xs text-stone-400 mt-1">Cross-selling afiliado — tamper, WDT, VST según diámetro.</p>
