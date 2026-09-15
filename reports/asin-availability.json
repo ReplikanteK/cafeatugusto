@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-15T18:03:01.453Z",
+  "timestamp": "2026-09-15T18:08:00.654Z",
   "mode": "mock",
-  "total": 44,
-  "valid": 44,
+  "total": 36,
+  "valid": 36,
   "invalid": 0,
   "InStock": [
     "B06X3ZWVZ7",
@@ -31,24 +31,16 @@
     "B0CHYWBF7R",
     "B000SIBODG",
     "B08SBH2TC6",
-    "B09713NW8H",
-    "B06X3Z9MF3",
-    "B0DSLYKM31",
+    "B0D92111HV",
     "B0BH8MRB2Z",
-    "B00BS7RFSO",
-    "B086H1W384",
     "B0CGVVSM19",
     "B09N2C9FP5",
-    "B0GK8VQW77",
-    "B0CDCDR385",
+    "B08NBHR7HT",
+    "B0D1PF6Z57",
     "B0D9NX6VNG",
     "B0DB1J2S6V",
-    "B077YZXR1W",
     "B0GXFD87XD",
-    "B0D92111HV",
-    "B0FJ8Q6KQZ",
-    "B08NBHR7HT",
-    "B0D1PF6Z57"
+    "B0DSLYKM31"
   ],
   "OutOfStock": [],
   "InvalidASIN": [],
@@ -57,20 +49,21 @@
     "B06X3ZWVZ7": {
       "status": "InStock",
       "sources": [
-        "machines:m_dedica_ec685"
+        "machines:m_dedica_ec685",
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:a"
       ]
     },
     "B01D4O62JG": {
       "status": "InStock",
       "sources": [
-        "machines:m_lelit_victoria"
+        "machines:m_lelit_victoria",
+        "comparatives:lelit-victoria-vs-lelit-anita:a"
       ]
     },
     "B0B8JV43LL": {
       "status": "InStock",
       "sources": [
-        "machines:m_delonghi_specialista",
-        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:b"
+        "machines:m_delonghi_specialista"
       ]
     },
     "B0H1D9S7RJ": {
@@ -94,7 +87,8 @@
     "B004QXG132": {
       "status": "InStock",
       "sources": [
-        "machines:m_lelit_anita"
+        "machines:m_lelit_anita",
+        "comparatives:lelit-victoria-vs-lelit-anita:b"
       ]
     },
     "B0F1FZ5CPR": {
@@ -130,7 +124,8 @@
     "B0C85NMRXP": {
       "status": "InStock",
       "sources": [
-        "machines:m_krups_virtuoso"
+        "machines:m_krups_virtuoso",
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:b"
       ]
     },
     "B0GT581YT8": {
@@ -148,7 +143,8 @@
     "B000IWHXH8": {
       "status": "InStock",
       "sources": [
-        "grinders:g_krups_gvx242"
+        "grinders:g_krups_gvx242",
+        "comparatives:krups-gvx242-vs-melitta-molino:a"
       ]
     },
     "B005L8YUI4": {
@@ -160,7 +156,8 @@
     "B00R7HKAWC": {
       "status": "InStock",
       "sources": [
-        "grinders:g_melitta_molino"
+        "grinders:g_melitta_molino",
+        "comparatives:krups-gvx242-vs-melitta-molino:b"
       ]
     },
     "B0FKN9KHJP": {
@@ -172,7 +169,8 @@
     "B00EO26GGC": {
       "status": "InStock",
       "sources": [
-        "grinders:g_graef_cm702"
+        "grinders:g_graef_cm702",
+        "comparatives:graef-cm702-vs-graef-cm800:a"
       ]
     },
     "B0GLGQ6J6R": {
@@ -184,13 +182,15 @@
     "B00CS2DAEG": {
       "status": "InStock",
       "sources": [
-        "grinders:g_graef_cm800"
+        "grinders:g_graef_cm800",
+        "comparatives:graef-cm702-vs-graef-cm800:b"
       ]
     },
     "B00K5YLI2U": {
       "status": "InStock",
       "sources": [
-        "grinders:g_lelit_fred"
+        "grinders:g_lelit_fred",
+        "comparatives:lelit-fred-vs-gaggia-md15:a"
       ]
     },
     "B0CHYWBF7R": {
@@ -208,116 +208,68 @@
     "B08SBH2TC6": {
       "status": "InStock",
       "sources": [
-        "grinders:g_gaggia_md15"
-      ]
-    },
-    "B09713NW8H": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-bambino-vs-delonghi-dedica:a"
-      ]
-    },
-    "B06X3Z9MF3": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-bambino-vs-delonghi-dedica:b"
-      ]
-    },
-    "B0DSLYKM31": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-bambino-vs-delonghi-dedica:acc:Tamper 54mm presión constante"
-      ]
-    },
-    "B0BH8MRB2Z": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-bambino-vs-delonghi-dedica:acc:WDT 0.35mm 10 agujas"
-      ]
-    },
-    "B00BS7RFSO": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:a"
-      ]
-    },
-    "B086H1W384": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:b"
-      ]
-    },
-    "B0CGVVSM19": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:acc:Cesta VST 18g 58mm"
-      ]
-    },
-    "B09N2C9FP5": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:acc:Portafiltro bottomless 58mm E61"
-      ]
-    },
-    "B0GK8VQW77": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:a"
-      ]
-    },
-    "B0CDCDR385": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:b",
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:b"
-      ]
-    },
-    "B0D9NX6VNG": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:acc:Báscula 0.1g con timer"
-      ]
-    },
-    "B0DB1J2S6V": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:acc:Soplador single-dose"
-      ]
-    },
-    "B077YZXR1W": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:a"
-      ]
-    },
-    "B0GXFD87XD": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:acc:Anillo dosificador magnético 54mm"
+        "grinders:g_gaggia_md15",
+        "comparatives:lelit-fred-vs-gaggia-md15:b"
       ]
     },
     "B0D92111HV": {
       "status": "InStock",
       "sources": [
-        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:acc:Tamper regulable 51mm"
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:Tamper regulable 51mm"
       ]
     },
-    "B0FJ8Q6KQZ": {
+    "B0BH8MRB2Z": {
       "status": "InStock",
       "sources": [
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:a"
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:WDT 0.35mm 10 agujas"
+      ]
+    },
+    "B0CGVVSM19": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-victoria-vs-lelit-anita:acc:Cesta VST 18g 58mm"
+      ]
+    },
+    "B09N2C9FP5": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-victoria-vs-lelit-anita:acc:Portafiltro bottomless 58mm E61"
       ]
     },
     "B08NBHR7HT": {
       "status": "InStock",
       "sources": [
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:acc:Cepillo limpieza muelas"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
       "status": "InStock",
       "sources": [
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:acc:Tolva single-dose 45g"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Tolva single-dose 45g"
+      ]
+    },
+    "B0D9NX6VNG": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:krups-gvx242-vs-melitta-molino:acc:Báscula 0.1g con timer"
+      ]
+    },
+    "B0DB1J2S6V": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:krups-gvx242-vs-melitta-molino:acc:Soplador single-dose"
+      ]
+    },
+    "B0GXFD87XD": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm"
+      ]
+    },
+    "B0DSLYKM31": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Tamper 54mm presión constante"
       ]
     }
   }
