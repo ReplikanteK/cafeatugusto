@@ -23,7 +23,7 @@ export default async function ComparativePage({ params }: { params: Promise<{ sl
       <p className="text-sm text-stone-300 mt-2 leading-relaxed">{c.subtitle}</p>
       <div className="mt-6 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-4">
         <p className="text-sm font-bold text-amber-300">Veredicto: {c.verdict}</p>
-        <p className="text-xs text-stone-300 mt-2 leading-relaxed">Análisis extendido: {c.verdictArchetype} La diferencia clave no es solo precio sino geometría (portafiltro/muela) y control térmico (PID/stepless) — lo que el motor pondera en <span className="font-mono text-amber-400">compatibility.ts</span>.</p>
+        <p className="text-xs text-stone-400 mt-1">{c.verdictArchetype}</p>
       </div>
       <div className="grid md:grid-cols-2 gap-6 mt-8">
         {[c.a,c.b].map((p)=> {
