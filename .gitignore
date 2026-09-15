@@ -40,3 +40,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# opencode-agent monorepo — otros proyectos conservados en disco pero fuera del repo activo
+/agent3-update/
+/audio/
+/backups/
+/bin/
+/downloads/
+/git_test/
+/include/
+/lamesacuadrada/
+/lib/
+/logs/
+/memoria/
+/models/
+/nex-ui/
+/piper/
+/proc/
+/share/
+/scripts/node_modules/
+/reports/review-*.md

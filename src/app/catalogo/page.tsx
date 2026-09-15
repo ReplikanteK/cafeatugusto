@@ -14,11 +14,12 @@ interface Item {
   id: string; type: "machine" | "grinder"; name: string; brand: string; price: number; image: string; asin: string; description?: string;
   diam?: number; pid?: boolean; boiler?: string; heat?: number; integrated?: boolean;
   burr?: string; burrSize?: number; adj?: string; retention?: string; focus?: string;
+  availability?: "verified" | "unknown" | "unavailable"; lastChecked?: string;
 }
 
 const allItems: Item[] = [
-  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated })),
-  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro" })),
+  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated, availability: m.availability?.status, lastChecked: m.availability?.lastChecked })),
+  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro", availability: g.availability?.status, lastChecked: g.availability?.lastChecked })),
 ];
 
 const PAGE_SIZE = 12;
@@ -143,7 +144,7 @@ function CatalogoInner() {
                 <div className="p-3 flex-1 flex flex-col">
                   <p className="text-xs font-mono text-stone-500">{i.brand}</p>
                   <p className="font-bold text-sm text-white">{i.name}</p>
-                  <p className="text-xs text-amber-400 font-mono">{i.price}€</p>
+                  <p className="text-xs text-amber-400 font-mono">{i.price}€ {i.availability==="verified" ? <span className="ml-1 text-[10px] bg-emerald-900/30 text-emerald-300 border border-emerald-700/30 px-1.5 py-0.5 rounded-full">✓ Verificado {i.lastChecked}</span> : i.availability==="unknown" ? <span className="ml-1 text-[10px] bg-amber-900/20 text-amber-300 border border-amber-700/30 px-1.5 py-0.5 rounded-full">◷ Pendiente</span> : <span className="ml-1 text-[10px] bg-red-900/20 text-red-300 border border-red-700/30 px-1.5 py-0.5 rounded-full">✕ No disponible</span>}</p>
                   {i.description && <p className="text-[13px] leading-relaxed text-stone-300 line-clamp-2 mt-1">{i.description}</p>}
                   {i.type==="machine" ? (
                     <div className="grid grid-cols-2 gap-1 mt-2 text-[10px]">

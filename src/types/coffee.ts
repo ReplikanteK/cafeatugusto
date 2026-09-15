@@ -8,6 +8,22 @@ export type BoilerType = "thermoblock" | "single_boiler" | "dual_boiler" | "heat
 export type SteamSystem = "manual" | "automatic" | "none";
 export type PortafilterDiameter = 51 | 54 | 57 | 58;
 
+export type AmazonMarketplace = "amazon.es";
+export type AvailabilityStatus = "verified" | "unavailable" | "unknown";
+
+export interface AmazonInfo {
+  readonly asin: string;
+  readonly marketplace: AmazonMarketplace;
+  readonly url: string;
+  readonly lastVerified?: string; // ISO date
+}
+
+export interface AvailabilityInfo {
+  readonly status: AvailabilityStatus;
+  readonly lastChecked?: string; // ISO date
+  readonly reason?: string;
+}
+
 export interface CoffeeMachine {
   readonly id: string;
   readonly slug: string;
@@ -42,6 +58,8 @@ export interface CoffeeMachine {
     readonly bestFor: readonly string[];
     readonly notIdealFor: readonly string[];
   };
+  readonly amazon?: AmazonInfo;
+  readonly availability?: AvailabilityInfo;
   readonly metadata: {
     readonly verifiedAt: string;
     readonly sources: readonly string[];
@@ -76,6 +94,8 @@ export interface Grinder {
     readonly easeOfUse: RatingScale;
     readonly footprint: FootprintSize;
   };
+  readonly amazon?: AmazonInfo;
+  readonly availability?: AvailabilityInfo;
   readonly metadata: {
     readonly verifiedAt: string;
     readonly sources: readonly string[];

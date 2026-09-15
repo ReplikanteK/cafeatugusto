@@ -15,6 +15,10 @@ export function passesHardFilters(
   grinder: Grinder | undefined,
   prefs: UserPreferences
 ): boolean {
+  // V1 Catalogación Amazon: solo productos verified son recomendables — unknown/unavailable no pasan
+  // unknown ≠ verified (evita humo si no hay oferta comprable). Migración inicial marca verified con reason pendiente.
+  if (machine.availability && machine.availability.status !== "verified") return false;
+  if (grinder?.availability && grinder.availability.status !== "verified") return false;
   const totalCost = machine.priceApproxEUR + (grinder?.priceApproxEUR ?? 0);
   if (totalCost > prefs.budgetMaxEUR * 1.1) return false;
   if (prefs.spaceConstraint) {

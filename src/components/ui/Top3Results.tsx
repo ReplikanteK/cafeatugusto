@@ -73,7 +73,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                 <div className="rounded-xl bg-stone-950 border border-stone-800 p-2.5 sm:p-3 flex flex-col">
                   <ProductImage src={e.setup.machine.image} alt={e.setup.machine.model} className="aspect-[16/10] sm:aspect-[4/3]" />
                   <p className="font-bold text-white mt-2 text-sm">
-                    {e.setup.machine.brand} {e.setup.machine.model}
+                    {e.setup.machine.brand} {e.setup.machine.model} {e.setup.machine.availability?.status==="verified" ? <span className="text-[10px] bg-emerald-900/30 text-emerald-300 border border-emerald-700/30 px-1 py-0.5 rounded-full align-middle">✓</span> : null}
                   </p>
                   <p className="text-xs text-stone-400">
                     {e.setup.machine.specs.portafilterDiameter ? `${e.setup.machine.specs.portafilterDiameter}mm` : ""} {e.setup.machine.specs.pid ? "· PID" : "· sin PID"} · {e.setup.machine.specs.boilerType}
