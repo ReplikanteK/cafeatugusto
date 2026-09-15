@@ -1,43 +1,51 @@
 {
-  "timestamp": "2026-09-14T15:35:51.050Z",
+  "timestamp": "2026-09-15T17:56:28.062Z",
   "mode": "mock",
-  "total": 35,
-  "valid": 35,
+  "total": 43,
+  "valid": 43,
   "invalid": 0,
   "InStock": [
-    "B06X3Z9MF3",
-    "B09713NW8H",
-    "B086H1W384",
-    "B07G1CW1LG",
-    "B077YZXR1W",
-    "B001EOMZ5E",
-    "B00BS7RFSO",
-    "B086Q2M7FK",
+    "B06X3ZWVZ7",
     "B01D4O62JG",
-    "B0C2ZPPX9K",
-    "B07B2WJHBH",
     "B0B8JV43LL",
-    "B0BB4XHYNW",
-    "B07B2R52S4",
-    "B0FLFH142P",
-    "B0GK8VQW77",
-    "B0CDCDR385",
-    "B0BHHTT2LK",
-    "B09X2Y1T5B",
-    "B0FJ8Q6KQZ",
-    "B0CJ353WBL",
-    "B0DPRWGP6L",
-    "B0CBNGZBGS",
-    "B07XSK2PKN",
-    "B01G82WVZ0",
+    "B0H1D9S7RJ",
+    "B076HZ1P4M",
+    "B0GKHGMQYT",
+    "B004QXG132",
+    "B0F1FZ5CPR",
+    "B0CWP67FWS",
+    "B0H2ND6MJ4",
+    "B086RF6YJQ",
+    "B0DW9F2DDR",
+    "B0C85NMRXP",
+    "B0GT581YT8",
+    "B0GJ62WDY7",
+    "B000IWHXH8",
+    "B005L8YUI4",
+    "B00R7HKAWC",
+    "B0FKN9KHJP",
+    "B00EO26GGC",
+    "B0GLGQ6J6R",
+    "B00CS2DAEG",
+    "B00K5YLI2U",
+    "B0CHYWBF7R",
+    "B000SIBODG",
+    "B09713NW8H",
+    "B06X3Z9MF3",
     "B0DSLYKM31",
     "B0BH8MRB2Z",
+    "B00BS7RFSO",
+    "B086H1W384",
     "B0CGVVSM19",
     "B09N2C9FP5",
+    "B0GK8VQW77",
+    "B0CDCDR385",
     "B0D9NX6VNG",
     "B0DB1J2S6V",
+    "B077YZXR1W",
     "B0GXFD87XD",
     "B0D92111HV",
+    "B0FJ8Q6KQZ",
     "B08NBHR7HT",
     "B0D1PF6Z57"
   ],
@@ -45,75 +53,16 @@
   "InvalidASIN": [],
   "PriceChanged": [],
   "details": {
-    "B06X3Z9MF3": {
+    "B06X3ZWVZ7": {
       "status": "InStock",
       "sources": [
-        "machines:m_dedica_ec685",
-        "comparatives:sage-bambino-vs-delonghi-dedica:b"
-      ]
-    },
-    "B09713NW8H": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_bambino_std",
-        "comparatives:sage-bambino-vs-delonghi-dedica:a"
-      ]
-    },
-    "B086H1W384": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_gaggia_classic_evo",
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:b"
-      ]
-    },
-    "B07G1CW1LG": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_bambino_plus"
-      ]
-    },
-    "B077YZXR1W": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_barista_express",
-        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:a"
-      ]
-    },
-    "B001EOMZ5E": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_magnifica_s"
-      ]
-    },
-    "B00BS7RFSO": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_lelit_anna_pid",
-        "comparatives:lelit-anna-vs-gaggia-classic-pro:a"
-      ]
-    },
-    "B086Q2M7FK": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_rancilio_silvia"
+        "machines:m_dedica_ec685"
       ]
     },
     "B01D4O62JG": {
       "status": "InStock",
       "sources": [
         "machines:m_lelit_victoria"
-      ]
-    },
-    "B0C2ZPPX9K": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_profitec_go"
-      ]
-    },
-    "B07B2WJHBH": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_sage_dual_boiler"
       ]
     },
     "B0B8JV43LL": {
@@ -123,86 +72,148 @@
         "comparatives:sage-barista-express-vs-delonghi-specialista-arte:b"
       ]
     },
-    "B0BB4XHYNW": {
+    "B0H1D9S7RJ": {
       "status": "InStock",
       "sources": [
-        "machines:m_lelit_marax"
+        "machines:m_ninja_luxe_premier"
       ]
     },
-    "B07B2R52S4": {
+    "B076HZ1P4M": {
       "status": "InStock",
       "sources": [
-        "machines:m_sage_oracle_touch"
+        "machines:m_siemens_te655"
       ]
     },
-    "B0FLFH142P": {
+    "B0GKHGMQYT": {
       "status": "InStock",
       "sources": [
-        "machines:m_gaggia_magnifica_combo"
+        "machines:m_siemens_tq923"
       ]
     },
-    "B0GK8VQW77": {
+    "B004QXG132": {
       "status": "InStock",
       "sources": [
-        "grinders:g_kingrinder_k6",
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:a"
+        "machines:m_lelit_anita"
       ]
     },
-    "B0CDCDR385": {
+    "B0F1FZ5CPR": {
       "status": "InStock",
       "sources": [
-        "grinders:g_baratza_encore_esp",
-        "comparatives:kingrinder-k6-vs-baratza-encore-esp:b",
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:b"
+        "machines:m_caso_gourmet"
       ]
     },
-    "B0BHHTT2LK": {
+    "B0CWP67FWS": {
       "status": "InStock",
       "sources": [
-        "grinders:g_1zpresso_jxpro"
+        "machines:m_delonghi_ec9555m"
       ]
     },
-    "B09X2Y1T5B": {
+    "B0H2ND6MJ4": {
       "status": "InStock",
       "sources": [
-        "grinders:g_comandante_c40"
+        "machines:m_delonghi_magnifica_duo"
       ]
     },
-    "B0FJ8Q6KQZ": {
+    "B086RF6YJQ": {
       "status": "InStock",
       "sources": [
-        "grinders:g_eureka_mignon_manuale",
-        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:a"
+        "machines:m_delonghi_stilosa"
       ]
     },
-    "B0CJ353WBL": {
+    "B0DW9F2DDR": {
       "status": "InStock",
       "sources": [
-        "grinders:g_fellow_opus"
+        "machines:m_krups_precision"
       ]
     },
-    "B0DPRWGP6L": {
+    "B0C85NMRXP": {
       "status": "InStock",
       "sources": [
-        "grinders:g_df64_gen2"
+        "machines:m_krups_virtuoso"
       ]
     },
-    "B0CBNGZBGS": {
+    "B0GT581YT8": {
       "status": "InStock",
       "sources": [
-        "grinders:g_eureka_mignon_zero"
+        "machines:m_amzchef_20bar"
       ]
     },
-    "B07XSK2PKN": {
+    "B0GJ62WDY7": {
       "status": "InStock",
       "sources": [
-        "grinders:g_eureka_mignon_specialita"
+        "machines:m_cecotec_tradizionale"
       ]
     },
-    "B01G82WVZ0": {
+    "B000IWHXH8": {
       "status": "InStock",
       "sources": [
-        "grinders:g_baratza_sette270"
+        "grinders:g_krups_gvx242"
+      ]
+    },
+    "B005L8YUI4": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_rommelsbacher_ekm200"
+      ]
+    },
+    "B00R7HKAWC": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_melitta_molino"
+      ]
+    },
+    "B0FKN9KHJP": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_behmor_ideal"
+      ]
+    },
+    "B00EO26GGC": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_graef_cm702"
+      ]
+    },
+    "B0GLGQ6J6R": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_rommelsbacher_ekm600"
+      ]
+    },
+    "B00CS2DAEG": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_graef_cm800"
+      ]
+    },
+    "B00K5YLI2U": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_lelit_fred"
+      ]
+    },
+    "B0CHYWBF7R": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_wmf_lumero"
+      ]
+    },
+    "B000SIBODG": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_zassenhaus_40005"
+      ]
+    },
+    "B09713NW8H": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-bambino-vs-delonghi-dedica:a"
+      ]
+    },
+    "B06X3Z9MF3": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-bambino-vs-delonghi-dedica:b"
       ]
     },
     "B0DSLYKM31": {
@@ -217,6 +228,18 @@
         "comparatives:sage-bambino-vs-delonghi-dedica:acc:WDT 0.35mm 10 agujas"
       ]
     },
+    "B00BS7RFSO": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:a"
+      ]
+    },
+    "B086H1W384": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-anna-vs-gaggia-classic-pro:b"
+      ]
+    },
     "B0CGVVSM19": {
       "status": "InStock",
       "sources": [
@@ -227,6 +250,19 @@
       "status": "InStock",
       "sources": [
         "comparatives:lelit-anna-vs-gaggia-classic-pro:acc:Portafiltro bottomless 58mm E61"
+      ]
+    },
+    "B0GK8VQW77": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:a"
+      ]
+    },
+    "B0CDCDR385": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:kingrinder-k6-vs-baratza-encore-esp:b",
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:b"
       ]
     },
     "B0D9NX6VNG": {
@@ -241,6 +277,12 @@
         "comparatives:kingrinder-k6-vs-baratza-encore-esp:acc:Soplador single-dose"
       ]
     },
+    "B077YZXR1W": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:sage-barista-express-vs-delonghi-specialista-arte:a"
+      ]
+    },
     "B0GXFD87XD": {
       "status": "InStock",
       "sources": [
@@ -251,6 +293,12 @@
       "status": "InStock",
       "sources": [
         "comparatives:sage-barista-express-vs-delonghi-specialista-arte:acc:Tamper regulable 51mm"
+      ]
+    },
+    "B0FJ8Q6KQZ": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:eureka-mignon-manuale-vs-baratza-encore-esp:a"
       ]
     },
     "B08NBHR7HT": {
