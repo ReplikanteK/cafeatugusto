@@ -13,7 +13,7 @@ export function Footer() {
         </div>
         <div>
           <h4 className="font-semibold text-stone-200 mb-2">Conocimiento</h4>
-          <ul className="space-y-2 text-xs"><li><span className="text-stone-500">Guías & Cheat Sheets — próximamente</span></li><li className="text-[11px] text-stone-600">54mm vs 58mm • Dial-in • Thermoblock (307 → /metodologia)</li></ul>
+          <ul className="space-y-2 text-xs"><li><Link href="/guias" className="hover:text-amber-400 font-bold text-amber-500">Guías técnicas →</Link></li><li><Link href="/guias/54mm-vs-58mm" className="hover:text-amber-400">54mm vs 58mm</Link></li><li><Link href="/guias/dial-in-ratio" className="hover:text-amber-400">Dial-in por tueste</Link></li><li><Link href="/guias/thermoblock-vs-boiler" className="hover:text-amber-400">Thermoblock vs caldera</Link></li></ul>
         </div>
         <div>
           <h4 className="font-semibold text-stone-200 mb-2">Transparencia</h4>
