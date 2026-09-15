@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-15T17:56:28.062Z",
+  "timestamp": "2026-09-15T18:03:01.453Z",
   "mode": "mock",
-  "total": 43,
-  "valid": 43,
+  "total": 44,
+  "valid": 44,
   "invalid": 0,
   "InStock": [
     "B06X3ZWVZ7",
@@ -30,6 +30,7 @@
     "B00K5YLI2U",
     "B0CHYWBF7R",
     "B000SIBODG",
+    "B08SBH2TC6",
     "B09713NW8H",
     "B06X3Z9MF3",
     "B0DSLYKM31",
@@ -202,6 +203,12 @@
       "status": "InStock",
       "sources": [
         "grinders:g_zassenhaus_40005"
+      ]
+    },
+    "B08SBH2TC6": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_gaggia_md15"
       ]
     },
     "B09713NW8H": {
