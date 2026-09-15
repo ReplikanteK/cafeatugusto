@@ -145,7 +145,7 @@ function CatalogoInner() {
                   <p className="text-xs font-mono text-stone-500">{i.brand}</p>
                   <p className="font-bold text-sm text-white">{i.name}</p>
                   <p className="text-xs text-amber-400 font-mono">{i.price}€</p>
-                  {i.description && <p className="text-[13px] leading-relaxed text-stone-300 line-clamp-2 mt-1">{i.description}</p>}
+                  {i.description && <p className="text-[13px] leading-relaxed text-stone-300 mt-1">{i.description}</p>}
                   {i.type==="machine" ? (
                     <div className="grid grid-cols-2 gap-1 mt-2 text-[10px]">
                       <span className="bg-stone-950 border border-stone-800 rounded px-1.5 py-1">📏 {i.diam ?? "—"}mm</span>
