@@ -21,19 +21,17 @@ export default async function ComparativePage({ params }: { params: Promise<{ sl
       <p className="text-xs font-mono text-amber-400 tracking-widest">COMPARATIVA • RIGOR 60% + RITUAL 40% • PRECIOS VERIFICADOS 2026-09-15</p>
       <h1 className="text-3xl font-black text-white mt-2">{c.title}</h1>
       <p className="text-sm text-stone-300 mt-2 leading-relaxed">{c.subtitle}</p>
-      <p className="text-sm text-stone-400 mt-3 leading-relaxed">Dos opciones verified en <span className="text-white font-bold">amazon.es</span> con <span className="text-amber-400">?tag=cafeatugusto-21</span>. Precios aprox. auditables — {priceA ? `${priceA}€` : "?"} vs {priceB ? `${priceB}€` : "?"} — para ponderar presupuesto en el recomendador sin humo.</p>
       <div className="mt-6 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-4">
         <p className="text-sm font-bold text-amber-300">Veredicto: {c.verdict}</p>
         <p className="text-xs text-stone-300 mt-2 leading-relaxed">Análisis extendido: {c.verdictArchetype} La diferencia clave no es solo precio sino geometría (portafiltro/muela) y control térmico (PID/stepless) — lo que el motor pondera en <span className="font-mono text-amber-400">compatibility.ts</span>.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-6 mt-8">
-        {[c.a,c.b].map((p,i)=> {
-          const price = i===0 ? priceA : priceB;
+        {[c.a,c.b].map((p)=> {
           return (
           <div key={p.asin} className="rounded-xl bg-stone-900 border border-stone-800 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.image} alt={p.name} className="w-full aspect-[4/3] object-contain bg-white p-2" />
-            <div className="p-4"><p className="font-bold text-white">{p.name}</p>{price && <p className="text-sm font-mono font-black text-amber-400 mt-1">{price}€ <span className="text-[10px] text-stone-500 font-normal">aprox.</span></p>}<a href={amazonUrl(p.asin, p.name)} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado · verified)</p></div>
+            <div className="p-4"><p className="font-bold text-white">{p.name}</p><a href={amazonUrl(p.asin, p.name)} target="_blank" rel="noopener noreferrer" className="mt-3 block text-center py-2 bg-amber-600 rounded-lg text-xs font-black">Ver en Amazon →</a><p className="text-[10px] text-stone-500 text-center mt-1">(afiliado · verified)</p></div>
           </div>
         )})}
       </div>
