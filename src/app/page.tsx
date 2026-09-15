@@ -82,27 +82,27 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link href="/comparativas/sage-bambino-vs-delonghi-dedica" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+            <Link href="/comparativas/delonghi-dedica-vs-krups-virtuoso" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
               <div>
                 <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Inicio Espresso</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Bambino vs Dedica EC685</h3>
-                <p className="text-xs text-stone-400 mt-2">ThermoJet 54mm vs 51mm presurizado y vapor automático.</p>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Dedica EC685 vs Krups Virtuoso</h3>
+                <p className="text-xs text-stone-400 mt-2">51mm presurizado 15cm vs 51mm ThermoJet pannarello — misma huella, extracción tolerante.</p>
               </div>
               <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
             </Link>
-            <Link href="/comparativas/kingrinder-k6-vs-baratza-encore-esp" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
-              <div>
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Molinillos Entrada</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Kingrinder K6 vs Baratza ESP</h3>
-                <p className="text-xs text-stone-400 mt-2">Precisión manual cónica frente a comodidad eléctrica paso a paso.</p>
-              </div>
-              <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
-            </Link>
-            <Link href="/comparativas/lelit-anna-vs-gaggia-classic-pro" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+            <Link href="/comparativas/lelit-victoria-vs-lelit-anita" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
               <div>
                 <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Gama Media Single Boiler</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Lelit Anna PID vs Gaggia Classic Evo</h3>
-                <p className="text-xs text-stone-400 mt-2">Control de temperatura integrado frente al estándar de 58mm.</p>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Lelit Victoria vs Anita</h3>
+                <p className="text-xs text-stone-400 mt-2">PID 58mm LCC vs 57mm con molinillo integrado 38mm.</p>
+              </div>
+              <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
+            </Link>
+            <Link href="/comparativas/graef-cm702-vs-graef-cm800" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+              <div>
+                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Molinillos Graef</span>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Graef CM702 vs CM800</h3>
+                <p className="text-xs text-stone-400 mt-2">24 niveles 250g vs 40 niveles 350g — misma cónica, escalado de precisión.</p>
               </div>
               <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
             </Link>
