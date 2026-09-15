@@ -8,7 +8,7 @@ import { track } from "@/lib/analytics";
 import { amazonUrl } from "@/lib/amazon";
 
 type Cat = "all" | "machines" | "grinders";
-type Diam = "all" | "51" | "54" | "57" | "58";
+type Diam = "all" | "51" | "57" | "58";
 
 interface Item {
   id: string; type: "machine" | "grinder"; name: string; brand: string; price: number; image: string; asin: string; description?: string;
@@ -118,7 +118,7 @@ function CatalogoInner() {
             <span className="absolute left-2.5 top-2 text-stone-500 text-xs">🔍</span>
           </div>
           <select value={diam} onChange={e=>onFilterChange(()=>setDiam(e.target.value as Diam))} className="px-3 py-1.5 rounded-lg bg-stone-900 border border-stone-800 text-xs">
-            <option value="all">Diámetro — Cualquiera</option><option value="51">51mm</option><option value="54">54mm</option><option value="57">57mm</option><option value="58">58mm Pro</option>
+            <option value="all">Diámetro — Cualquiera</option><option value="51">51mm</option><option value="57">57mm</option><option value="58">58mm Pro</option>
           </select>
           <label className="flex items-center gap-2 text-xs"><input type="checkbox" checked={pidOnly} onChange={e=>onFilterChange(()=>setPidOnly(e.target.checked))} /> Solo PID</label>
           <label className="flex items-center gap-2 text-xs"><input type="checkbox" checked={noIntegrated} onChange={e=>onFilterChange(()=>setNoIntegrated(e.target.checked))} /> Sin molino integrado</label>

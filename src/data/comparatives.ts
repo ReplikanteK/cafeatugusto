@@ -112,7 +112,7 @@ export const COMPARATIVES: readonly Comparative[] = [
     ],
     accessories: [
       { name: "Anillo dosificador 58mm", asin: "B0GXFD87XD", note: "Magnético — evita desperdicio" },
-      { name: "Tamper 54mm presión constante", asin: "B0DSLYKM31", note: "Para 54mm — canalización" },
+      { name: "Cepillo limpieza muelas", asin: "B08NBHR7HT", note: "Cerdas antiestáticas — mantenimiento grinder" },
     ],
   },
 ];

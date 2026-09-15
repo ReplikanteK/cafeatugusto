@@ -17,7 +17,7 @@ export const WIZARD_STEPS = [
     subtitle: "Suma máquina + molinillo si aplica. No mostramos fuera de rango.",
     options: [
       { id:300, title:"Hasta 400 €", description:"Thermoblock compacto + molinillo manual de calidad. Ideal iniciarse.", badge:"Entrada" },
-      { id:600, title:"Hasta 700 €", description:"54mm de calidad o primer eléctrico cónico. Salto a espresso serio.", badge:"Recomendado" },
+      { id:600, title:"Hasta 700 €", description:"58mm de calidad o primer eléctrico cónico. Salto a espresso serio.", badge:"Recomendado" },
       { id:1000, title:"Hasta 1.100 €", description:"58mm profesional o muelas planas stepless. Control preciso.", badge:"Avanzado" },
       { id:2000, title:"Más de 1.100 €", description:"Prosumer HX/doble caldera. Vaporizar y extraer simultáneamente.", badge:"Prosumer" },
     ] as WizardOption<number>[]
