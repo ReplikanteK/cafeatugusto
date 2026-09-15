@@ -99,7 +99,7 @@ function CatalogoInner() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <h1 className="text-3xl font-black">Catálogo — Behind the Curtain</h1>
-      <p className="text-sm text-stone-400 mt-1">Ficha técnica auditable. Obsidian/ámbar uniforme — rigor a la vista.</p>
+      <p className="text-sm text-stone-400 mt-1">Especificaciones verificadas. Sin humo, solo datos.</p>
       {preset && (
         <div className="mt-4 rounded-xl bg-amber-900/20 border border-amber-500/30 px-4 py-3 flex flex-wrap items-center gap-3">
           <span className="text-xs font-mono text-amber-400">ARQUETIPO: {archetypeParam?.toUpperCase()} · {preset.label}</span>
