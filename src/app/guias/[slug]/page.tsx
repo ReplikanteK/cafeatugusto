@@ -1,5 +1,6 @@
 import { GUIDES_SEED } from "@/data/guides";
 import Link from "next/link";
+import { GuideCtaLink } from "@/components/ui/GuideCtaLink";
 
 export function generateStaticParams() {
   return Object.keys(GUIDES_SEED).map((slug) => ({ slug }));
@@ -87,9 +88,9 @@ export default async function GuiaPage({ params }: { params: Promise<{ slug: str
         <p className="text-xs text-stone-400 mt-1">
           Esta guía es TOFU/MOFU. El siguiente paso es el recomendador: 8 preguntas → Top 3 con desglose 7 dims trazable.
         </p>
-        <Link href="/recomendador" className="mt-3 inline-block bg-amber-600 hover:bg-amber-500 text-white text-xs font-black px-4 py-2 rounded-lg">
+        <GuideCtaLink slug={slug} position="bottom_banner" className="mt-3 inline-block bg-amber-600 hover:bg-amber-500 text-white text-xs font-black px-4 py-2 rounded-lg">
           Hacer test 1 minuto →
-        </Link>
+        </GuideCtaLink>
         <p className="text-[11px] text-stone-500 mt-2">
           Internal linking: <Link href="/comparativas" className="underline">comparativas longtail</Link> •{" "}
           <Link href="/catalogo" className="underline">catálogo 15+10</Link> •{" "}
@@ -99,7 +100,7 @@ export default async function GuiaPage({ params }: { params: Promise<{ slug: str
 
       <p className="text-xs text-stone-500 mt-6">
         <Link href="/guias" className="text-amber-500 underline">← Volver a guías</Link> •{" "}
-        <Link href="/recomendador" className="text-amber-500 underline">Recomendador →</Link>
+        <GuideCtaLink slug={slug} position="inline_text" className="text-amber-500 underline">Recomendador →</GuideCtaLink>
       </p>
     </main>
   );

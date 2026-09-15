@@ -39,6 +39,7 @@ const ARCHETYPE_PRESETS: Record<string, UserPreferences> = {
 function WizardInner() {
   const searchParams = useSearchParams();
   const archetype = searchParams.get("archetype");
+  const src = searchParams.get("src");
   const [step, setStep] = useState(1);
   const [hasStarted, setHasStarted] = useState(false);
   const [prefs, setPrefs] = useState<Partial<UserPreferences>>({
@@ -49,13 +50,14 @@ function WizardInner() {
 
   const trackStarted = () => {
     if (!hasStarted) {
-      track("quiz_started", { step, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
+      track("quiz_started", { step, archetype: archetype ?? "custom", src: src ?? "direct" } as unknown as Record<string, unknown>);
       setHasStarted(true);
     }
   };
   const handleComplete = (fp: UserPreferences) => {
-    track("quiz_completed", fp as unknown as Record<string, unknown>);
-    if (archetype && ARCHETYPE_PRESETS[archetype]) track("archetype_preset", { archetype } as unknown as Record<string, unknown>);
+    track("quiz_completed", { ...fp, src: src ?? "direct" } as unknown as Record<string, unknown>);
+    if (archetype && ARCHETYPE_PRESETS[archetype]) track("archetype_preset", { archetype, src: src ?? "direct" } as unknown as Record<string, unknown>);
+    if (src) track("guide_conversion", { src, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
     const candidates: EvaluatedSetup[] = [];
     for (const m of MACHINES_SEED) {
       if (m.grinderIntegrated) { if (passesHardFilters(m, undefined, fp)) candidates.push(calculateSetupScore(m, undefined, fp)); }
@@ -63,7 +65,7 @@ function WizardInner() {
     }
     candidates.sort((a, b) => b.score.totalScore - a.score.totalScore);
     const top3 = candidates.slice(0, 3);
-    setTops(top3); setFinalPrefs(fp); setStep(9); track("result_viewed", { score: top3[0]?.score.totalScore, count: top3.length, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
+    setTops(top3); setFinalPrefs(fp); setStep(9); track("result_viewed", { score: top3[0]?.score.totalScore, count: top3.length, archetype: archetype ?? "custom", src: src ?? "direct" } as unknown as Record<string, unknown>);
   };
 
   useEffect(()=> {

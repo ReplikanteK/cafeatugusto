@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GUIDES_SEED } from "@/data/guides";
+import { GuideCtaLink } from "@/components/ui/GuideCtaLink";
 
 export const metadata = {
   title: "Guías — Café a Tu Gusto | 54mm vs 58mm, Dial-in y Thermoblock",
@@ -33,9 +34,9 @@ export default function GuiasPage() {
       <div className="mt-10 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-5">
         <p className="text-sm font-bold text-amber-300">¿Dudas entre modelos concretos?</p>
         <p className="text-xs text-stone-400 mt-1">Haz el test de 1 minuto y obtén tu Top 3 con desglose 7 dims.</p>
-        <Link href="/recomendador" className="mt-3 inline-block bg-amber-600 hover:bg-amber-500 text-white text-xs font-black px-4 py-2 rounded-lg">
+        <GuideCtaLink slug="hub" position="hub_banner" className="mt-3 inline-block bg-amber-600 hover:bg-amber-500 text-white text-xs font-black px-4 py-2 rounded-lg">
           Ir al recomendador →
-        </Link>
+        </GuideCtaLink>
       </div>
       <p className="text-xs text-stone-500 mt-6">
         <Link href="/comparativas" className="text-amber-500 underline">Comparativas longtail →</Link> •{" "}
