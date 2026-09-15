@@ -60,7 +60,7 @@ export function CookieBanner() {
           <p className="text-sm font-bold text-white">Cookies analíticas</p>
           <p className="text-xs text-stone-400 mt-1 leading-relaxed">
             Usamos GA4 solo si aceptas. Sin consentimiento no se carga analítica.{" "}
-            <a href="/afiliados" className="underline text-amber-400">
+            <a href="/privacidad" className="underline text-amber-400">
               Más info
             </a>
             .

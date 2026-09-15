@@ -18,6 +18,7 @@ const baseMachine: CoffeeMachine = {
   specs: { portafilterDiameter: 54, pid: false, boilerType: "single_boiler", steamSystem: "manual", waterTankCapacityLiters: 2, startupTimeSeconds: 180 },
   ratings: { easeOfUse: 3, cleaningEase: 3, learningCurve: 3, footprint: "medium" },
   usageProfile: { milkUse: "medium", idealDailyCups: { min: 1, max: 4 }, bestFor: [], notIdealFor: [] },
+  availability: { status: "verified", lastChecked: "2026-09-15", reason: "test" },
   metadata: { verifiedAt: "2026-09-01T00:00:00Z", sources: ["Test"] },
 };
 
@@ -44,6 +45,7 @@ const espressoGrinder: Grinder = {
   image: "/images/grinders/test.jpg",
   specs: { burrType: "conical", burrSizeMM: 40, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 30 },
   performance: { doseControl: 3, retention: 3, noise: 3, easeOfUse: 3, footprint: "small" },
+  availability: { status: "verified", lastChecked: "2026-09-15", reason: "test" },
   metadata: { verifiedAt: "2026-09-01T00:00:00Z", sources: ["Test"] },
 };
 

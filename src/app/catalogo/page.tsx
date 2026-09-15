@@ -144,7 +144,7 @@ function CatalogoInner() {
                 <div className="p-3 flex-1 flex flex-col">
                   <p className="text-xs font-mono text-stone-500">{i.brand}</p>
                   <p className="font-bold text-sm text-white">{i.name}</p>
-                  <p className="text-xs text-amber-400 font-mono">{i.price}€</p>
+                  <p className="text-xs text-amber-400 font-mono">{i.price}€ <span className="text-[10px] text-stone-500 font-normal">ref.</span></p>
                   {i.description && <p className="text-[13px] leading-relaxed text-stone-300 mt-1">{i.description}</p>}
                   {i.type==="machine" ? (
                     <div className="grid grid-cols-2 gap-1 mt-2 text-[10px]">
@@ -166,15 +166,21 @@ function CatalogoInner() {
                     <input type="checkbox" checked={selected.includes(i.id)} onChange={()=>toggle(i.id)} className="accent-amber-600" />
                     Comparar
                   </label>
-                  <a
-                    href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
-                    className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-400 transition-colors"
-                  >
-                    Ver en Amazon →
-                  </a>
+                  {i.availability === "verified" ? (
+                    <a
+                      href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
+                      className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-400 transition-colors"
+                    >
+                      Ver precio actual en Amazon →
+                    </a>
+                  ) : i.availability === "unavailable" ? (
+                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-500">No disponible</span>
+                  ) : (
+                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-400">Comprobación pendiente</span>
+                  )}
                 </div>
               </div>
             ))}
@@ -205,7 +211,7 @@ function CatalogoInner() {
             <table className="w-full text-sm mt-4">
               <thead><tr className="text-stone-400"><th className="p-2 text-left">Spec</th>{selItems.map(s=> <th key={s.id} className="p-2 text-left">{s.brand} {s.name}</th>)}</tr></thead>
               <tbody>
-                <tr className="border-t border-stone-800"><td className="p-2 font-bold">Precio</td>{selItems.map(s=> <td key={s.id} className="p-2 font-mono">{s.price}€</td>)}</tr>
+                <tr className="border-t border-stone-800"><td className="p-2 font-bold">Precio ref.</td>{selItems.map(s=> <td key={s.id} className="p-2 font-mono">{s.price}€ <span className="text-[10px] text-stone-500">ref.</span></td>)}</tr>
                 <tr className="border-t border-stone-800"><td className="p-2 font-bold">Tipo</td>{selItems.map(s=> <td key={s.id} className="p-2">{s.type}</td>)}</tr>
                 {selItems[0]?.type==="machine" && (
                   <>
@@ -224,7 +230,7 @@ function CatalogoInner() {
               </tbody>
             </table>
             <div className="mt-4 flex gap-2">
-              {selItems.map(s=> <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a>)}
+              {selItems.map(s=> s.availability === "verified" ? <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a> : <span key={s.id} className="flex-1 py-2 bg-stone-800 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-500">{s.availability === "unavailable" ? "No disponible" : "Comprobación pendiente"}</span>)}
             </div>
           </div>
         </div>

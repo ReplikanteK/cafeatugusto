@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-15T18:08:00.654Z",
+  "timestamp": "2026-09-15T19:11:15.897Z",
   "mode": "mock",
-  "total": 36,
-  "valid": 36,
+  "total": 35,
+  "valid": 35,
   "invalid": 0,
   "InStock": [
     "B06X3ZWVZ7",
@@ -39,8 +39,7 @@
     "B0D1PF6Z57",
     "B0D9NX6VNG",
     "B0DB1J2S6V",
-    "B0GXFD87XD",
-    "B0DSLYKM31"
+    "B0GXFD87XD"
   ],
   "OutOfStock": [],
   "InvalidASIN": [],
@@ -239,7 +238,8 @@
     "B08NBHR7HT": {
       "status": "InStock",
       "sources": [
-        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas",
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
@@ -264,12 +264,6 @@
       "status": "InStock",
       "sources": [
         "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm"
-      ]
-    },
-    "B0DSLYKM31": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-fred-vs-gaggia-md15:acc:Tamper 54mm presión constante"
       ]
     }
   }

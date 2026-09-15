@@ -93,7 +93,7 @@ export default async function GuiaPage({ params }: { params: Promise<{ slug: str
         </GuideCtaLink>
         <p className="text-[11px] text-stone-500 mt-2">
           Internal linking: <Link href="/comparativas" className="underline">comparativas longtail</Link> •{" "}
-          <Link href="/catalogo" className="underline">catálogo 15+10</Link> •{" "}
+          <Link href="/catalogo" className="underline">catálogo 15+11</Link> •{" "}
           <Link href="/metodologia" className="underline">metodología</Link>
         </p>
       </div>
