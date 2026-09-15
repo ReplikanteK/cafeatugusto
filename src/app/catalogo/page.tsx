@@ -24,12 +24,12 @@ const allItems: Item[] = [
 
 const PAGE_SIZE = 12;
 
-// Preset de catálogo por arquetipo — atajo sin fricción desde home
+// Preset de catálogo por arquetipo — actualizado a verified 15+11 (sin 54mm)
 const CATALOG_ARCHETYPE_PRESETS: Record<string, { cat: Cat; diam: Diam; pidOnly: boolean; noIntegrated: boolean; maxPrice: number; label: string }> = {
-  precisionist: { cat: "machines", diam: "58", pidOnly: true, noIntegrated: true, maxPrice: 1500, label: "Precisionist · 58mm PID · separado" },
+  precisionist: { cat: "machines", diam: "58", pidOnly: true, noIntegrated: false, maxPrice: 1500, label: "Precisionist · 58mm PID · 51-58" },
   aesthetic:    { cat: "machines", diam: "58", pidOnly: false, noIntegrated: false, maxPrice: 1200, label: "Aesthetic Craft · 58mm · acero / madera" },
-  efficiencist: { cat: "machines", diam: "54", pidOnly: false, noIntegrated: false, maxPrice: 650, label: "Efficiencist · ThermoJet 54mm · 3s" },
-  alchemist:    { cat: "grinders", diam: "all", pidOnly: false, noIntegrated: false, maxPrice: 1000, label: "Alchemist · molinillos alta claridad" },
+  efficiencist: { cat: "machines", diam: "51", pidOnly: false, noIntegrated: false, maxPrice: 650, label: "Efficiencist · 51mm ThermoJet · 40s" },
+  alchemist:    { cat: "grinders", diam: "all", pidOnly: false, noIntegrated: false, maxPrice: 1000, label: "Alchemist · flat burr claridad" },
 };
 
 function CatalogoInner() {

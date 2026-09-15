@@ -53,7 +53,7 @@ export default function HomePage() {
             </div>
             <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
               <p className="text-sm font-bold text-stone-200">The Efficiencist</p>
-              <p className="text-xs text-stone-400 mt-2">ThermoJet 3s, consistencia.</p>
+              <p className="text-xs text-stone-400 mt-2">51mm Thermoblock 40s, diario.</p>
               <div className="mt-3 flex gap-2 text-xs">
                 <Link href="/recomendador?archetype=efficiencist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
                 <span className="text-stone-600">·</span>
