@@ -157,7 +157,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 35, espressoCapable: true, filterCapable: true, grindAdjustment: "stepless", hopperCapacityGrams: 40 },
     performance: { doseControl: 3, retention: 5, noise: 5, easeOfUse: 3, footprint: "small" },
     amazon: { asin: "B000SIBODG", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B000SIBODG?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 75,80€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B000SIBODG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[humanVerified 2026-09-16 — 75,80€ Zassenhaus — muestreo humano ✓] 75,80€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B000SIBODG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Zassenhaus", "40005 specs"] },
   }
 ];
