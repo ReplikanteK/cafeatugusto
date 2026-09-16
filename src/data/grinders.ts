@@ -13,7 +13,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "flat", burrSizeMM: 50, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 200 },
     performance: { doseControl: 4, retention: 3, noise: 3, easeOfUse: 4, footprint: "small" },
     amazon: { asin: "B000IWHXH8", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B000IWHXH8?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 59,00€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado directo EUR — curl -sL amazon.es/dp/B000IWHXH8 muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 59,00€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado directo EUR — curl -sL amazon.es/dp/B000IWHXH8 muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Krups Store", "Krups GVX242 specs"] },
   },
   {
@@ -29,7 +29,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "flat", burrSizeMM: 44, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 250 },
     performance: { doseControl: 4, retention: 2, noise: 3, easeOfUse: 4, footprint: "small" },
     amazon: { asin: "B005L8YUI4", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B005L8YUI4?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 75,66€ • Añadir a la cesta + En stock 2026-09-16 WSL — precio directo EUR (vs 76€ est.) — curl -sL amazon.es/dp/B005L8YUI4 muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 75,66€ • Añadir a la cesta + En stock 2026-09-16 WSL — precio directo EUR (vs 76€ est.) — curl -sL amazon.es/dp/B005L8YUI4 muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Rommelsbacher", "EKM200 specs"] },
   },
   {
@@ -45,7 +45,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "flat", burrSizeMM: 40, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 200 },
     performance: { doseControl: 4, retention: 2, noise: 3, easeOfUse: 5, footprint: "small" },
     amazon: { asin: "B00R7HKAWC", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B00R7HKAWC?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 71,32€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado directo EUR — curl -sL amazon.es/dp/B00R7HKAWC muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 71,32€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado directo EUR — curl -sL amazon.es/dp/B00R7HKAWC muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Melitta", "Melitta 1019-01 specs"] },
   },
   {
@@ -61,7 +61,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 40, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 300 },
     performance: { doseControl: 4, retention: 3, noise: 4, easeOfUse: 4, footprint: "small" },
     amazon: { asin: "B0FKN9KHJP", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B0FKN9KHJP?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 97,38€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0FKN9KHJP muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 97,38€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0FKN9KHJP muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Behmor", "Behmor Ideal specs"] },
   },
   {
@@ -77,7 +77,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 38, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 250 },
     performance: { doseControl: 4, retention: 3, noise: 3, easeOfUse: 3, footprint: "medium" },
     amazon: { asin: "B00EO26GGC", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B00EO26GGC?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 142,17€ • Añadir a la cesta + En stock 2026-09-16 WSL — precio directo EUR (vs 146€ est.) — curl -sL amazon.es/dp/B00EO26GGC muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 142,17€ • Añadir a la cesta + En stock 2026-09-16 WSL — precio directo EUR (vs 146€ est.) — curl -sL amazon.es/dp/B00EO26GGC muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Graef", "CM702 specs"] },
   },
   {
@@ -93,7 +93,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 40, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 120 },
     performance: { doseControl: 5, retention: 5, noise: 4, easeOfUse: 3, footprint: "medium" },
     amazon: { asin: "B0GLGQ6J6R", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B0GLGQ6J6R?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 168,94€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0GLGQ6J6R muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 168,94€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0GLGQ6J6R muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Rommelsbacher", "EKM600 specs"] },
   },
   {
@@ -109,7 +109,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 38, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 350 },
     performance: { doseControl: 4, retention: 4, noise: 3, easeOfUse: 3, footprint: "medium" },
     amazon: { asin: "B00CS2DAEG", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B00CS2DAEG?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 174,69€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B00CS2DAEG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 174,69€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B00CS2DAEG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Graef", "CM800 specs"] },
   },
   {
@@ -125,7 +125,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 38, espressoCapable: true, filterCapable: false, grindAdjustment: "stepless", hopperCapacityGrams: 250 },
     performance: { doseControl: 5, retention: 4, noise: 3, easeOfUse: 3, footprint: "medium" },
     amazon: { asin: "B00K5YLI2U", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B00K5YLI2U?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 200,00€ • Añadir a la cesta + Disponible 1-2 días 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B00K5YLI2U muestra Añadir a la cesta + Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 200,00€ • Añadir a la cesta + Disponible 1-2 días 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B00K5YLI2U muestra Añadir a la cesta + Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Lelit", "PL043MMI specs"] },
   },
   {
@@ -141,7 +141,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 40, espressoCapable: true, filterCapable: true, grindAdjustment: "stepped", hopperCapacityGrams: 150 },
     performance: { doseControl: 4, retention: 3, noise: 3, easeOfUse: 4, footprint: "medium" },
     amazon: { asin: "B0CHYWBF7R", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B0CHYWBF7R?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 249,99€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0CHYWBF7R muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 249,99€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0CHYWBF7R muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es WMF", "Lumero specs"] },
   },
   {
@@ -157,7 +157,7 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     specs: { burrType: "conical", burrSizeMM: 35, espressoCapable: true, filterCapable: true, grindAdjustment: "stepless", hopperCapacityGrams: 40 },
     performance: { doseControl: 3, retention: 5, noise: 5, easeOfUse: 3, footprint: "small" },
     amazon: { asin: "B000SIBODG", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B000SIBODG?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "Verificado 75,80€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B000SIBODG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
+    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 75,80€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B000SIBODG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Zassenhaus", "40005 specs"] },
   }
 ];
