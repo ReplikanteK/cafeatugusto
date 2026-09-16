@@ -166,7 +166,9 @@ function CatalogoInner() {
                     <input type="checkbox" checked={selected.includes(i.id)} onChange={()=>toggle(i.id)} className="accent-amber-600" />
                     Comparar
                   </label>
-                  {i.availability === "verified" ? (
+                  {i.availability === "unavailable" ? (
+                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-500">No disponible</span>
+                  ) : (
                     <a
                       href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
                       target="_blank"
@@ -176,10 +178,6 @@ function CatalogoInner() {
                     >
                       Ver precio actual en Amazon →
                     </a>
-                  ) : i.availability === "unavailable" ? (
-                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-500">No disponible</span>
-                  ) : (
-                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-400">Comprobación pendiente</span>
                   )}
                 </div>
               </div>
@@ -230,7 +228,7 @@ function CatalogoInner() {
               </tbody>
             </table>
             <div className="mt-4 flex gap-2">
-              {selItems.map(s=> s.availability === "verified" ? <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a> : <span key={s.id} className="flex-1 py-2 bg-stone-800 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-500">{s.availability === "unavailable" ? "No disponible" : "Comprobación pendiente"}</span>)}
+              {selItems.map(s=> s.availability === "unavailable" ? <span key={s.id} className="flex-1 py-2 bg-stone-800 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-500">No disponible</span> : <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a>)}
             </div>
           </div>
         </div>
