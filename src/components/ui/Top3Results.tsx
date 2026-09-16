@@ -82,7 +82,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                     href={amazonUrl(e.setup.machine.asin, `${e.setup.machine.brand} ${e.setup.machine.model}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore })}
+                    onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore, verification: e.setup.machine.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: e.setup.machine.availability?.status })}
                     className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                   >
                     Ver en Amazon →
@@ -103,7 +103,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                         href={amazonUrl(e.setup.grinder.asin, `${e.setup.grinder.brand} ${e.setup.grinder.model}`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore })}
+                        onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore, verification: e.setup.grinder!.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: e.setup.grinder!.availability?.status })}
                         className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                       >
                         Ver en Amazon →

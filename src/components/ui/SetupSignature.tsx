@@ -21,14 +21,14 @@ export function SetupSignature({ evaluated, prefs }: { evaluated: EvaluatedSetup
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
             <ProductImage src={evaluated.setup.machine.image} alt={evaluated.setup.machine.model} />
             <p className="font-bold text-white mt-2">{evaluated.setup.machine.brand} {evaluated.setup.machine.model}</p>
-            <a href={amazonUrl(evaluated.setup.machine.asin, `${evaluated.setup.machine.brand} ${evaluated.setup.machine.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.machine.asin, role: "machine", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
+            <a href={amazonUrl(evaluated.setup.machine.asin, `${evaluated.setup.machine.brand} ${evaluated.setup.machine.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.machine.asin, role: "machine", score: evaluated.score.totalScore, verification: evaluated.setup.machine.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: evaluated.setup.machine.availability?.status })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
           </div>
           <div className="rounded-xl bg-stone-950 border border-stone-800 p-4">
             {evaluated.setup.grinder ? (
               <>
                 <ProductImage src={evaluated.setup.grinder.image} alt={evaluated.setup.grinder.model} />
                 <p className="font-bold text-white mt-2">{evaluated.setup.grinder.brand} {evaluated.setup.grinder.model}</p>
-                <a href={amazonUrl(evaluated.setup.grinder.asin, `${evaluated.setup.grinder.brand} ${evaluated.setup.grinder.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.grinder!.asin, role: "grinder", score: evaluated.score.totalScore })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
+                <a href={amazonUrl(evaluated.setup.grinder.asin, `${evaluated.setup.grinder.brand} ${evaluated.setup.grinder.model}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: evaluated.setup.grinder!.asin, role: "grinder", score: evaluated.score.totalScore, verification: evaluated.setup.grinder!.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: evaluated.setup.grinder!.availability?.status })} className="mt-2 block text-center py-2 bg-amber-600 rounded-lg text-xs font-bold">Ver en Amazon →</a>
               </>
             ) : <p className="text-xs text-stone-500 text-center py-8">Molinillo integrado — ritual compacto</p>}
           </div>

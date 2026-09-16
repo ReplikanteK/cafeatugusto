@@ -14,12 +14,12 @@ interface Item {
   id: string; type: "machine" | "grinder"; name: string; brand: string; price: number; image: string; asin: string; description?: string;
   diam?: number; pid?: boolean; boiler?: string; heat?: number; integrated?: boolean;
   burr?: string; burrSize?: number; adj?: string; retention?: string; focus?: string;
-  availability?: "verified" | "unknown" | "unavailable"; lastChecked?: string;
+  availability?: "verified" | "unknown" | "unavailable"; lastChecked?: string; verification?: "humanVerified" | "amazonHtmlVerified";
 }
 
 const allItems: Item[] = [
-  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated, availability: m.availability?.status, lastChecked: m.availability?.lastChecked })),
-  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro", availability: g.availability?.status, lastChecked: g.availability?.lastChecked })),
+  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated, availability: m.availability?.status, lastChecked: m.availability?.lastChecked, verification: m.availability?.reason?.includes("humanVerified") ? "humanVerified" as const : "amazonHtmlVerified" as const })),
+  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro", availability: g.availability?.status, lastChecked: g.availability?.lastChecked, verification: g.availability?.reason?.includes("humanVerified") ? "humanVerified" as const : "amazonHtmlVerified" as const })),
 ];
 
 const PAGE_SIZE = 12;
@@ -173,7 +173,7 @@ function CatalogoInner() {
                       href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
+                      onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card", verification: i.verification, verification_status: i.availability })}
                       className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-400 transition-colors"
                     >
                       Ver en Amazon →
