@@ -176,7 +176,7 @@ function CatalogoInner() {
                       onClick={() => track("amazon_click", { asin: i.asin, title: i.name, source: "catalogo_card" })}
                       className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-400 transition-colors"
                     >
-                      Ver precio actual en Amazon →
+                      Ver en Amazon →
                     </a>
                   )}
                 </div>
