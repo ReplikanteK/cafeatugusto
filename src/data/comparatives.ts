@@ -66,7 +66,6 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Tolva", a: "250g", b: "350g" },
       { label: "Rueda", a: "3 palas", b: "5 palas aluminio" },
       { label: "RPM", a: "~1400", b: "800-900" },
-      { label: "Precio", a: "132€", b: "159€" },
     ],
     accessories: [
       { name: "Cepillo limpieza muelas", asin: "B08NBHR7HT", note: "Cerdas antiestáticas — mantenimiento" },
@@ -87,7 +86,6 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Tolva", a: "200g", b: "200g" },
       { label: "Tazas", a: "2-12 auto-stop", b: "2-14" },
       { label: "Potencia", a: "100W", b: "100W" },
-      { label: "Precio", a: "49€", b: "60€" },
     ],
     accessories: [
       { name: "Báscula 0.1g con timer", asin: "B0D9NX6VNG", note: "0.1g — dose control entry" },
@@ -108,7 +106,6 @@ export const COMPARATIVES: readonly Comparative[] = [
       { label: "Tolva", a: "250g", b: "300g" },
       { label: "Timer", a: "2-20s", b: "Digital timer" },
       { label: "Molido a", a: "Directo portafiltro", b: "Contenedor 150g / portafiltro" },
-      { label: "Precio", a: "165€", b: "86€" },
     ],
     accessories: [
       { name: "Anillo dosificador 58mm", asin: "B0GXFD87XD", note: "Magnético — evita desperdicio" },
