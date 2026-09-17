@@ -148,7 +148,7 @@ function CatalogoInner() {
                   {i.description && <p className="text-[13px] leading-relaxed text-stone-300 mt-1">{i.description}</p>}
                   {i.type==="machine" ? (
                     <div className="grid grid-cols-2 gap-1 mt-2 text-[10px]">
-                      <span className="bg-stone-950 border border-stone-800 rounded px-1.5 py-1">📏 {i.diam ?? "—"}mm</span>
+                      <span className="bg-stone-950 border border-stone-800 rounded px-1.5 py-1">📏 {i.diam ? `${i.diam}mm` : "auto"}</span>
                       <span className="bg-stone-950 border border-stone-800 rounded px-1.5 py-1">🌡️ {i.boiler}</span>
                       <span className={`rounded px-1.5 py-1 border ${i.pid?"bg-amber-900/30 border-amber-500/30 text-amber-300":"bg-stone-950 border-stone-800 text-stone-400"}`}>🎯 PID: {i.pid?"Sí":"No"}</span>
                       <span className="bg-stone-950 border border-stone-800 rounded px-1.5 py-1">⏱️ {i.heat! <60 ? `${i.heat}s` : `${Math.round(i.heat!/60)}min`}</span>
@@ -213,7 +213,7 @@ function CatalogoInner() {
                 <tr className="border-t border-stone-800"><td className="p-2 font-bold">Tipo</td>{selItems.map(s=> <td key={s.id} className="p-2">{s.type}</td>)}</tr>
                 {selItems[0]?.type==="machine" && (
                   <>
-                    <tr className="border-t border-stone-800"><td className="p-2 font-bold">Portafiltro</td>{selItems.map(s=> <td key={s.id} className={`p-2 ${s.diam===58?"text-amber-400 font-bold":""}`}>{s.diam}mm</td>)}</tr>
+                    <tr className="border-t border-stone-800"><td className="p-2 font-bold">Portafiltro</td>{selItems.map(s=> <td key={s.id} className={`p-2 ${s.diam===58?"text-amber-400 font-bold":""}`}>{s.diam ? `${s.diam}mm` : "auto"}</td>)}</tr>
                     <tr className="border-t border-stone-800"><td className="p-2 font-bold">PID</td>{selItems.map(s=> <td key={s.id} className={`p-2 ${s.pid?"bg-amber-900/20 text-amber-300":""}`}>{s.pid?"Sí":"No"}</td>)}</tr>
                     <tr className="border-t border-stone-800"><td className="p-2 font-bold">Térmico</td>{selItems.map(s=> <td key={s.id} className="p-2">{s.boiler}</td>)}</tr>
                     <tr className="border-t border-stone-800"><td className="p-2 font-bold">Calentamiento</td>{selItems.map(s=> { const v = selItems.map(x=>x.heat!); const best = Math.min(...v); return <td key={s.id} className={`p-2 ${s.heat===best?"text-emerald-400 font-bold":""}`}>{s.heat! <60 ? `${s.heat}s` : `${Math.round(s.heat!/60)}min`}</td>; })}</tr>
