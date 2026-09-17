@@ -31,49 +31,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className="py-12 px-4 sm:px-6 mx-auto max-w-7xl">
-          <p className="text-center text-xs font-mono tracking-widest text-stone-500 mb-6 uppercase">
-            Arquetipos de Barista Doméstico — atajo sin fricción
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="rounded-2xl bg-stone-900 border border-amber-500/20 p-5 hover:border-amber-500/40 transition-all">
-              <p className="text-sm font-black text-amber-400">The Precisionist</p>
-              <p className="text-xs text-stone-400 mt-2">PID 58mm perfilado de flujo.</p>
-              <div className="mt-3 flex gap-2 text-xs">
-                <Link href="/recomendador?archetype=precisionist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
-                <span className="text-stone-600">·</span>
-                <Link href="/catalogo?archetype=precisionist" className="text-stone-500 hover:text-amber-400 underline">Catálogo 58mm PID</Link>
-              </div>
-            </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
-              <p className="text-sm font-bold text-stone-200">The Aesthetic Craft</p>
-              <p className="text-xs text-stone-400 mt-2">Madera nogal, acero cepillado.</p>
-              <div className="mt-3 flex gap-2 text-xs">
-                <Link href="/recomendador?archetype=aesthetic" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
-                <span className="text-stone-600">·</span>
-                <Link href="/catalogo?archetype=aesthetic" className="text-stone-500 hover:text-amber-400 underline">Catálogo craft</Link>
-              </div>
-            </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
-              <p className="text-sm font-bold text-stone-200">The Efficiencist</p>
-              <p className="text-xs text-stone-400 mt-2">51mm Thermoblock 40s, diario.</p>
-              <div className="mt-3 flex gap-2 text-xs">
-                <Link href="/recomendador?archetype=efficiencist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
-                <span className="text-stone-600">·</span>
-                <Link href="/catalogo?archetype=efficiencist" className="text-stone-500 hover:text-amber-400 underline">Catálogo rápido</Link>
-              </div>
-            </div>
-            <div className="rounded-2xl bg-stone-900 border border-stone-800 p-5 hover:border-amber-500/30 transition-all">
-              <p className="text-sm font-bold text-stone-200">The Alchemist</p>
-              <p className="text-xs text-stone-400 mt-2">Alta claridad, tueste ligero.</p>
-              <div className="mt-3 flex gap-2 text-xs">
-                <Link href="/recomendador?archetype=alchemist" className="font-bold text-amber-500 hover:underline">Recomendador →</Link>
-                <span className="text-stone-600">·</span>
-                <Link href="/catalogo?archetype=alchemist" className="text-stone-500 hover:text-amber-400 underline">Catálogo clarity</Link>
-              </div>
-            </div>
-          </div>
-        </section>
         <section className="py-12 px-4 sm:px-6 mx-auto max-w-7xl border-t border-stone-900">
           <div className="flex justify-between items-end mb-8">
             <div>
