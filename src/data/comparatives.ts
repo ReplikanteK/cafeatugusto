@@ -93,26 +93,6 @@ export const COMPARATIVES: readonly Comparative[] = [
     ],
   },
   {
-    slug: "lelit-fred-vs-gaggia-md15",
-    title: "Lelit Fred PL043MMI vs Gaggia MD15",
-    subtitle: "Dedicados espresso con filosofías opuestas: Fred 38mm stepless micrométrico 250g para dial fino prosumer, MD15 15 niveles con timer digital y tolva 300g para quien quiere pulsar y moler directo a portafiltro sin báscula.",
-    verdict: "Fred si tu ritual es perfilar 0.1s y buscas inox pulido 38mm para espresso puro; MD15 si prefieres flujo guiado, display y 300g para rotar grano sin vaciar. Stepless es precisión, 15 stepped es repetibilidad.",
-    verdictArchetype: "The Stepless → Fred (38mm). The Timer → MD15 (15 + 300g).",
-    a: { name: "Lelit Fred PL043MMI", asin: "B00K5YLI2U", image: "/images/grinders/lelit-fred-pl043mmi.jpg" },
-    b: { name: "Gaggia MD15", asin: "B08SBH2TC6", image: "/images/grinders/gaggia-md15.jpg" },
-    specs: [
-      { label: "Muelas", a: "Cónica 38mm", b: "Cónica ~40mm" },
-      { label: "Ajuste", a: "Stepless micrométrico", b: "Stepped 15" },
-      { label: "Tolva", a: "250g", b: "300g" },
-      { label: "Timer", a: "2-20s", b: "Digital timer" },
-      { label: "Molido a", a: "Directo portafiltro", b: "Contenedor 150g / portafiltro" },
-    ],
-    accessories: [
-      { name: "Anillo dosificador 58mm", asin: "B0GXFD87XD", note: "Magnético — evita desperdicio" },
-      { name: "Cepillo limpieza muelas", asin: "B08NBHR7HT", note: "Cerdas antiestáticas — mantenimiento grinder" },
-    ],
-  },
-  {
     slug: "delonghi-stilosa-vs-amzchef-20bar",
     title: "De'Longhi Stilosa EC235 vs AMZCHEF 20Bar",
     subtitle: "Duelo entry a 109€: marca con servicio y repuestos (Stilosa inox, pannarello, 1L) frente a ficha agresiva genérica (20 bar, 1.2L, autodescalcificación). Mismo 51mm presurizado tolerante, distinta apuesta: confianza contra especificaciones.",
