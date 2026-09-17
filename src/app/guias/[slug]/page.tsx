@@ -10,10 +10,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = GUIDES_SEED[slug];
   if (!g) return { title: "Guía no encontrada" };
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app"}/guias/${slug}`;
   return {
     title: `${g.title} — Café a Tu Gusto`,
     description: g.description,
-    openGraph: { title: g.title, description: g.description },
+    alternates: { canonical: url },
+    openGraph: { title: g.title, description: g.description, url },
   };
 }
 

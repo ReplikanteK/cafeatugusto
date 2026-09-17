@@ -30,7 +30,8 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: SITE_URL },
+  // Sin canonical global: cada página fija la suya (un canonical único aquí
+  // heredaba a todas las rutas y Google las veía como duplicadas de /).
 };
 // E-P0.5 Consent Mode v2: default denied → update granted → config/page_view
 // Secuencia: default denied (antes de gtag) → usuario acepta en CookieBanner → consent update granted → gtag config

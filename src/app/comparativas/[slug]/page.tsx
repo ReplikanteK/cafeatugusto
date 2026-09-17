@@ -4,6 +4,19 @@ import { GRINDERS_SEED } from "@/data/grinders";
 import Link from "next/link";
 import { amazonUrl } from "@/lib/amazon";
 export function generateStaticParams() { return COMPARATIVES.map(c=> ({ slug: c.slug })); }
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app";
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const c = COMPARATIVES.find(x=> x.slug===slug);
+  if (!c) return { title: "Comparativa no encontrada" };
+  const url = `${SITE_URL}/comparativas/${c.slug}`;
+  return {
+    title: `${c.title} — Café A Tu Gusto`,
+    description: c.subtitle,
+    alternates: { canonical: url },
+    openGraph: { title: c.title, description: c.subtitle, url },
+  };
+}
 function findPrice(asin: string): number | undefined {
   const m = MACHINES_SEED.find(x=> x.asin===asin);
   if (m) return m.priceApproxEUR;
