@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app";
+export const metadata: Metadata = { alternates: { canonical: SITE_URL } };
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col">

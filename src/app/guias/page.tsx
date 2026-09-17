@@ -5,6 +5,7 @@ import { GuideCtaLink } from "@/components/ui/GuideCtaLink";
 export const metadata = {
   title: "Guías — Café a Tu Gusto | 54mm vs 58mm, Dial-in y Thermoblock",
   description: "3 guías técnicas sin humo: 54mm vs 58mm, dial-in por tueste y Thermoblock vs caldera. Tablas, takeaways y CTA al recomendador.",
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app"}/guias` },
 };
 
 export default function GuiasPage() {
