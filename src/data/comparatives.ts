@@ -115,4 +115,26 @@ export const COMPARATIVES: readonly Comparative[] = [
       { name: "Cepillo limpieza muelas", asin: "B08NBHR7HT", note: "Cerdas antiestáticas — mantenimiento grinder" },
     ],
   },
+  {
+    slug: "delonghi-stilosa-vs-amzchef-20bar",
+    title: "De'Longhi Stilosa EC235 vs AMZCHEF 20Bar",
+    subtitle: "Duelo entry a 109€: marca con servicio y repuestos (Stilosa inox, pannarello, 1L) frente a ficha agresiva genérica (20 bar, 1.2L, autodescalcificación). Mismo 51mm presurizado tolerante, distinta apuesta: confianza contra especificaciones.",
+    verdict: "Stilosa si valoras marca, repuestos y pannarello probado para capuchino desde el día uno — el estándar entry por algo. AMZCHEF si te tientan los 20 bar, el depósito 1.2L y la descalcificación automática a igualdad de precio, asumiendo postventa genérica.",
+    verdictArchetype: "The Safe Entry → Stilosa (marca, 109€). The Spec Hunter → AMZCHEF (20 bar, 1.2L).",
+    a: { name: "De'Longhi Stilosa EC235.BK", asin: "B086RF6YJQ", image: "/images/machines/delonghi-stilosa-ec235.jpg" },
+    b: { name: "AMZCHEF 20Bar Espresso", asin: "B0GT581YT8", image: "/images/machines/amzchef-20bar.jpg" },
+    specs: [
+      { label: "Portafiltro", a: "51 mm presurizado", b: "51 mm presurizado" },
+      { label: "Presión", a: "15 bar", b: "20 bar" },
+      { label: "Térmico", a: "Thermoblock 40s", b: "Thermoblock 40s" },
+      { label: "PID", a: "No", b: "No" },
+      { label: "Depósito", a: "1.0 L", b: "1.2 L" },
+      { label: "Descalcificación", a: "Manual", b: "Automática" },
+      { label: "Footprint", a: "Small", b: "Small" },
+    ],
+    accessories: [
+      { name: "Tamper regulable 51mm", asin: "B0D92111HV", note: "51mm presión constante — para 51mm tolerante" },
+      { name: "WDT 0.35mm 10 agujas", asin: "B0BH8MRB2Z", note: "0.35mm acero — distribución naked" },
+    ],
+  },
 ];
