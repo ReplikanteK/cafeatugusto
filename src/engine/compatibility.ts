@@ -15,9 +15,8 @@ export function passesHardFilters(
   grinder: Grinder | undefined,
   prefs: UserPreferences
 ): boolean {
-  // V1 Catalogación Amazon: solo productos verified son recomendables — fail-closed: missing/unknown/unavailable no pasan
-  if (machine.availability?.status !== "verified") return false;
-  if (grinder && grinder.availability?.status !== "verified") return false;
+  // Elegibilidad comercial (¿enlace comprable?) vive en src/lib/eligibility.ts
+  // con isRecommendableSetup() — aquí solo compatibilidad con el usuario.
   const totalCost = machine.priceApproxEUR + (grinder?.priceApproxEUR ?? 0);
   if (totalCost > prefs.budgetMaxEUR * 1.1) return false;
   if (prefs.spaceConstraint) {

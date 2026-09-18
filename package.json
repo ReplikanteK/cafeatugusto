@@ -10,7 +10,7 @@
     "check:asins": "tsx scripts/validate-amazon-asins.ts",
     "check:asins:legacy": "tsx scripts/check-amazon-paapi.ts",
     "check:integrity": "tsx scripts/integrity-catalog.ts",
-    "verify:catalog": "tsx scripts/verify-catalog.ts"
+    "scan:amazon-html": "tsx scripts/scan-amazon-product-html.ts"
   },
   "dependencies": {
     "next": "16.3.5",

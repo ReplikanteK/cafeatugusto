@@ -1,53 +1,64 @@
-# Catalogación Amazon V1 — Fuente de verdad comercial
+# Catalogación Amazon V2 — Modelo de confianza (2026-09-18)
 
-**Objetivo:** 25–35 cafeteras espresso verificadas en `amazon.es` (BrowseNode `2165182031`) + 10–15 molinillos, con dos capas separadas.
+**Estado:** 17 máquinas + 10 molinillos + 10 comparativas. Fuente de verdad comercial con 4 campos ortogonales.
 
-## Modelo 2 capas
+## Modelo 4 campos (`src/types/coffee.ts`)
 
 ```ts
-// src/types/coffee.ts
-amazon: { asin, marketplace: "amazon.es", url: "https://amazon.es/dp/ASIN?tag=cafeatugusto-21", lastVerified }
-availability: { status: "verified" | "unavailable" | "unknown", lastChecked, reason }
+availability: { status: "available" | "unknown" | "unavailable", lastChecked, reason }
+verification: { level: "human" | "amazon_html" | "none", checkedAt }   // ¿QUIÉN comprobó?
+priceCheck: { status: "direct_eur" | "derived" | "unknown", observedEUR?, checkedAt?, source? }  // ¿EUR directo?
+identityCheck: { status: "verified" | "unknown", checkedAt?, note? }  // ¿ASIN↔modelo correcto?
 ```
 
-- **Capa comercial** (`amazon`): existe en Amazon, precio/offer, imagen, variantes — viene de Amazon (hoy manual, mañana Creators API `SearchItems`/`GetItems`/`GetVariations`/`GetBrowseNodes`).
-- **Capa editorial** (`specs`, `ratings`, `usageProfile`): PID, diámetro, caldera, curva, leche — curación manual nuestra, nunca decide Amazon.
+**amazonHtmlVerified ≠ humanVerified.** El HTML es trazabilidad válida, pero durante
+el experimento no basta para un enlace comprable.
 
-Motor `passesHardFilters()` solo deja `availability.status === "verified"` — `unknown !== verified` evita recomendar humo `src/engine/compatibility.ts:18`.
+## Elegibilidad comercial (`src/lib/eligibility.ts`, NO el scoring)
+
+```ts
+export const CATALOG_POLICY = { requireHumanVerification: true } as const;
+
+recommendable =
+  availability.status === "available" &&
+  verification.level === "human" &&        // estricto durante el experimento
+  priceCheck.status === "direct_eur" &&
+  identityCheck.status === "verified";
+```
+
+Tres capas separadas: `isRecommendableSetup` (¿comercialmente enlazable?) →
+`passesHardFilters` (¿encaja con el usuario?) → `calculateSetupScore` (¿cuánto encaja?).
+El motor de scoring no se toca.
+
+## Display fail-closed
+
+- `recommendable` → "Ver en Amazon →" (+ `amazon_click` con `verification` estructurada)
+- `available` pero no recomendable → "Comprobación pendiente" (sin enlace)
+- `unavailable` → "No disponible"
 
 ## Por qué no PA-API 5 scrape `s?`
 
-- PA-API 5 deprecada **15-may-2026** → **Creators API** exige **10 ventas cualificadas/30d continuas** (Panel Associates → API). Sin cualificar, `403 AccessDenied`.
-- `s?` con `sr_st_review-rank` es anti-bot (CAPTCHA/JS) y viola ToS. No añadir FlareSolverr/headless.
-- Nodo 2165182031 trae 90 resultados mezcla AMZCHEF 119€ + Siemens 2499€ que nuestro filtro `espresso-only` excluye — importar 90 sin curar `portafilterDiameter`/`pid` no aporta gasolina.
+- PA-API 5 deprecada **15-may-2026** → **Creators API** exige **10 ventas cualificadas/30d continuas**. Sin cualificar, `403 AccessDenied`.
+- `s?` es anti-bot (CAPTCHA/JS) y viola ToS. No añadir FlareSolverr/headless.
 
-## Proceso V1 (sin API, sin romper freeze 15–22 sep)
+## Proceso (sin API)
 
-1. **Spot manual hoy:** `npx tsx scripts/verify-catalog.ts` verifica 25 ASINs actuales contra `amazon.es/dp` individual (fetch HEAD, heurística `Añadir a la cesta` vs `No disponible`). Media hora humana = fuente de verdad, cero dependencias.
-2. **Marcar verificado:** actualizar `src/data/machines.ts` y `grinders.ts` `availability: { status: "verified", lastChecked: "2026-09-15" }` o `unavailable` si falla. Migración inicial ya marca `verified` con reason pendiente `BrowseNode 2165182031`.
-3. **Pausar CTR hasta V1:** funnel `result_viewed → amazon_click` no limpio si `verified` <25 — CTR bajo podría ser `unavailable`, no mala recomendación.
-4. **Post-22 sep con API cualificada:** rama `feat/import-creators` usa `SearchItems(BrowseNode=2165182031, SortBy=AvgCustomerReviews)` + `GetItems` para candidatos → curación `specs/ratings` manual → auditoría motor.
+1. **Scan HTML:** `npm run scan:amazon-html` — emite señales `amazon_html` + JSON de ingesta. Nunca marca `human`, nunca muta datos.
+2. **Ronda humana:** navegador real sin VPN por ASIN (precio EUR + "Añadir a la cesta") → `verification.level = "human"` + `priceCheck direct_eur` con `observedEUR`.
+3. **Barrera:** `npm run check:integrity` — 0 errores + bloque `CATALOG CHECK` (única fuente del header del dump; prohibido escribirlo a mano).
+4. **CTR:** solo se mide sobre enlaces recomendables.
 
 ## Verificación
 
 ```bash
-npm run check:asins          # 35 ASINs formato 10ch (mock InStock hasta Creators)
-npx tsx scripts/verify-catalog.ts  # dp real, no mock — requiere revisión manual si unknown
-npm run build && npm test    # 27 SSG, vitest 15/15, engine filtra solo verified
+npm run check:asins        # formato ASIN 10ch (mock)
+npm run scan:amazon-html   # señales HTML, no veredicto
+npm run check:integrity    # modelo + coherencia observedEUR === priceApproxEUR
+npm run build && npx vitest run
 ```
 
-## Segmentación objetivo 25–35
+## Cobertura verificación humana (prioridad)
 
-| Segmento | Objetivo |
-|---|---|
-| Entrada | 5–7 |
-| Principiante/conveniencia | 5–7 |
-| Manual intermedio | 6–8 |
-| Entusiasta | 5–7 |
-| Gama alta | 4–6 |
-
-## Siguiente
-
-- Comprobar hoy panel Associates → Creators API elegibilidad (1 clic).
-- Verificar 25 enlaces `amazon.es/dp` a mano antes del 22.
-- Guardar `SearchItems` para cuando haya ventas que sostengan acceso — entonces sí dirigir importación por conversión real, no 90 genéricos.
+Cubrir al menos una entrada por franja antes de ampliar: entry (Stilosa/Caso/Dedica),
+superauto (Magnifica S/Philips/EQ6), entry grinder (GVX242/Molino/EKM200).
+Premiums y mid manual ya cubiertos (Victoria, TQ923, Specialista, Precision, MD15).

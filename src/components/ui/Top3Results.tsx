@@ -5,6 +5,7 @@ import { ScoreBadge } from "./ScoreBadge";
 import { ProductImage } from "./ProductImage";
 import { track } from "@/lib/analytics";
 import { amazonUrl } from "@/lib/amazon";
+import { verificationBadge } from "@/lib/eligibility";
 
 function pillsFor(e: EvaluatedSetup) {
   const m = e.setup.machine;
@@ -73,7 +74,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                 <div className="rounded-xl bg-stone-950 border border-stone-800 p-2.5 sm:p-3 flex flex-col">
                   <ProductImage src={e.setup.machine.image} alt={e.setup.machine.model} className="aspect-[16/10] sm:aspect-[4/3]" />
                   <p className="font-bold text-white mt-2 text-sm">
-                    {e.setup.machine.brand} {e.setup.machine.model} {e.setup.machine.availability?.status==="verified" ? <span className="text-[10px] bg-emerald-900/30 text-emerald-300 border border-emerald-700/30 px-1 py-0.5 rounded-full align-middle">✓</span> : null}
+                    {e.setup.machine.brand} {e.setup.machine.model} {e.setup.machine.verification?.level==="human" ? <span className="text-[10px] bg-emerald-900/30 text-emerald-300 border border-emerald-700/30 px-1 py-0.5 rounded-full align-middle">✓</span> : null}
                   </p>
                   <p className="text-xs text-stone-400">
                     {e.setup.machine.specs.portafilterDiameter ? `${e.setup.machine.specs.portafilterDiameter}mm` : ""} {e.setup.machine.specs.pid ? "· PID" : "· sin PID"} · {e.setup.machine.specs.boilerType}
@@ -82,7 +83,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                     href={amazonUrl(e.setup.machine.asin, `${e.setup.machine.brand} ${e.setup.machine.model}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore, verification: e.setup.machine.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: e.setup.machine.availability?.status })}
+                    onClick={() => track("amazon_click", { asin: e.setup.machine.asin, role: "machine", rank: i + 1, score: e.score.totalScore, verification: verificationBadge(e.setup.machine.verification?.level), verification_status: e.setup.machine.availability?.status })}
                     className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                   >
                     Ver en Amazon →
@@ -103,7 +104,7 @@ export function Top3Results({ tops, prefs }: { tops: EvaluatedSetup[]; prefs: Us
                         href={amazonUrl(e.setup.grinder.asin, `${e.setup.grinder.brand} ${e.setup.grinder.model}`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore, verification: e.setup.grinder!.availability?.reason?.includes("humanVerified") ? "humanVerified" : "amazonHtmlVerified", verification_status: e.setup.grinder!.availability?.status })}
+                        onClick={() => track("amazon_click", { asin: e.setup.grinder!.asin, role: "grinder", rank: i + 1, score: e.score.totalScore, verification: verificationBadge(e.setup.grinder!.verification?.level), verification_status: e.setup.grinder!.availability?.status })}
                         className={`mt-2.5 sm:mt-3 block text-center py-2.5 sm:py-2 rounded-lg text-[13px] sm:text-xs font-bold min-h-[42px] sm:min-h-0 flex items-center justify-center touch-manipulation ${isTop1 ? "bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white" : "bg-stone-800 hover:bg-stone-700 active:bg-stone-700 text-stone-200 border border-stone-700"}`}
                       >
                         Ver en Amazon →

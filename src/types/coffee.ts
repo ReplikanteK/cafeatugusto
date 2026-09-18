@@ -9,7 +9,8 @@ export type SteamSystem = "manual" | "automatic" | "none";
 export type PortafilterDiameter = 51 | 54 | 57 | 58;
 
 export type AmazonMarketplace = "amazon.es";
-export type AvailabilityStatus = "verified" | "unavailable" | "unknown";
+// Disponibilidad = ¿hay stock comprable ahora? (nunca implica quién lo comprobó)
+export type AvailabilityStatus = "available" | "unavailable" | "unknown";
 
 export interface AmazonInfo {
   readonly asin: string;
@@ -22,6 +23,33 @@ export interface AvailabilityInfo {
   readonly status: AvailabilityStatus;
   readonly lastChecked?: string; // ISO date
   readonly reason?: string;
+}
+
+// Nivel de verificación = ¿QUIÉN comprobó la disponibilidad? (ortogonal a availability).
+// "human" = persona en navegador real. "amazon_html" = HTML/dp automático.
+// amazonHtmlVerified ≠ humanVerified — ver scripts/scan-amazon-product-html.ts
+export type VerificationLevel = "human" | "amazon_html" | "none";
+export interface VerificationInfo {
+  readonly level: VerificationLevel;
+  readonly checkedAt?: string; // ISO date
+}
+
+// Precio = ¿el EUR es observado directo o derivado? (ortogonal a availability/verification)
+export type PriceCheckStatus = "direct_eur" | "derived" | "unknown";
+export interface PriceCheckInfo {
+  readonly status: PriceCheckStatus;
+  readonly observedEUR?: number;
+  readonly checkedAt?: string; // ISO date
+  readonly source?: "amazon_html" | "manual" | "ecb";
+  readonly note?: string;
+}
+
+// Identidad = ¿el ASIN corresponde al modelo/tipo declarado? (categoría de fallo real: caso Magnifica Duo)
+export type IdentityCheckStatus = "verified" | "unknown";
+export interface IdentityCheckInfo {
+  readonly status: IdentityCheckStatus;
+  readonly checkedAt?: string; // ISO date
+  readonly note?: string;
 }
 
 export interface CoffeeMachine {
@@ -60,6 +88,9 @@ export interface CoffeeMachine {
   };
   readonly amazon?: AmazonInfo;
   readonly availability?: AvailabilityInfo;
+  readonly verification?: VerificationInfo;
+  readonly priceCheck?: PriceCheckInfo;
+  readonly identityCheck?: IdentityCheckInfo;
   readonly metadata: {
     readonly verifiedAt: string;
     readonly sources: readonly string[];
@@ -96,6 +127,9 @@ export interface Grinder {
   };
   readonly amazon?: AmazonInfo;
   readonly availability?: AvailabilityInfo;
+  readonly verification?: VerificationInfo;
+  readonly priceCheck?: PriceCheckInfo;
+  readonly identityCheck?: IdentityCheckInfo;
   readonly metadata: {
     readonly verifiedAt: string;
     readonly sources: readonly string[];

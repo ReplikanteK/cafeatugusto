@@ -5,6 +5,7 @@ import { UserPreferences, EvaluatedSetup } from "@/types/coffee";
 import { MACHINES_SEED } from "@/data/machines";
 import { GRINDERS_SEED } from "@/data/grinders";
 import { passesHardFilters, calculateSetupScore } from "@/engine/compatibility";
+import { isRecommendableSetup } from "@/lib/eligibility";
 import { Top3Results } from "@/components/ui/Top3Results";
 import { track } from "@/lib/analytics";
 
@@ -59,8 +60,8 @@ function WizardInner() {
     if (src) track("guide_conversion", { src, archetype: archetype ?? "custom" } as unknown as Record<string, unknown>);
     const candidates: EvaluatedSetup[] = [];
     for (const m of MACHINES_SEED) {
-      if (m.grinderIntegrated) { if (passesHardFilters(m, undefined, fp)) candidates.push(calculateSetupScore(m, undefined, fp)); }
-      else { for (const g of GRINDERS_SEED) { if (passesHardFilters(m, g, fp)) candidates.push(calculateSetupScore(m, g, fp)); } }
+      if (m.grinderIntegrated) { if (isRecommendableSetup(m, undefined) && passesHardFilters(m, undefined, fp)) candidates.push(calculateSetupScore(m, undefined, fp)); }
+      else { for (const g of GRINDERS_SEED) { if (isRecommendableSetup(m, g) && passesHardFilters(m, g, fp)) candidates.push(calculateSetupScore(m, g, fp)); } }
     }
     candidates.sort((a, b) => b.score.totalScore - a.score.totalScore);
     const top3 = candidates.slice(0, 3);
