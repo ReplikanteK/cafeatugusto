@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-18T09:13:35.956Z",
+  "timestamp": "2026-09-18T09:23:14.847Z",
   "mode": "mock",
-  "total": 34,
-  "valid": 34,
+  "total": 36,
+  "valid": 36,
   "invalid": 0,
   "InStock": [
     "B06X3ZWVZ7",
@@ -31,6 +31,7 @@
     "B00CS2DAEG",
     "B00K5YLI2U",
     "B0CHYWBF7R",
+    "B08SBH2TC6",
     "B0D92111HV",
     "B0BH8MRB2Z",
     "B0CGVVSM19",
@@ -38,7 +39,8 @@
     "B08NBHR7HT",
     "B0D1PF6Z57",
     "B0D9NX6VNG",
-    "B0DB1J2S6V"
+    "B0DB1J2S6V",
+    "B0GXFD87XD"
   ],
   "OutOfStock": [],
   "InvalidASIN": [],
@@ -199,13 +201,21 @@
     "B00K5YLI2U": {
       "status": "InStock",
       "sources": [
-        "grinders:g_lelit_fred"
+        "grinders:g_lelit_fred",
+        "comparatives:lelit-fred-vs-gaggia-md15:a"
       ]
     },
     "B0CHYWBF7R": {
       "status": "InStock",
       "sources": [
         "grinders:g_wmf_lumero"
+      ]
+    },
+    "B08SBH2TC6": {
+      "status": "InStock",
+      "sources": [
+        "grinders:g_gaggia_md15",
+        "comparatives:lelit-fred-vs-gaggia-md15:b"
       ]
     },
     "B0D92111HV": {
@@ -235,7 +245,8 @@
     "B08NBHR7HT": {
       "status": "InStock",
       "sources": [
-        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas",
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
@@ -254,6 +265,12 @@
       "status": "InStock",
       "sources": [
         "comparatives:krups-gvx242-vs-melitta-molino:acc:Soplador single-dose"
+      ]
+    },
+    "B0GXFD87XD": {
+      "status": "InStock",
+      "sources": [
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm"
       ]
     }
   }
