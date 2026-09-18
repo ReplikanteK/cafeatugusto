@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-18T09:23:14.847Z",
+  "timestamp": "2026-09-18T09:37:41.653Z",
   "mode": "mock",
   "total": 36,
   "valid": 36,
@@ -63,7 +63,8 @@
     "B0H2MS9GJH": {
       "status": "InStock",
       "sources": [
-        "machines:m_delonghi_specialista"
+        "machines:m_delonghi_specialista",
+        "comparatives:delonghi-specialista-arte-vs-krups-precision:a"
       ]
     },
     "B0H1D9S7RJ": {
@@ -75,7 +76,8 @@
     "B076HZ1P4M": {
       "status": "InStock",
       "sources": [
-        "machines:m_siemens_te655"
+        "machines:m_siemens_te655",
+        "comparatives:delonghi-opera-vs-siemens-eq6:b"
       ]
     },
     "B0GKHGMQYT": {
@@ -94,13 +96,15 @@
     "B0F1FZ5CPR": {
       "status": "InStock",
       "sources": [
-        "machines:m_caso_gourmet"
+        "machines:m_caso_gourmet",
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:b"
       ]
     },
     "B0CWP67FWS": {
       "status": "InStock",
       "sources": [
-        "machines:m_delonghi_ec9555m"
+        "machines:m_delonghi_ec9555m",
+        "comparatives:delonghi-opera-vs-siemens-eq6:a"
       ]
     },
     "B0H2ND6MJ4": {
@@ -112,13 +116,15 @@
     "B086RF6YJQ": {
       "status": "InStock",
       "sources": [
-        "machines:m_delonghi_stilosa"
+        "machines:m_delonghi_stilosa",
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:a"
       ]
     },
     "B0DW9F2DDR": {
       "status": "InStock",
       "sources": [
-        "machines:m_krups_precision"
+        "machines:m_krups_precision",
+        "comparatives:delonghi-specialista-arte-vs-krups-precision:b"
       ]
     },
     "B0C85NMRXP": {
@@ -137,13 +143,15 @@
     "B07PLXPCX3": {
       "status": "InStock",
       "sources": [
-        "machines:m_magnifica_22110b"
+        "machines:m_magnifica_22110b",
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:a"
       ]
     },
     "B08CBJ8W9W": {
       "status": "InStock",
       "sources": [
-        "machines:m_philips_5400_ep5447"
+        "machines:m_philips_5400_ep5447",
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:b"
       ]
     },
     "B0GHZDTYQ4": {
@@ -162,7 +170,8 @@
     "B005L8YUI4": {
       "status": "InStock",
       "sources": [
-        "grinders:g_rommelsbacher_ekm200"
+        "grinders:g_rommelsbacher_ekm200",
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:b"
       ]
     },
     "B00R7HKAWC": {
@@ -175,7 +184,8 @@
     "B0FKN9KHJP": {
       "status": "InStock",
       "sources": [
-        "grinders:g_behmor_ideal"
+        "grinders:g_behmor_ideal",
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:a"
       ]
     },
     "B00EO26GGC": {
@@ -221,19 +231,23 @@
     "B0D92111HV": {
       "status": "InStock",
       "sources": [
-        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:Tamper regulable 51mm"
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:Tamper regulable 51mm",
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:acc:Tamper regulable 51mm"
       ]
     },
     "B0BH8MRB2Z": {
       "status": "InStock",
       "sources": [
-        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:WDT 0.35mm 10 agujas"
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:WDT 0.35mm 10 agujas",
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:acc:WDT 0.35mm 10 agujas",
+        "comparatives:delonghi-specialista-arte-vs-krups-precision:acc:WDT 0.35mm 10 agujas"
       ]
     },
     "B0CGVVSM19": {
       "status": "InStock",
       "sources": [
-        "comparatives:lelit-victoria-vs-lelit-anita:acc:Cesta VST 18g 58mm"
+        "comparatives:lelit-victoria-vs-lelit-anita:acc:Cesta VST 18g 58mm",
+        "comparatives:delonghi-opera-vs-siemens-eq6:acc:Cesta VST 18g 58mm"
       ]
     },
     "B09N2C9FP5": {
@@ -246,19 +260,24 @@
       "status": "InStock",
       "sources": [
         "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas",
-        "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas"
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas",
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:acc:Cepillo limpieza muelas",
+        "comparatives:delonghi-specialista-arte-vs-krups-precision:acc:Cepillo limpieza muelas",
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
       "status": "InStock",
       "sources": [
-        "comparatives:graef-cm702-vs-graef-cm800:acc:Tolva single-dose 45g"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Tolva single-dose 45g",
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Tolva single-dose 45g"
       ]
     },
     "B0D9NX6VNG": {
       "status": "InStock",
       "sources": [
-        "comparatives:krups-gvx242-vs-melitta-molino:acc:Báscula 0.1g con timer"
+        "comparatives:krups-gvx242-vs-melitta-molino:acc:Báscula 0.1g con timer",
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:acc:Báscula 0.1g con timer"
       ]
     },
     "B0DB1J2S6V": {
@@ -270,7 +289,8 @@
     "B0GXFD87XD": {
       "status": "InStock",
       "sources": [
-        "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm"
+        "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm",
+        "comparatives:delonghi-opera-vs-siemens-eq6:acc:Anillo dosificador 58mm"
       ]
     }
   }
