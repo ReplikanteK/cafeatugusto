@@ -1,6 +1,8 @@
-# Tech Debt — Café A Tu Gusto (freeze 73c2b38 — 2026-09-15)
+# Tech Debt — Café A Tu Gusto (2026-09-18 — main post trust-model, 17+10, 10 comparativas)
 
 > Motor congelado tras QA 8 perfiles. Solo se reabre por FAIL absurdo en validación humana o por evidencia CTR.
+> Ronda 2026-09-18: modelo de confianza (availability/verification/priceCheck/identityCheck) +
+> elegibilidad estricta (`CATALOG_POLICY.requireHumanVerification = true`). Scoring intacto.
 
 ## Deuda deliberada (no bloquea freeze)
 

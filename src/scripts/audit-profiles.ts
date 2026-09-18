@@ -1,6 +1,7 @@
 import { MACHINES_SEED } from "../data/machines";
 import { GRINDERS_SEED } from "../data/grinders";
 import { passesHardFilters, calculateSetupScore } from "../engine/compatibility";
+import { isRecommendableSetup } from "../lib/eligibility";
 import { UserPreferences } from "../types/coffee";
 
 type Profile = { id: string; name: string; prefs: UserPreferences; expected: string };
@@ -118,10 +119,10 @@ function audit() {
     const candidates: ReturnType<typeof calculateSetupScore>[] = [];
     for (const m of MACHINES_SEED) {
       if (m.grinderIntegrated) {
-        if (passesHardFilters(m, undefined, p.prefs)) candidates.push(calculateSetupScore(m, undefined, p.prefs));
+        if (isRecommendableSetup(m, undefined) && passesHardFilters(m, undefined, p.prefs)) candidates.push(calculateSetupScore(m, undefined, p.prefs));
       } else {
         for (const g of GRINDERS_SEED) {
-          if (passesHardFilters(m, g, p.prefs)) candidates.push(calculateSetupScore(m, g, p.prefs));
+          if (isRecommendableSetup(m, g) && passesHardFilters(m, g, p.prefs)) candidates.push(calculateSetupScore(m, g, p.prefs));
         }
       }
     }

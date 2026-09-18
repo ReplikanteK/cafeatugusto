@@ -1,6 +1,7 @@
 import { MACHINES_SEED } from "../data/machines";
 import { GRINDERS_SEED } from "../data/grinders";
 import { passesHardFilters, calculateSetupScore } from "../engine/compatibility";
+import { isRecommendableSetup, CATALOG_POLICY } from "../lib/eligibility";
 import { UserPreferences } from "../types/coffee";
 
 type Profile = { id: string; name: string; prefs: UserPreferences; descripcion: string };
@@ -135,15 +136,22 @@ function fmt(c: ReturnType<typeof calculateSetupScore> | undefined) {
 }
 
 function audit() {
+  // Sin --strict: QA del MOTOR (compatibilidad/scoring) en modo permisivo.
+  // Con --strict: QA del CTR (puerta comercial estricta) — P2 vacío aquí es
+  // señal de cobertura humana, no bug del motor.
+  const POLICY = process.argv.includes("--strict")
+    ? CATALOG_POLICY
+    : { requireHumanVerification: false } as const;
   console.log("# QA 8 Perfiles Humanos — Café A Tu Gusto\n");
+  console.log(`Política: requireHumanVerification=${String(POLICY.requireHumanVerification)}`);
   for (const p of profiles) {
     const candidates: ReturnType<typeof calculateSetupScore>[] = [];
     for (const m of MACHINES_SEED) {
       if (m.grinderIntegrated) {
-        if (passesHardFilters(m, undefined, p.prefs)) candidates.push(calculateSetupScore(m, undefined, p.prefs));
+        if (isRecommendableSetup(m, undefined, POLICY) && passesHardFilters(m, undefined, p.prefs)) candidates.push(calculateSetupScore(m, undefined, p.prefs));
       } else {
         for (const g of GRINDERS_SEED) {
-          if (passesHardFilters(m, g, p.prefs)) candidates.push(calculateSetupScore(m, g, p.prefs));
+          if (isRecommendableSetup(m, g, POLICY) && passesHardFilters(m, g, p.prefs)) candidates.push(calculateSetupScore(m, g, p.prefs));
         }
       }
     }

@@ -14,8 +14,8 @@ export const COMPARATIVES: readonly Comparative[] = [
     slug: "delonghi-dedica-vs-krups-virtuoso",
     title: "De'Longhi Dedica EC685 vs Krups Virtuoso XP444",
     subtitle: "Entrada compacta 51mm para cocina pequeña y 1-3 tazas diarias. Ambas presurizado tolerante, pero Dedica gana en huella 15cm y ecosistema barato 51mm, mientras Virtuoso aporta ThermoJet auto y pannarello más amable para capuchino sin técnica.",
-    verdict: "Elige Dedica EC685 si cada centímetro cuenta y quieres accesorios 51mm baratos para iniciarte sin presión por el dial. Elige Virtuoso XP444 si prefieres encendido intuitivo, vapor más estable y curva de aprendizaje 1 — el extra 20€ se paga en consistencia día uno.",
-    verdictArchetype: "The Efficiencist con 190€ y prisa → Virtuoso (40s, pannarello). The Small Space → Dedica (15cm, 210€).",
+    verdict: "Elige Dedica EC685 si cada centímetro cuenta y quieres accesorios 51mm baratos para iniciarte sin presión por el dial. Elige Virtuoso XP444 si prefieres encendido intuitivo, vapor más estable y curva de aprendizaje 1 — ese extra se paga en consistencia día uno.",
+    verdictArchetype: "The Efficiencist con prisa → Virtuoso (40s, pannarello). The Small Space → Dedica (15cm).",
     a: { name: "De'Longhi Dedica EC685", asin: "B06X3ZWVZ7", image: "/images/machines/delonghi-dedica-ec685.jpg" },
     b: { name: "Krups Virtuoso XP444", asin: "B0C85NMRXP", image: "/images/machines/krups-virtuoso-xp444.jpg" },
     specs: [
@@ -55,9 +55,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "graef-cm702-vs-graef-cm800",
     title: "Graef CM702 vs Graef CM800",
-    subtitle: "Familia Graef cónica para espresso diario: CM702 24 niveles 250g a 132€ como puerta de entrada seria, CM800 40 niveles 350g a 159€ con rueda 5 palas aluminio y 800-900rpm para moler frío sin calentar y con menos retención.",
+    subtitle: "Familia Graef cónica para espresso diario: CM702 24 niveles 250g como puerta de entrada seria, CM800 40 niveles 350g con rueda 5 palas aluminio y 800-900rpm para moler frío sin calentar y con menos retención.",
     verdict: "Quédate en CM702 si entras con presupuesto ajustado y 24 pasos ya te dan filtro+espresso correcto. Salta a CM800 si mueles a diario y notas retención o calor: 40 niveles, tolva 350g y molienda 800rpm preservan aroma y sostienen flujo.",
-    verdictArchetype: "The Entry 132€ → CM702 (24). The Daily 159€ → CM800 (40 + 350g frío).",
+    verdictArchetype: "The Entry → CM702 (24). The Daily → CM800 (40 + 350g frío).",
     a: { name: "Graef CM702", asin: "B00EO26GGC", image: "/images/grinders/graef-cm702.jpg" },
     b: { name: "Graef CM800", asin: "B00CS2DAEG", image: "/images/grinders/graef-cm800.jpg" },
     specs: [
@@ -115,9 +115,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-stilosa-vs-caso-gourmet",
     title: "De'Longhi Stilosa EC235.BK vs Caso Espresso Gourmet",
-    subtitle: "Duelo entry 51mm thermoblock: Stilosa 109€ inox con pannarello y 1L para el primer espresso sin complicaciones, frente a Caso 160€ con manómetro visible, 1.8L y pannarello orientable para aprender leyendo presión.",
-    verdict: "Stilosa si entras con 109€ y quieres marca, repuestos y curva 1 desde el día uno. Caso si pagas 50€ más por manómetro, depósito 1.8L y más tazas al día — el instrumento para aprender sin saltar de gama.",
-    verdictArchetype: "The Budget Entry 109€ → Stilosa (marca, curva 1). The Learning Entry 160€ → Caso (manómetro, 1.8L).",
+    subtitle: "Duelo entry 51mm thermoblock: Stilosa inox con pannarello y 1L para el primer espresso sin complicaciones, frente a Caso con manómetro visible, 1.8L y pannarello orientable para aprender leyendo presión.",
+    verdict: "Stilosa si entras buscando marca, repuestos y curva 1 desde el día uno. Caso si prefieres manómetro, depósito 1.8L y más tazas al día — el instrumento para aprender sin saltar de gama.",
+    verdictArchetype: "The Budget Entry → Stilosa (marca, curva 1). The Learning Entry → Caso (manómetro, 1.8L).",
     a: { name: "De'Longhi Stilosa EC235.BK", asin: "B086RF6YJQ", image: "/images/machines/delonghi-stilosa-ec235.jpg" },
     b: { name: "Caso Espresso Gourmet", asin: "B0F1FZ5CPR", image: "/images/machines/caso-espresso-gourmet.jpg" },
     specs: [
@@ -136,9 +136,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-magnifica-s-vs-philips-5400",
     title: "De'Longhi Magnifica S ECAM22.110.B vs Philips Serie 5400 EP5447/90",
-    subtitle: "Grano a taza sin fricción en dos escalones: Magnifica S 287€ entry con espumador manual y 13 niveles en 23.8cm, frente a Philips 5400 399€ con 12 bebidas, LatteGo y 4 perfiles para familia.",
-    verdict: "Magnifica S si quieres el grano-a-taza más barato con marca y repuestos, y no te importa espumar a mano. Philips 5400 si la casa pide capuchinos a botón, limpieza LatteGo en 15 segundos y perfiles para cada uno — los 110€ se pagan en daily driver.",
-    verdictArchetype: "The Entry Superauto 287€ → Magnifica S (manual, 23.8cm). The Family Driver 399€ → Philips 5400 (12 bebidas, LatteGo).",
+    subtitle: "Grano a taza sin fricción en dos escalones: Magnifica S entry con espumador manual y 13 niveles en 23.8cm, frente a Philips 5400 con 12 bebidas, LatteGo y 4 perfiles para familia.",
+    verdict: "Magnifica S si quieres el grano-a-taza más barato con marca y repuestos, y no te importa espumar a mano. Philips 5400 si la casa pide capuchinos a botón, limpieza LatteGo en 15 segundos y perfiles para cada uno — la diferencia se paga en daily driver.",
+    verdictArchetype: "The Entry Superauto → Magnifica S (manual, 23.8cm). The Family Driver → Philips 5400 (12 bebidas, LatteGo).",
     a: { name: "De'Longhi Magnifica S ECAM22.110.B", asin: "B07PLXPCX3", image: "/images/machines/delonghi-magnifica-s-22110b.jpg" },
     b: { name: "Philips Serie 5400 EP5447/90", asin: "B08CBJ8W9W", image: "/images/machines/philips-5400-ep5447.jpg" },
     specs: [
@@ -157,9 +157,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-specialista-arte-vs-krups-precision",
     title: "De'Longhi La Specialista Arte vs Krups Precision GW",
-    subtitle: "Todo en uno de gama media a 17€ de distancia: Specialista Arte 390€ con 51mm, 8 niveles y My LatteArt guiado, frente a Krups Precision 373€ con 58mm, manómetro y dial para aprender dosis y prensado.",
+    subtitle: "Todo en uno de gama media: Specialista Arte con 51mm, 8 niveles y My LatteArt guiado, frente a Krups Precision con 58mm, manómetro y dial para aprender dosis y prensado.",
     verdict: "Specialista Arte si quieres flujo guiado compacto y vaporizar LatteArt sin pensar en técnica. Krups Precision si te tienta el 58mm estándar, leer presión en manómetro y ajustar con dial — más escuela de espresso por menos euros.",
-    verdictArchetype: "The Guided 390€ → Specialista Arte (51mm, LatteArt). The School 373€ → Krups Precision (58mm, manómetro).",
+    verdictArchetype: "The Guided → Specialista Arte (51mm, LatteArt). The School → Krups Precision (58mm, manómetro).",
     a: { name: "De'Longhi La Specialista Arte", asin: "B0H2MS9GJH", image: "/images/machines/delonghi-la-specialista-arte.jpg" },
     b: { name: "Krups Precision GW", asin: "B0DW9F2DDR", image: "/images/machines/krups-precision-gw.jpg" },
     specs: [
@@ -178,9 +178,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-opera-vs-siemens-eq6",
     title: "De'Longhi La Specialista Opera EC9555.M vs Siemens EQ6 Plus S500",
-    subtitle: "Mismo precio, rituales opuestos: Opera 699€ manual 58mm con PID, 15 niveles y Cold Brew para experimentar, frente a EQ6 675€ superautomática silenciosa con cerámicas, TFT y autolimpieza de leche.",
+    subtitle: "Mismo precio, rituales opuestos: Opera manual 58mm con PID, 15 niveles y Cold Brew para experimentar, frente a EQ6 superautomática silenciosa con cerámicas, TFT y autolimpieza de leche.",
     verdict: "Opera si tu placer es el ritual: 58mm, control de temperatura y Cold Brew para perfilar cada taza. EQ6 si priorizas un toque y cero fricción: cerámica silenciosa, 3-10 tazas y leche que se limpia sola — oficina o familia sin barista de guardia.",
-    verdictArchetype: "The Ritual 699€ → Opera (58mm PID, Cold Brew). The One-Touch 675€ → EQ6 (cerámica, autolimpieza).",
+    verdictArchetype: "The Ritual → Opera (58mm PID, Cold Brew). The One-Touch → EQ6 (cerámica, autolimpieza).",
     a: { name: "De'Longhi La Specialista Opera EC9555.M", asin: "B0CWP67FWS", image: "/images/machines/delonghi-ec9555-m.jpg" },
     b: { name: "Siemens EQ6 Plus S500 TE655203RW", asin: "B076HZ1P4M", image: "/images/machines/siemens-te655203rw.jpg" },
     specs: [
@@ -199,9 +199,9 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "behmor-ideal-vs-rommelsbacher-ekm200",
     title: "Behmor Ideal Conical 30 vs Rommelsbacher EKM 200",
-    subtitle: "Sub-100€ con geometrías opuestas: Behmor 97€ cónica 40mm de 30 niveles con 300g y cierre auto de tolva, frente a EKM200 76€ flat 44mm con selector 2-12 tazas que además muele especias.",
+    subtitle: "Sub-100€ con geometrías opuestas: Behmor cónica 40mm de 30 niveles con 300g y cierre auto de tolva, frente a EKM200 flat 44mm con selector 2-12 tazas que además muele especias.",
     verdict: "Behmor si mueles espresso a diario y quieres 30 pasos, 300g y cambiar de grano sin vaciar. EKM200 si buscas el flat más barato que rinde en espresso y un todoterreno que también muele especias sin recalentar.",
-    verdictArchetype: "The Conical 97€ → Behmor (30 niveles, 300g). The Flat 76€ → EKM200 (44mm, especias).",
+    verdictArchetype: "The Conical → Behmor (30 niveles, 300g). The Flat → EKM200 (44mm, especias).",
     a: { name: "Behmor Ideal Conical 30", asin: "B0FKN9KHJP", image: "/images/grinders/behmor-ideal-conical.jpg" },
     b: { name: "Rommelsbacher EKM 200", asin: "B005L8YUI4", image: "/images/grinders/rommelsbacher-ekm200.jpg" },
     specs: [

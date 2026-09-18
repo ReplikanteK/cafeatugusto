@@ -6,6 +6,7 @@ import { GRINDERS_SEED } from "@/data/grinders";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { track } from "@/lib/analytics";
 import { amazonUrl } from "@/lib/amazon";
+import { verificationBadge, isRecommendableMachine, isRecommendableGrinder } from "@/lib/eligibility";
 
 type Cat = "all" | "machines" | "grinders";
 type Diam = "all" | "51" | "57" | "58";
@@ -14,12 +15,12 @@ interface Item {
   id: string; type: "machine" | "grinder"; name: string; brand: string; price: number; image: string; asin: string; description?: string;
   diam?: number; pid?: boolean; boiler?: string; heat?: number; integrated?: boolean;
   burr?: string; burrSize?: number; adj?: string; retention?: string; focus?: string;
-  availability?: "verified" | "unknown" | "unavailable"; lastChecked?: string; verification?: "humanVerified" | "amazonHtmlVerified";
+  availability?: "available" | "unknown" | "unavailable"; lastChecked?: string; verification?: "humanVerified" | "amazonHtmlVerified"; recommendable?: boolean;
 }
 
 const allItems: Item[] = [
-  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated, availability: m.availability?.status, lastChecked: m.availability?.lastChecked, verification: m.availability?.reason?.includes("humanVerified") ? "humanVerified" as const : "amazonHtmlVerified" as const })),
-  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro", availability: g.availability?.status, lastChecked: g.availability?.lastChecked, verification: g.availability?.reason?.includes("humanVerified") ? "humanVerified" as const : "amazonHtmlVerified" as const })),
+  ...MACHINES_SEED.map(m=> ({ id: m.id, type:"machine" as const, name: m.model, brand: m.brand, price: m.priceApproxEUR, image: m.image, asin: m.asin, description: m.description, diam: m.specs.portafilterDiameter, pid: m.specs.pid, boiler: m.specs.boilerType, heat: m.specs.startupTimeSeconds, integrated: m.grinderIntegrated, availability: m.availability?.status, lastChecked: m.availability?.lastChecked, verification: verificationBadge(m.verification?.level), recommendable: isRecommendableMachine(m) })),
+  ...GRINDERS_SEED.map(g=> ({ id: g.id, type:"grinder" as const, name: g.model, brand: g.brand, price: g.priceApproxEUR, image: g.image, asin: g.asin, description: g.description, burr: g.specs.burrType, burrSize: g.specs.burrSizeMM, adj: g.specs.grindAdjustment, retention: g.performance.retention>=4 ? "Single-Dose" : g.specs.hopperCapacityGrams>100 ? "Con Tolva" : "Manual", focus: g.specs.espressoCapable && g.specs.filterCapable ? "Polivalente" : g.specs.espressoCapable ? "Espresso" : "Filtro", availability: g.availability?.status, lastChecked: g.availability?.lastChecked, verification: verificationBadge(g.verification?.level), recommendable: isRecommendableGrinder(g) })),
 ];
 
 const PAGE_SIZE = 12;
@@ -168,7 +169,7 @@ function CatalogoInner() {
                   </label>
                   {i.availability === "unavailable" ? (
                     <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-500">No disponible</span>
-                  ) : (
+                  ) : i.recommendable ? (
                     <a
                       href={amazonUrl(i.asin, `${i.brand} ${i.name}`)}
                       target="_blank"
@@ -178,6 +179,8 @@ function CatalogoInner() {
                     >
                       Ver en Amazon →
                     </a>
+                  ) : (
+                    <span className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-900 border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-400">Comprobación pendiente</span>
                   )}
                 </div>
               </div>
@@ -228,7 +231,7 @@ function CatalogoInner() {
               </tbody>
             </table>
             <div className="mt-4 flex gap-2">
-              {selItems.map(s=> s.availability === "unavailable" ? <span key={s.id} className="flex-1 py-2 bg-stone-800 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-500">No disponible</span> : <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a>)}
+              {selItems.map(s=> s.availability === "unavailable" ? <span key={s.id} className="flex-1 py-2 bg-stone-800 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-500">No disponible</span> : s.recommendable ? <a key={s.id} href={amazonUrl(s.asin, `${s.brand} ${s.name}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("amazon_click", { asin: s.asin, title: s.name, source: "catalogo_compare", verification: s.verification, verification_status: s.availability })} className="flex-1 py-2 bg-amber-600 rounded-lg text-center text-xs font-bold">Ver {s.brand} →</a> : <span key={s.id} className="flex-1 py-2 bg-stone-900 border border-stone-700 rounded-lg text-center text-xs font-bold text-stone-400">Comprobación pendiente</span>)}
             </div>
           </div>
         </div>
