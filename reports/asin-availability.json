@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-18T13:00:18.068Z",
+  "timestamp": "2026-09-18T17:06:22.656Z",
   "mode": "mock",
   "total": 36,
   "valid": 36,
@@ -50,7 +50,8 @@
       "status": "InStock",
       "sources": [
         "machines:m_dedica_ec685",
-        "comparatives:delonghi-dedica-vs-krups-virtuoso:a"
+        "comparatives:delonghi-dedica-vs-krups-virtuoso:a",
+        "comparatives:delonghi-stilosa-vs-delonghi-dedica:b"
       ]
     },
     "B01D4O62JG": {
@@ -70,20 +71,23 @@
     "B0H1D9S7RJ": {
       "status": "InStock",
       "sources": [
-        "machines:m_ninja_luxe_premier"
+        "machines:m_ninja_luxe_premier",
+        "comparatives:ninja-luxe-premier-vs-delonghi-magnifica-duo:a"
       ]
     },
     "B076HZ1P4M": {
       "status": "InStock",
       "sources": [
         "machines:m_siemens_te655",
-        "comparatives:delonghi-opera-vs-siemens-eq6:b"
+        "comparatives:delonghi-opera-vs-siemens-eq6:b",
+        "comparatives:philips-5400-vs-siemens-eq6:b"
       ]
     },
     "B0GKHGMQYT": {
       "status": "InStock",
       "sources": [
-        "machines:m_siemens_tq923"
+        "machines:m_siemens_tq923",
+        "comparatives:delonghi-eletta-ultra-vs-siemens-eq900:b"
       ]
     },
     "B004QXG132": {
@@ -97,7 +101,8 @@
       "status": "InStock",
       "sources": [
         "machines:m_caso_gourmet",
-        "comparatives:delonghi-stilosa-vs-caso-gourmet:b"
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:b",
+        "comparatives:caso-gourmet-vs-cecotec-tradizionale:a"
       ]
     },
     "B0CWP67FWS": {
@@ -110,14 +115,16 @@
     "B0H2ND6MJ4": {
       "status": "InStock",
       "sources": [
-        "machines:m_delonghi_magnifica_duo"
+        "machines:m_delonghi_magnifica_duo",
+        "comparatives:ninja-luxe-premier-vs-delonghi-magnifica-duo:b"
       ]
     },
     "B086RF6YJQ": {
       "status": "InStock",
       "sources": [
         "machines:m_delonghi_stilosa",
-        "comparatives:delonghi-stilosa-vs-caso-gourmet:a"
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:a",
+        "comparatives:delonghi-stilosa-vs-delonghi-dedica:a"
       ]
     },
     "B0DW9F2DDR": {
@@ -137,7 +144,8 @@
     "B0GJ62WDY7": {
       "status": "InStock",
       "sources": [
-        "machines:m_cecotec_tradizionale"
+        "machines:m_cecotec_tradizionale",
+        "comparatives:caso-gourmet-vs-cecotec-tradizionale:b"
       ]
     },
     "B07PLXPCX3": {
@@ -151,13 +159,15 @@
       "status": "InStock",
       "sources": [
         "machines:m_philips_5400_ep5447",
-        "comparatives:delonghi-magnifica-s-vs-philips-5400:b"
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:b",
+        "comparatives:philips-5400-vs-siemens-eq6:a"
       ]
     },
     "B0GHZDTYQ4": {
       "status": "InStock",
       "sources": [
-        "machines:m_eletta_ultra"
+        "machines:m_eletta_ultra",
+        "comparatives:delonghi-eletta-ultra-vs-siemens-eq900:a"
       ]
     },
     "B000IWHXH8": {
@@ -198,14 +208,16 @@
     "B0GLGQ6J6R": {
       "status": "InStock",
       "sources": [
-        "grinders:g_rommelsbacher_ekm600"
+        "grinders:g_rommelsbacher_ekm600",
+        "comparatives:rommelsbacher-ekm600-vs-graef-cm800:a"
       ]
     },
     "B00CS2DAEG": {
       "status": "InStock",
       "sources": [
         "grinders:g_graef_cm800",
-        "comparatives:graef-cm702-vs-graef-cm800:b"
+        "comparatives:graef-cm702-vs-graef-cm800:b",
+        "comparatives:rommelsbacher-ekm600-vs-graef-cm800:b"
       ]
     },
     "B00K5YLI2U": {
@@ -232,7 +244,9 @@
       "status": "InStock",
       "sources": [
         "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:Tamper regulable 51mm",
-        "comparatives:delonghi-stilosa-vs-caso-gourmet:acc:Tamper regulable 51mm"
+        "comparatives:delonghi-stilosa-vs-caso-gourmet:acc:Tamper regulable 51mm",
+        "comparatives:delonghi-stilosa-vs-delonghi-dedica:acc:Tamper regulable 51mm",
+        "comparatives:caso-gourmet-vs-cecotec-tradizionale:acc:Tamper regulable 51mm"
       ]
     },
     "B0BH8MRB2Z": {
@@ -240,7 +254,9 @@
       "sources": [
         "comparatives:delonghi-dedica-vs-krups-virtuoso:acc:WDT 0.35mm 10 agujas",
         "comparatives:delonghi-stilosa-vs-caso-gourmet:acc:WDT 0.35mm 10 agujas",
-        "comparatives:delonghi-specialista-arte-vs-krups-precision:acc:WDT 0.35mm 10 agujas"
+        "comparatives:delonghi-specialista-arte-vs-krups-precision:acc:WDT 0.35mm 10 agujas",
+        "comparatives:delonghi-stilosa-vs-delonghi-dedica:acc:WDT 0.35mm 10 agujas",
+        "comparatives:caso-gourmet-vs-cecotec-tradizionale:acc:WDT 0.35mm 10 agujas"
       ]
     },
     "B0CGVVSM19": {
@@ -263,21 +279,29 @@
         "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas",
         "comparatives:delonghi-magnifica-s-vs-philips-5400:acc:Cepillo limpieza muelas",
         "comparatives:delonghi-specialista-arte-vs-krups-precision:acc:Cepillo limpieza muelas",
-        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Cepillo limpieza muelas"
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Cepillo limpieza muelas",
+        "comparatives:philips-5400-vs-siemens-eq6:acc:Cepillo limpieza muelas",
+        "comparatives:rommelsbacher-ekm600-vs-graef-cm800:acc:Cepillo limpieza muelas",
+        "comparatives:delonghi-eletta-ultra-vs-siemens-eq900:acc:Cepillo limpieza muelas",
+        "comparatives:ninja-luxe-premier-vs-delonghi-magnifica-duo:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
       "status": "InStock",
       "sources": [
         "comparatives:graef-cm702-vs-graef-cm800:acc:Tolva single-dose 45g",
-        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Tolva single-dose 45g"
+        "comparatives:behmor-ideal-vs-rommelsbacher-ekm200:acc:Tolva single-dose 45g",
+        "comparatives:rommelsbacher-ekm600-vs-graef-cm800:acc:Tolva single-dose 45g"
       ]
     },
     "B0D9NX6VNG": {
       "status": "InStock",
       "sources": [
         "comparatives:krups-gvx242-vs-melitta-molino:acc:Báscula 0.1g con timer",
-        "comparatives:delonghi-magnifica-s-vs-philips-5400:acc:Báscula 0.1g con timer"
+        "comparatives:delonghi-magnifica-s-vs-philips-5400:acc:Báscula 0.1g con timer",
+        "comparatives:philips-5400-vs-siemens-eq6:acc:Báscula 0.1g con timer",
+        "comparatives:delonghi-eletta-ultra-vs-siemens-eq900:acc:Báscula 0.1g con timer",
+        "comparatives:ninja-luxe-premier-vs-delonghi-magnifica-duo:acc:Báscula 0.1g con timer"
       ]
     },
     "B0DB1J2S6V": {
