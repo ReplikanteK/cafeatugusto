@@ -144,20 +144,4 @@ export const GRINDERS_SEED: readonly Grinder[] = [
     availability: { status: "verified", lastChecked: "2026-09-16", reason: "[amazonHtmlVerified — pendiente humanVerified] 249,99€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B0CHYWBF7R muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
     metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es WMF", "Lumero specs"] },
   },
-  {
-    id: "g_zassenhaus_40005",
-    slug: "zassenhaus-40005",
-    brand: "Zassenhaus",
-    model: "40005 Manual",
-    asin: "B000SIBODG",
-    priceBand: "mid",
-    priceApproxEUR: 75.8,
-    image: "/images/grinders/zassenhaus-40005.jpg",
-    description: "Manual stepless acero especial endurecido 20cm, molienda suave sin calor para preservar aromas. Tornillo moleteado para ajuste continuo espresso a filtro, silencioso y portátil.",
-    specs: { burrType: "conical", burrSizeMM: 35, espressoCapable: true, filterCapable: true, grindAdjustment: "stepless", hopperCapacityGrams: 40 },
-    performance: { doseControl: 3, retention: 5, noise: 5, easeOfUse: 3, footprint: "small" },
-    amazon: { asin: "B000SIBODG", marketplace: "amazon.es", url: "https://www.amazon.es/dp/B000SIBODG?tag=cafeatugusto-21", lastVerified: "2026-09-16" },
-    availability: { status: "verified", lastChecked: "2026-09-16", reason: "[humanVerified 2026-09-16 — 75,80€ Zassenhaus — muestreo humano ✓] 75,80€ • Añadir a la cesta + En stock 2026-09-16 WSL — verificado — curl -sL amazon.es/dp/B000SIBODG muestra Añadir a la cesta + En stock/Disponible. Precio EUR directo observado." },
-    metadata: { verifiedAt: "2026-09-15T00:00:00Z", sources: ["Amazon.es Zassenhaus", "40005 specs"] },
-  }
 ];

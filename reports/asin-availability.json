@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-09-15T19:27:59.889Z",
+  "timestamp": "2026-09-18T09:13:35.956Z",
   "mode": "mock",
-  "total": 35,
-  "valid": 35,
+  "total": 34,
+  "valid": 34,
   "invalid": 0,
   "InStock": [
     "B06X3ZWVZ7",
     "B01D4O62JG",
-    "B0B8JV43LL",
+    "B0H2MS9GJH",
     "B0H1D9S7RJ",
     "B076HZ1P4M",
     "B0GKHGMQYT",
@@ -18,8 +18,10 @@
     "B086RF6YJQ",
     "B0DW9F2DDR",
     "B0C85NMRXP",
-    "B0GT581YT8",
     "B0GJ62WDY7",
+    "B07PLXPCX3",
+    "B08CBJ8W9W",
+    "B0GHZDTYQ4",
     "B000IWHXH8",
     "B005L8YUI4",
     "B00R7HKAWC",
@@ -29,8 +31,6 @@
     "B00CS2DAEG",
     "B00K5YLI2U",
     "B0CHYWBF7R",
-    "B000SIBODG",
-    "B08SBH2TC6",
     "B0D92111HV",
     "B0BH8MRB2Z",
     "B0CGVVSM19",
@@ -38,8 +38,7 @@
     "B08NBHR7HT",
     "B0D1PF6Z57",
     "B0D9NX6VNG",
-    "B0DB1J2S6V",
-    "B0GXFD87XD"
+    "B0DB1J2S6V"
   ],
   "OutOfStock": [],
   "InvalidASIN": [],
@@ -59,7 +58,7 @@
         "comparatives:lelit-victoria-vs-lelit-anita:a"
       ]
     },
-    "B0B8JV43LL": {
+    "B0H2MS9GJH": {
       "status": "InStock",
       "sources": [
         "machines:m_delonghi_specialista"
@@ -127,16 +126,28 @@
         "comparatives:delonghi-dedica-vs-krups-virtuoso:b"
       ]
     },
-    "B0GT581YT8": {
-      "status": "InStock",
-      "sources": [
-        "machines:m_amzchef_20bar"
-      ]
-    },
     "B0GJ62WDY7": {
       "status": "InStock",
       "sources": [
         "machines:m_cecotec_tradizionale"
+      ]
+    },
+    "B07PLXPCX3": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_magnifica_22110b"
+      ]
+    },
+    "B08CBJ8W9W": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_philips_5400_ep5447"
+      ]
+    },
+    "B0GHZDTYQ4": {
+      "status": "InStock",
+      "sources": [
+        "machines:m_eletta_ultra"
       ]
     },
     "B000IWHXH8": {
@@ -188,27 +199,13 @@
     "B00K5YLI2U": {
       "status": "InStock",
       "sources": [
-        "grinders:g_lelit_fred",
-        "comparatives:lelit-fred-vs-gaggia-md15:a"
+        "grinders:g_lelit_fred"
       ]
     },
     "B0CHYWBF7R": {
       "status": "InStock",
       "sources": [
         "grinders:g_wmf_lumero"
-      ]
-    },
-    "B000SIBODG": {
-      "status": "InStock",
-      "sources": [
-        "grinders:g_zassenhaus_40005"
-      ]
-    },
-    "B08SBH2TC6": {
-      "status": "InStock",
-      "sources": [
-        "grinders:g_gaggia_md15",
-        "comparatives:lelit-fred-vs-gaggia-md15:b"
       ]
     },
     "B0D92111HV": {
@@ -238,8 +235,7 @@
     "B08NBHR7HT": {
       "status": "InStock",
       "sources": [
-        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas",
-        "comparatives:lelit-fred-vs-gaggia-md15:acc:Cepillo limpieza muelas"
+        "comparatives:graef-cm702-vs-graef-cm800:acc:Cepillo limpieza muelas"
       ]
     },
     "B0D1PF6Z57": {
@@ -258,12 +254,6 @@
       "status": "InStock",
       "sources": [
         "comparatives:krups-gvx242-vs-melitta-molino:acc:Soplador single-dose"
-      ]
-    },
-    "B0GXFD87XD": {
-      "status": "InStock",
-      "sources": [
-        "comparatives:lelit-fred-vs-gaggia-md15:acc:Anillo dosificador 58mm"
       ]
     }
   }
