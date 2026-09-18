@@ -42,27 +42,27 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link href="/comparativas/delonghi-dedica-vs-krups-virtuoso" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+            <Link href="/comparativas/delonghi-stilosa-vs-delonghi-dedica" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
               <div>
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Inicio Espresso</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Dedica EC685 vs Krups Virtuoso</h3>
-                <p className="text-xs text-stone-400 mt-2">51mm presurizado 15cm vs 51mm ThermoJet pannarello — misma huella, extracción tolerante.</p>
+                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Entrada De'Longhi</span>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Stilosa EC235 vs Dedica EC685</h3>
+                <p className="text-xs text-stone-400 mt-2">51mm presurizado en ambas: curva mínima contra 15cm y ecosistema barato.</p>
               </div>
               <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
             </Link>
-            <Link href="/comparativas/lelit-victoria-vs-lelit-anita" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+            <Link href="/comparativas/delonghi-opera-vs-siemens-eq6" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
               <div>
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Gama Media Single Boiler</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Lelit Victoria vs Anita</h3>
-                <p className="text-xs text-stone-400 mt-2">PID 58mm LCC vs 57mm con molinillo integrado 38mm.</p>
+                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Mismo Precio, Ritual Opuesto</span>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Opera EC9555 vs Siemens EQ6</h3>
+                <p className="text-xs text-stone-400 mt-2">Manual 58mm con PID contra superautomática: el mismo dinero, dos filosofías.</p>
               </div>
               <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
             </Link>
-            <Link href="/comparativas/graef-cm702-vs-graef-cm800" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+            <Link href="/comparativas/delonghi-eletta-ultra-vs-siemens-eq900" className="rounded-2xl border border-stone-800 bg-stone-900/40 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
               <div>
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Molinillos Graef</span>
-                <h3 className="text-lg font-bold text-stone-200 mt-2">Graef CM702 vs CM800</h3>
-                <p className="text-xs text-stone-400 mt-2">24 niveles 250g vs 40 niveles 350g — misma cónica, escalado de precisión.</p>
+                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider">Gama Premium Superauto</span>
+                <h3 className="text-lg font-bold text-stone-200 mt-2">Eletta Ultra vs EQ900</h3>
+                <p className="text-xs text-stone-400 mt-2">50+ recetas con Cold Brew contra táctil 6.8 con beanIdent.</p>
               </div>
               <span className="mt-6 text-xs font-bold text-amber-400">Leer análisis →</span>
             </Link>
