@@ -28,6 +28,7 @@ for (const g of GRINDERS_SEED) {
   }
 }
 console.log(`\nRECOMMENDABLE_INVALID = ${invalid}`);
-if (invalid === 0) console.log("✓ Barrera anti-regresión OK — 25/25 con availability=verified + priceCheck.observedEUR + ASIN válido");
+const total = MACHINES_SEED.length + GRINDERS_SEED.length;
+if (invalid === 0) console.log(`✓ Barrera anti-regresión OK — ${total}/${total} con availability=verified + priceCheck.observedEUR + ASIN válido`);
 else console.log("✗ FAIL — hay productos no recomendables sin verificar");
 process.exit(invalid === 0 ? 0 : 1);
