@@ -117,14 +117,14 @@ export const COMPARATIVES: readonly Comparative[] = [
   {
     slug: "delonghi-specialista-arte-vs-krups-precision",
     title: "De'Longhi La Specialista Arte vs Krups Precision GW",
-    subtitle: "Todo en uno de gama media: Specialista Arte con 51mm, 8 niveles y My LatteArt guiado, frente a Krups Precision con 58mm, manómetro y dial para aprender dosis y prensado.",
+    subtitle: "Todo en uno de gama media: Specialista Arte con 51mm, 15 niveles y My LatteArt guiado, frente a Krups Precision con 58mm, manómetro y dial para aprender dosis y prensado.",
     verdict: "Specialista Arte si quieres flujo guiado compacto y vaporizar LatteArt sin pensar en técnica. Krups Precision si te tienta el 58mm estándar, leer presión en manómetro y ajustar con dial — más escuela de espresso por menos euros.",
     verdictArchetype: "The Guided → Specialista Arte (51mm, LatteArt). The School → Krups Precision (58mm, manómetro).",
     a: { name: "De'Longhi La Specialista Arte", asin: "B0H2MS9GJH", image: "/images/machines/delonghi-la-specialista-arte.jpg" },
     b: { name: "Krups Precision GW", asin: "B0DW9F2DDR", image: "/images/machines/krups-precision-gw.jpg" },
     specs: [
       { label: "Portafiltro", a: "51 mm", b: "58 mm" },
-      { label: "Molinillo", a: "8 niveles", b: "Cónico con dial" },
+      { label: "Molinillo", a: "15 niveles", b: "Cónico con dial" },
       { label: "Manómetro", a: "No", b: "Sí" },
       { label: "Depósito", a: "1.5 L", b: "1.7 L" },
       { label: "Vapor", a: "My LatteArt", b: "Manual" },

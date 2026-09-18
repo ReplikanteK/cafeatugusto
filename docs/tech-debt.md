@@ -1,4 +1,4 @@
-# Tech Debt — Café A Tu Gusto (2026-09-18 — main post trust-model, 17+10, 10 comparativas)
+# Tech Debt — Café A Tu Gusto (2026-09-18 — main post trust-model, 17+10, 16 comparativas)
 
 > Motor congelado tras QA 8 perfiles. Solo se reabre por FAIL absurdo en validación humana o por evidencia CTR.
 > Ronda 2026-09-18: modelo de confianza (availability/verification/priceCheck/identityCheck) +
@@ -28,7 +28,7 @@
 
 ### 3. 🟡 Cobertura catálogo gama alta
 
-`15 máquinas /10 molinillos` → MVP demuestra `mejor de catálogo`, no `mejor del mercado`. P8 `Silvia V6 58 + 3 grinders` `99` refleja límite catálogo, no bug selección `src/scripts/audit-8-perfiles.ts:140` `machine×grinder`. Documentar en `/metodologia`.
+`17 máquinas /10 molinillos` → catálogo 27/27 human-verificado demuestra `mejor de catálogo`, no `mejor del mercado`. P8 con candidatos reales (Victoria+MD15 98) — el escenario Silvia V6 era del freeze antiguo sin cobertura. Documentar en `/metodologia`.
 
 ### 4. 🟡 Diversidad Top3 — misma máquina + molinillos distintos
 

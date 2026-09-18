@@ -17,7 +17,7 @@ export function Footer() {
         </div>
         <div>
           <h4 className="font-semibold text-stone-200 mb-2">Transparencia</h4>
-          <ul className="space-y-2 text-xs"><li><Link href="/metodologia" className="hover:text-amber-400">Metodología de Scoring</Link></li><li><Link href="/afiliados" className="hover:text-amber-400">Aviso de Afiliación (Amazon 5%)</Link></li></ul>
+          <ul className="space-y-2 text-xs"><li><Link href="/metodologia" className="hover:text-amber-400">Metodología de Scoring</Link></li><li><Link href="/afiliados" className="hover:text-amber-400">Aviso de Afiliación</Link></li></ul>
         </div>
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-8 pt-6 border-t border-stone-900 text-center text-xs text-stone-500">© {new Date().getFullYear()} Café A Tu Gusto — Criterios de filtrado técnico y determinista.</div>
