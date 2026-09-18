@@ -2,6 +2,10 @@
 
 **Estado:** 17 máquinas + 10 molinillos + 10 comparativas. Fuente de verdad comercial con 4 campos ortogonales.
 
+> Alcance del experimento: el CTR de septiembre cubre exclusivamente cafeteras
+> espresso y molinillos. El catálogo de cafés (`cafes/[slug]`) mantiene su flujo
+> comercial independiente, fuera de `CATALOG_POLICY`.
+
 ## Modelo 4 campos (`src/types/coffee.ts`)
 
 ```ts
