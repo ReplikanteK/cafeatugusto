@@ -1,6 +1,6 @@
 # Catalogación Amazon V2 — Modelo de confianza (2026-09-18)
 
-**Estado:** 17 máquinas + 10 molinillos + 10 comparativas. Fuente de verdad comercial con 4 campos ortogonales.
+**Estado:** 17 máquinas + 10 molinillos + 16 comparativas. Fuente de verdad comercial con 4 campos ortogonales.
 
 > Alcance del experimento: el CTR de septiembre cubre exclusivamente cafeteras
 > espresso y molinillos. El catálogo de cafés (`cafes/[slug]`) mantiene su flujo

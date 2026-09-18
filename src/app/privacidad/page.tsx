@@ -11,7 +11,7 @@ export default function PrivacidadPage() {
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-stone-300">
         <section>
           <h2 className="font-bold text-white">Analítica (GA4)</h2>
-          <p className="mt-2">Usamos Google Analytics 4 solo si aceptas en el banner. Por defecto el consentimiento es <span className="font-mono text-amber-400">denied</span> y no se carga `gtag` ni se envía `page_view`. Al aceptar hacemos `consent update granted` y luego `gtag config`. Puedes revocar borrando `consent_analytics` en localStorage.</p>
+          <p className="mt-2">Usamos Google Analytics 4 solo si aceptas en el banner. Por defecto el consentimiento es <span className="font-mono text-amber-400">denied</span> y no se configura `gtag` ni se envían eventos/`page_view` analíticos. Al aceptar hacemos `consent update granted` y luego `gtag config`. Puedes revocar borrando `consent_analytics` en localStorage.</p>
         </section>
         <section>
           <h2 className="font-bold text-white">Afiliación Amazon</h2>
