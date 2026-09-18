@@ -25,7 +25,7 @@ const allItems: Item[] = [
 
 const PAGE_SIZE = 12;
 
-// Preset de catálogo por arquetipo — actualizado a verified 15+11 (sin 54mm)
+// Preset de catálogo por arquetipo — 17+10 (sin 54mm)
 const CATALOG_ARCHETYPE_PRESETS: Record<string, { cat: Cat; diam: Diam; pidOnly: boolean; noIntegrated: boolean; maxPrice: number; label: string }> = {
   precisionist: { cat: "machines", diam: "58", pidOnly: true, noIntegrated: false, maxPrice: 1500, label: "Precisionist · 58mm PID · 51-58" },
   aesthetic:    { cat: "machines", diam: "58", pidOnly: false, noIntegrated: false, maxPrice: 1200, label: "Aesthetic Craft · 58mm · acero / madera" },
