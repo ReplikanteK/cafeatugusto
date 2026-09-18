@@ -3,8 +3,8 @@ import { GUIDES_SEED } from "@/data/guides";
 import { GuideCtaLink } from "@/components/ui/GuideCtaLink";
 
 export const metadata = {
-  title: "Guías — Café a Tu Gusto | 54mm vs 58mm, Dial-in y Thermoblock",
-  description: "3 guías técnicas sin humo: 54mm vs 58mm, dial-in por tueste y Thermoblock vs caldera. Tablas, takeaways y CTA al recomendador.",
+  title: "Guías técnicas de espresso — Café A Tu Gusto",
+  description: "Guías directas: portafiltros, dial-in por tueste, térmica, muelas y mantenimiento. Tablas y conclusiones claras.",
   alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://cafeatugusto.vercel.app"}/guias` },
 };
 
@@ -12,10 +12,10 @@ export default function GuiasPage() {
   const guides = Object.values(GUIDES_SEED);
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-      <p className="text-xs font-mono tracking-widest text-amber-400">GUÍAS • SEO TOFU/MOFU</p>
-      <h1 className="text-3xl font-black text-white mt-2">Guías técnicas — sin thin content</h1>
+      <p className="text-xs font-mono tracking-widest text-amber-400">GUÍAS TÉCNICAS</p>
+      <h1 className="text-3xl font-black text-white mt-2">Guías técnicas</h1>
       <p className="text-sm text-stone-400 mt-2 max-w-2xl">
-        Contenido curado para capturar intención pre-compra y canalizar hacia el recomendador. Cada guía es tabla + takeaways + veredicto, con internal linking a comparativas y recomendador.
+        Aprende lo esencial antes de comprar: cada guía resume el tema en una tabla comparativa y conclusiones claras, con enlaces a comparativas y al recomendador cuando quieras pasar a la acción.
       </p>
       <div className="grid md:grid-cols-3 gap-6 mt-8">
         {guides.map((g) => (
@@ -40,7 +40,7 @@ export default function GuiasPage() {
         </GuideCtaLink>
       </div>
       <p className="text-xs text-stone-500 mt-6">
-        <Link href="/comparativas" className="text-amber-500 underline">Comparativas longtail →</Link> •{" "}
+        <Link href="/comparativas" className="text-amber-500 underline">Comparativas →</Link> •{" "}
         <Link href="/metodologia" className="text-amber-500 underline">Metodología →</Link>
       </p>
     </main>

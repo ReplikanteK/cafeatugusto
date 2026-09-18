@@ -88,13 +88,13 @@ export default async function GuiaPage({ params }: { params: Promise<{ slug: str
       <div className="mt-8 rounded-2xl bg-amber-950/20 border border-amber-500/20 p-5">
         <p className="text-sm font-bold text-amber-300">¿Listo para tu setup ideal?</p>
         <p className="text-xs text-stone-400 mt-1">
-          Esta guía es TOFU/MOFU. El siguiente paso es el recomendador: 8 preguntas → Top 3 con desglose 7 dims trazable.
+          Si ya lo tienes claro, el siguiente paso es el recomendador: test de 1 minuto → Top 3 con desglose detallado.
         </p>
         <GuideCtaLink slug={slug} position="bottom_banner" className="mt-3 inline-block bg-amber-600 hover:bg-amber-500 text-white text-xs font-black px-4 py-2 rounded-lg">
           Hacer test 1 minuto →
         </GuideCtaLink>
         <p className="text-[11px] text-stone-500 mt-2">
-          Internal linking: <Link href="/comparativas" className="underline">comparativas longtail</Link> •{" "}
+          Seguir explorando: <Link href="/comparativas" className="underline">comparativas</Link> •{" "}
           <Link href="/catalogo" className="underline">catálogo 17+10</Link> •{" "}
           <Link href="/metodologia" className="underline">metodología</Link>
         </p>
