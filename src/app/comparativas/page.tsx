@@ -4,7 +4,7 @@ export default function ComparativasPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="text-3xl font-black">Comparativas</h1>
-      <p className="text-sm text-stone-400 mt-2">Dos máquinas, una tabla, un veredicto. Sin empates cómodos.</p>
+      <p className="text-sm text-stone-400 mt-2">Dos modelos, una tabla y un veredicto razonado para ayudarte a elegir.</p>
       <div className="grid md:grid-cols-3 gap-6 mt-8">
         {COMPARATIVES.map(c=> (
           <Link key={c.slug} href={`/comparativas/${c.slug}`} className="rounded-2xl bg-stone-900 border border-stone-800 p-6 hover:border-amber-500/40 transition-all flex flex-col">
